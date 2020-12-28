@@ -33,11 +33,12 @@ body {
 
 #menu .item .label {
   color: black;
+  font-size: 1vh;
 }
 
 #menu .item .description {
   color: black;
-  font-size: 0.6em;
+  font-size: 0.6vh;
   text-transform: uppercase;
   margin-top: 4px;
 }
