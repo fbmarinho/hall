@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if(link.label != ""){
       var item = document.createElement('a');
       item.href = link.href;
+      item.target = "_blank";
       var label = document.createElement('span');
       var description = document.createElement('span');
       item.className = "item";
