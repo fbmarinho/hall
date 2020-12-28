@@ -1,0 +1,41 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#menu .item {
+  text-decoration: none;
+  width: 45%;
+  height: 50px;
+  margin-bottom: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid red;
+  border-radius: 5px;
+  align-items: center;
+}
+
+#menu .item .label {
+  color: black;
+}
+
+#menu .item .description {
+  color: black;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+#menu .item:hover {
+  background-color: #eee;
+  color: white;
+}
