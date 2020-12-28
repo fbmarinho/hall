@@ -9,7 +9,7 @@ body {
 
 #menu {
   height: 100%;
-  margin-top: 1vh;
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -21,7 +21,7 @@ body {
   text-decoration: none;
   width: 45%;
   min-height: 10vh;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -33,12 +33,12 @@ body {
 
 #menu .item .label {
   color: black;
-  font-size: 4em;
+  font-size: 10em;
 }
 
 #menu .item .description {
   color: black;
-  font-size: 1em;
+  font-size: 6em;
   text-transform: uppercase;
   margin-top: 4px;
 }
