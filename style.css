@@ -8,6 +8,7 @@ body {
 }
 
 #menu {
+  height: 100%;
   margin-top: 20px;
   display: flex;
   flex-direction: row;
