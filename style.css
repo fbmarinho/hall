@@ -19,7 +19,7 @@ body {
 #menu .item {
   text-decoration: none;
   width: 45%;
-  height: 10%;
+  min-height: 10vh;
   margin-bottom: 10px;
   background-color: white;
   display: flex;
