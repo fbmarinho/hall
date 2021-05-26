@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "SITAER",
-      href: "http://seguro8.petrobras.com.br/gedae/infovoo/informativoplataforma.aspx",
+      href: "https://sitaer.petrobras.com.br/",
       description: "Status de Voos BR"
     }
   ];
