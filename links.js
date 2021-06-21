@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "Página inicial"
     },
     {
+      label: "Portal Brasil",
+      href: "https://halliburton.sharepoint.com/sites/portalla/br/default.aspx",
+      description: ""
+    },
+    
+    {
       label: "Email Pessoal",
       href: "https://outlook.office.com/mail/inbox",
       description: ""
