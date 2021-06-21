@@ -76,6 +76,11 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "Novo Servidor"
     },
     {
+      label: "OneView",
+      href: "https://hal.enablon.com/HALOneView/go.aspx",
+      description: "Cartão stop"
+    },
+    {
       label: "SITAER",
       href: "https://sitaer.petrobras.com.br/",
       description: "Status de Voos BR"
