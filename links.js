@@ -90,7 +90,13 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "SITAER",
       href: "https://sitaer.petrobras.com.br/",
       description: "Status de Voos BR"
+    },
+    {
+      label: "Halliburton TV",
+      href: "https://accesstfa.halliburton.com/,DanaInfo=.awxyClfrsqk42511O9A,SSL+",
+      description: ""
     }
+    
   ];
   var menu = document.createElement('div');
   menu.id = "menu"
