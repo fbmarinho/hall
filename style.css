@@ -7,6 +7,15 @@ body {
   height: 100vh;
 }
 
+.button-alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: red;
+  height: 40px;
+}
+
 #menu {
   height: 100%;
   margin-top: 15px;
