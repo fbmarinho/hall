@@ -95,6 +95,16 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "Halliburton TV",
       href: "https://accesstfa.halliburton.com/,DanaInfo=.awxyClfrsqk42511O9A,SSL+",
       description: ""
+    },
+    {
+      label: "GIS-SUB",
+      href: "https://gissub2.petrobras.biz",
+      description: "Barcos - Somente rede BR"
+    },
+    {
+      label: "SITOP",
+      href: "https://sitop.petrobras.biz/aplicativo/LI04-SITOP",
+      description: "SITOP - Somente rede BR"
     }
     
   ];
