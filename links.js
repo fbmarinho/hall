@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "Página inicial"
     },
     {
+      label: "Resetar senha",
+      href: "https://passwordreset.microsoftonline.com/",
+      description: "Esqueceu ou venceu ?"
+    },
+    {
       label: "Portal Brasil",
       href: "https://halliburton.sharepoint.com/sites/portalla/br/default.aspx",
       description: ""
