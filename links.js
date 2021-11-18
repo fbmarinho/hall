@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "Learning Central",
       href: "https://halliburton.plateau.com/learning",
-      description: "Novo"
+      description: "🌟 Novo"
     },
     {
       label: "EDM",
