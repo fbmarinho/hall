@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", function() {
       description: ""
     },
     {
-      label: "Datastore",
-      href: "https://accesstfa.halliburton.com/datastore/,DanaInfo=.adbvdwyuymImz32Nwq231vDBEAAZ3ED+default.aspx",
-      description: ""
+      label: "Learning Central",
+      href: "https://halliburton.plateau.com/learning",
+      description: "Novo"
     },
     {
       label: "EDM",
