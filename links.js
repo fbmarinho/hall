@@ -108,13 +108,18 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "SITOP",
-      href: "https://sitop.petrobras.biz/aplicativo/LI04-SITOP",
+      href: "http://sitop.petrobras.biz/aplicativo/LI04-SITOP",
       description: "SITOP - Somente rede BR"
     },
     {
       label: "LOGÍSTICA (PESSOAL)",
       href: "https://srq.halliburton.7itec.io/login",
       description: "Pesquisar dados da viagem"
+    },
+    {
+      label: "FOLHACERTA",
+      href: "https://folhacerta.com/",
+      description: ""
     }
     
     
