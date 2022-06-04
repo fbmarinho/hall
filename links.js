@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "GIS-SUB",
-      href: "https://gissub2.petrobras.biz",
+      href: "http://gissub2.petrobras.biz",
       description: "Barcos - Somente rede BR"
     },
     {
