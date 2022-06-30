@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "SITAER",
-      href: "https://sitaer.petrobras.com.br/",
+      href: "https://sitaer-infovoo.petrobras.com.br/",
       description: "Status de Voos BR"
     },
     {
