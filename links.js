@@ -47,9 +47,9 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "🌟 Novo"
     },
     {
-      label: "EDM",
-      href: "https://accesstfa.halliburton.com/SITES/GlobalROCs/SperryEDM/,DanaInfo=.asqyhwyFjw0zKtnz0ysA-B99W0BA+default.aspx",
-      description: ""
+      label: "iTools",
+      href: "https://accesstfa.halliburton.com/irj/servlet/prt/portal/prtroot/,DanaInfo=.asbrsswzhtImz32Nwq231vDBEAAZ3ED,SSL+pcd!3aportal_content!2fcom.halliburton.ESG!2fERP!2fPortaladministration!2fDesktop!2fhaldefaultdesktopnew!2fframeworkPages!2fcom.halliburton.esg.eas.zpad.haldefaultfwpage!2fcom.sap.portal.innerpage#",
+      description: "Expense e Outros"
     },
     {
       label: "TSOrders",
