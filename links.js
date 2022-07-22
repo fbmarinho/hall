@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
       href: "https://halliburton.sharepoint.com/sites/portalla/br/default.aspx",
       description: ""
     },
-    
     {
       label: "Email Pessoal",
       href: "https://outlook.office.com/mail/inbox",
@@ -25,6 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "Email Sonda",
       href: "https://accesstfa.halliburton.com/owa/,DanaInfo=.aeyekesmlHqkwxvp97-66Tx-9,SSL+#path=/mail",
       description: ""
+    },
+    {
+      label: "E-MAIL PADRÃO",
+      href: "/emails.html",
+      description: "🌟 Novo"
     },
     {
       label: "Manuais",
@@ -44,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "Learning Central",
       href: "https://halliburton.plateau.com/learning",
-      description: "🌟 Novo"
+      description: "Acesso direto"
     },
     {
       label: "iTools",
