@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "E-MAIL PADRÃO",
-      href: "/emails.html",
+      href: "/hall/emails.html",
       description: "🌟 Novo"
     },
     {
