@@ -1,4 +1,14 @@
+
+
 document.addEventListener("DOMContentLoaded", function() {
+  function prettyDate(date){
+    var date = new Date(date);
+    var options = { year: 'numeric', month: 'numeric', day: 'numeric',};
+    return new Intl.DateTimeFormat("pt-BR", options).format(date);
+  } 
+
+  var lastinfo = document.getElementById("lastinfo").textContent = "Halliburton - Útilima atualização: " + prettyDate(document.lastModified);
+
   var links = [
     {
       label: "Connect",
