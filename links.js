@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
       description: ""
     },
     {
-      label: "E-MAIL PADRÃO",
+      label: "Padronização para e-mails",
       href: "/hall/emails.html",
       description: "🌟 Novo"
     },
