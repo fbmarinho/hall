@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return new Intl.DateTimeFormat("pt-BR", options).format(date);
   } 
 
-  var lastinfo = document.getElementById("lastinfo").textContent = "Halliburton - Útilima atualização: " + prettyDate(document.lastModified);
+  var lastinfo = document.getElementById("lastinfo").textContent = "Halliburton Links (Não oficial) - Útilima atualização: " + prettyDate(document.lastModified);
 
   var links = [
     {
