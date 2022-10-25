@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "Halliburton TV",
-      href: "https://accesstfa.halliburton.com/,DanaInfo=.awxyClfrsqk42511O9A,SSL+",
+      href: "https://www.halliburton.tv/",
       description: ""
     },
     {
