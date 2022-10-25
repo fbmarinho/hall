@@ -29,6 +29,9 @@ body {
  color: white;
  background-color: #a00;
  text-transform: uppercase;
+ border: none;
+  corner-radius: 3px;
+  margin-left: 5px;
 }
 
 #lastinfo {
