@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
       description: ""
     },
     {
-      label: "Padronização para e-mails",
+      label: "Padronização",
       href: "/hall/emails.html",
       description: ""
     },
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "TSOrders",
-      href: "https://accesstfa.halliburton.com/tsorders/,DanaInfo=.attquhjxzx0n+iwexctfm.asp",
+      href: "https://accesstfa.halliburton.com/dana/home/launch.cgi?url=tsorders.corp.halliburton.com",
       description: "Licensas e softwares"
     },
     {
@@ -93,11 +93,6 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "ARGO",
       href: "https://ctm.bcdtravel.com.br/bcd/default.aspx?cliente=halliburton",
       description: "Pedido de Hotel e Vôos"
-    },
-    {
-      label: "PEAK",
-      href: "https://halliburtoncompany.appiancloud.com/suite/sites/sperry/page/home",
-      description: ""
     },
     {
       label: "EPOD",
