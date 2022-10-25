@@ -7,6 +7,23 @@ body {
   height: 100vh;
 }
 
+#urlbar {
+  display: flex;
+  height: 40px;
+  font-size: 14px;
+  width: 100%;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+#urlbar > button {
+ color: white;
+ background-color: #a00;
+ text-transform: uppercase;
+}
+
 #lastinfo {
   display: flex;
   height: 20px;
