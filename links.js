@@ -6,6 +6,14 @@ document.addEventListener("DOMContentLoaded", function() {
     var options = { year: 'numeric', month: 'numeric', day: 'numeric',};
     return new Intl.DateTimeFormat("pt-BR", options).format(date);
   } 
+  
+  var urlbutton = document.document.getElementById("urlbutton");
+  
+  urlbutton.onClick = () => {
+    var url = document.document.getElementById("url").value;
+    var fullurl = "https://accesstfa.halliburton.com/dana/home/launch.cgi?url="+url;
+    window.open(fullurl, "_blank")
+  }
 
   var lastinfo = document.getElementById("lastinfo").textContent = "Halliburton Links (Não oficial) - Útilima atualização: " + prettyDate(document.lastModified);
 
