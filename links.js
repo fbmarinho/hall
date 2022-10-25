@@ -136,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "SITOP - Somente rede BR"
     },
     {
+      old: true,
       label: "LOGÍSTICA (PESSOAL)",
       href: "https://srq.halliburton.7itec.io/login",
       description: "Pesquisar dados da viagem"
