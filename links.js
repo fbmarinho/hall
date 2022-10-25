@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   var urlbutton = document.getElementById("urlbutton");
   
-  var btnclick = () => {
+  urlbutton.onclick = () => {
     var url = document.getElementById("url").value;
     var fullurl = "https://accesstfa.halliburton.com/dana/home/launch.cgi?url="+url;
     console.log("Opening: "+fullurl)
