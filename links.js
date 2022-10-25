@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   urlbutton.onClick = () => {
     var url = document.getElementById("url").value;
     var fullurl = "https://accesstfa.halliburton.com/dana/home/launch.cgi?url="+url;
+    console.log("Opening: "+fullurl)
     window.open(fullurl, "_blank")
   }
 
