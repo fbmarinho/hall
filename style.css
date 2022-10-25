@@ -18,7 +18,13 @@ body {
   text-transform: uppercase;
 }
 
+#urlbar > input {
+ padding: 10px;
+ width: 200px;
+}
+
 #urlbar > button {
+ padding: 10px;
  color: white;
  background-color: #a00;
  text-transform: uppercase;
