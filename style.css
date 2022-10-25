@@ -8,6 +8,7 @@ body {
 }
 
 #urlbar {
+  margin-top: 10px;
   display: flex;
   height: 40px;
   font-size: 14px;
@@ -20,7 +21,7 @@ body {
 
 #urlbar > input {
  padding: 10px;
- width: 200px;
+ width: 300px;
 }
 
 #urlbar > button {
