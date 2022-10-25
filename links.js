@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "Esqueceu ou venceu ?"
     },
     {
+      old: true,
       label: "Portal Brasil",
       href: "https://halliburton.sharepoint.com/sites/portalla/br/default.aspx",
       description: ""
@@ -154,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function() {
   document.body.appendChild(menu);
 
   for (const link of links){
-    if(link.label != ""){
+    if(link.label != "" && !link.old){
       var item = document.createElement('a');
       item.href = link.href;
       item.target = "_blank";
