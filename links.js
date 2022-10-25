@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function() {
   
   var urlbutton = document.getElementById("urlbutton");
   
-  urlbutton.onclick = () => {
+  urlbutton.addEventListener("click", ()=>{
     var url = document.getElementById("url").value;
     var fullurl = "https://accesstfa.halliburton.com/dana/home/launch.cgi?url="+url;
     console.log("Opening: "+fullurl)
     window.open(fullurl, "_blank")
-  }
+  })
 
   var lastinfo = document.getElementById("lastinfo").textContent = "Halliburton Links (Não oficial) - Útilima atualização: " + prettyDate(document.lastModified);
 
