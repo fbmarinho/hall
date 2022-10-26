@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", function() {
     return new Intl.DateTimeFormat("pt-BR", options).format(date);
   } 
   
-  var urlbutton = document.getElementById("urlbutton");
+  var urlform = document.getElementById("urlform");
   
-  urlbutton.addEventListener("click", ()=>{
+  urlform.addEventListener("submit", (e)=>{
+    e.preventDefault();
     var url = document.getElementById("url").value;
     var fullurl = "https://accesstfa.halliburton.com/dana/home/launch.cgi?url="+url;
     console.log("Opening: "+fullurl)
