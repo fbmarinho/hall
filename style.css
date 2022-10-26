@@ -19,6 +19,11 @@ body {
   text-transform: uppercase;
 }
 
+#urlbar > form > label {
+  color: black;
+  font-size: 14px;
+}
+
 #urlbar > form > input[type="text"] {
  padding: 10px;
  width: 300px;
