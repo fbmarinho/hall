@@ -158,6 +158,11 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "FOLHACERTA",
       href: "https://folhacerta.com/",
       description: ""
+    },
+    {
+      label: "Instalação INSITE",
+      href: "/hall/curso.html",
+      description: "Somente Rede Hall"
     }
     
     
