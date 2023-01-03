@@ -4,14 +4,12 @@
 ;}
 
 async function checkvpn(){
-  const response = await fetch("https://accesstfa.halliburton.com/dana/home/index.cgi");
-  console.log(response.status);
+  const response = await fetch("https://accesstfa.halliburton.com/mfa/");
+  console.log(response.status); // retornando problemas de CORS
 ;}
 
 
 document.addEventListener("DOMContentLoaded", function() {
-
-  checkvpn();
 
   function prettyDate(date){
     var date = new Date(date);
