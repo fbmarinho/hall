@@ -9,15 +9,42 @@
   <link rel="stylesheet" href="style.css">
   </head>
   <script type="text/javascript" src="links.js"></script>
-<body>
-  <div id="lastinfo">Halliburton unofficial usefull links</div>
-  <div id="urlbar">
-    <form id="urlform">
-      <label for="url">URL:</label>
-      <input id="url" name="url" type="text" value="" placeholder="Ex: tsorders ou www.google.com"/>
-      <input type="submit" value="Abrir pela VPN"/>
-    </form>
-  </div>  
-</body> 
-</body>
+  <body>
+    <div id="lastinfo">Halliburton unofficial usefull links</div>
+    <main>
+      <div class="divisoria">
+        <div class="title">
+          <p>Links que precisam autenticar com email</p>
+          <a href="https://passwordreset.microsoftonline.com/" target="_blank">Resetar Senha</a>
+        </div>
+        <div id="auth" class="links"></div>
+      </div>
+    
+      <div class="divisoria">
+        <div class="title">
+          <p>Links que precisam logar na VPN primeiro</p>
+          <a class="btnlogar" href="https://accesstfa.halliburton.com/mfa/" target="_blank">Clique aqui para logar</a>
+        </div>
+        <div id="vpn" class="links" ></div>
+        <div id="urlbar">
+          <form id="urlform">
+            <label for="url">URL:</label>
+            <input id="url" name="url" type="text" value="" placeholder="Ex: tsorders ou www.google.com"/>
+            <input type="submit" value="Abrir"/>
+          </form>
+        </div>  
+      </div>
+    
+      <div class="divisoria">
+        <div class="title">Links de acesso direto</div>
+        <div id="direto" class="links"></div>
+      </div>
+
+      <div class="divisoria">
+        <div class="title">Links que só acessam via rede BR (WMAR ou RIC)</div>
+        <div id="br" class="links"></div>
+      </div>
+
+    </main>
+  </body>
 </html>

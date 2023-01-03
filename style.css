@@ -1,14 +1,65 @@
 html {
   font-family: 'Roboto', sans-serif;
-}
-
-body {
-  width: 100vw;
   height: 100vh;
 }
 
+body {
+  height: 100%;
+}
+
+main {
+  padding-bottom: 4px;
+}
+
+#status {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background-color: green;
+}
+
+.divisoria {
+  margin: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.divisoria .title{
+  padding: 5px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.divisoria .title a{
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 15%;
+  background-color: #a00;
+  padding: 3px;
+  border-radius: 3px;
+  text-align: center;
+}
+.divisoria .title a:hover{
+  background-color: rgb(208, 19, 19);
+  cursor: pointer;
+}
+
+
+
 #urlbar {
-  margin-top: 10px;
   display: flex;
   height: 40px;
   font-size: 14px;
@@ -17,20 +68,21 @@ body {
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  background-color: black;
 }
 
 #urlbar > form > label {
-  color: black;
+  color: white;
   font-size: 14px;
 }
 
 #urlbar > form > input[type="text"] {
- padding: 10px;
+ padding: 4px;
  width: 300px;
 }
 
 #urlbar > form > input[type="submit"] {
- padding: 10px;
+ padding: 5px;
  color: white;
  background-color: #a00;
  text-transform: uppercase;
@@ -64,44 +116,69 @@ body {
   font-size: 20px;
 }
 
-#menu {
-  height: 100%;
-  margin-top: 15px;
-  margin-bottom: 15px;
+.links {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-items: space-evenly;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items:center;
+  background-color: #444;
 }
 
-#menu .item {
-  text-decoration: none;
-  width: 45%;
-  min-height: 18vh;
-  margin-bottom: 15px;
-  background-color: white;
+.item {
+  width: 33.33%;
+}
+
+.link {
+  min-height: 14vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid red;
-  border-radius: 5px;
   align-items: center;
+  border-radius: 5px;
+  background-color: white;
+  text-decoration: none;
+  margin:2px;
 }
 
-#menu .item .label {
+.link .label {
   color: black;
-  font-size: 3em;
+  font-size: 1.6em;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-#menu .item .description {
+.link .description {
   color: black;
-  font-size: 1.2em;
+  font-size: 0.8em;
   text-transform: uppercase;
   margin-top: 4px;
+  text-align: center;
 }
 
-#menu .item:hover {
+.link:hover {
   background-color: #eee;
   color: white;
+}
+
+@media screen and (max-width: 900px) {
+  .item {
+    width: 50%;
+  }
+  .link .label {
+    font-size: 1.4em;
+  }
+  .link .description {
+    font-size: 0.7em;
+  }
+  .divisoria .title a{
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .item {
+    width: 100%;
+
+  }
 }
