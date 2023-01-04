@@ -1,14 +1,3 @@
- async function checkResponse(url){
-  const response = await fetch("https://cors-anywhere.herokuapp.com/"+url);
-  console.log(response.status);
-;}
-
-async function checkvpn(){
-  const response = await fetch("https://accesstfa.halliburton.com/mfa/");
-  console.log(response.status); // retornando problemas de CORS
-;}
-
-
 document.addEventListener("DOMContentLoaded", function() {
 
   function prettyDate(date){
