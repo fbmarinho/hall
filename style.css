@@ -179,6 +179,8 @@ main {
 @media screen and (max-width: 480px) {
   .item {
     width: 100%;
-
   }
+  #urlbar > form > input[type="text"] {
+    width: 200px;
+   }
 }
