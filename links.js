@@ -1,5 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+  // var btn_logar = document.getElementById('btnlogar');
+  // var btn_out = document.getElementById('btn_out');
+  // var btn_in = document.getElementById('btn_in');
+  // btn_out.addEventListener('click',()=>{
+  //   btn_logar.style.display = 'flex';
+  //   btn_in.style.display = 'flex';
+  //   btn_out.style.display = 'none';
+  // });
+  // btn_in.addEventListener('click',()=>{
+  //   btn_logar.style.display = 'none';
+  //   btn_in.style.display = 'none';
+  //   btn_out.style.display = 'flex';
+  // })
+
+  // btn_out.style.display = 'none';
+
   function prettyDate(date){
     var date = new Date(date);
     var options = { year: 'numeric', month: 'numeric', day: 'numeric',};
