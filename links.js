@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "SITAER",
       href: "https://sitaer-infovoo.petrobras.com.br/",
-      description: "Status de Voos BR",
+      description: "Status de Vôos",
       type: "br"
     },
     {
@@ -147,13 +147,13 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "GIS-SUB",
       href: "http://gissub2.petrobras.biz",
-      description: "Barcos - Somente rede BR",
+      description: "Rastreamento de Embarcações",
       type: "br"
     },
     {
       label: "SITOP",
       href: "http://sitop.petrobras.biz/aplicativo/LI04-SITOP",
-      description: "SITOP - Somente rede BR",
+      description: "Situação operacional",
       type: "br"
     },
     {
