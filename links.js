@@ -188,6 +188,11 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "Instalação INSITE",
       href: "/hall/curso.html",
       description: "Rede Hall"
+    },
+    {
+      label: "TIMER",
+      href: "http://fbmarinho.github.io/htimer",
+      description: "Timer para LAS"
     } 
   ];
 
