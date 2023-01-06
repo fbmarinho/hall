@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "Learning Central",
-      href: "https://halliburton.plateau.com/learning",
+      href: "https://learningcentral.halliburton.com",
       description: "Acesso direto",
       type: "auth"
     },
