@@ -54,26 +54,26 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "vpn"
     },
     {
-      label: "Padronização",
-      href: "/hall/emails.html",
-      description: ""
+      label: "Telefones",
+      href: "/hall/email/emails.html",
+      description: "🌟 Novo"
     },
     {
       label: "Sperryweb",
       href: "https://accesstfa.halliburton.com/Manuals/,DanaInfo=.asqguv32ljImz32Nwq231vDBEAAZ3ED+Ops_Manuals.htm",
-      description: "🌟 Manuais de operação",
+      description: "Manuais de operação",
       type: "vpn"
     },
     {
       label: "Sperryweb",
       href: "https://accesstfa.halliburton.com/dana/home/launch.cgi?url=sperryweb.corp.halliburton.com/PESoftTest/Download",
-      description: "🌟 Tool Software Downloads",
+      description: "Tool Software Downloads",
       type: "vpn"
     },
     {
       label: "Sperryweb",
       href: "https://accesstfa.halliburton.com/dana/home/launch.cgi?url=sperryweb.corp.halliburton.com/Tool_Compatibility_Charts.htm",
-      description: "🌟 Compatibility Chart",
+      description: "Compatibility Chart",
       type: "vpn"
     },
     {
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
      {
       label: "E-ChartBook",
       href: "https://echartbook.halliburton.com",
-      description: "🌟 Novo"
+      description: ""
     },
     
     {

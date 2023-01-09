@@ -206,6 +206,48 @@ main {
   color: white;
 }
 
+#funcionais {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #444;
+}
+
+#funcionais div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
+
+#funcionais div > span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 8px;
+  padding: 8px;
+  background-color: #999;
+  margin:2px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+#funcionais div > span:hover{
+  color: black;
+  background-color: #CCC;
+  -moz-user-select: none;
+  cursor: pointer;
+}
+
+.clicked {
+  color: white !important;
+  background-color: #a00 !important;
+  -moz-user-select: none;
+}
+
 @media screen and (max-width: 900px) {
   .item {
     width: 50%;
@@ -219,6 +261,9 @@ main {
   .divisoria .title a{
     width: 30%;
   }
+  #funcionais div{
+    width: 33.33%;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -228,4 +273,7 @@ main {
   #urlbar > form > input[type="text"] {
     width: 200px;
    }
+   #funcionais div{
+    width: 100%;
+  }
 }
