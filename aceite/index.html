@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aceite de EPI via VPN</title>
+</head>
+<body>
+  <style>
+    body{
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    span{
+      margin-bottom: 20px;
+    }
+    input{
+      width: 300px;
+      text-align: center;
+    }
+  </style>
+  <span>Para funcionar você precisa estar logado na VPN e no Funcionário.com.</span>
+  <span>Copie o endereço do link fornecido no PDF anexado ao e-mail e cole no campo abaixo.</span>
+  <div>
+    <input id="link" type="text" placeholder="Cole o link aqui"/>
+    <button id="aceitebtn" onclick="aceite()">Aceite</button>
+  </div>
+  <div id="errors">
+
+  </div>
+  <script>
+    var link = document.getElementById("link");
+    var btn = document.getElementById("aceitebtn");
+    btn.disabled = true;
+    link.addEventListener("change",()=>{
+      validateLink();
+    })
+    function aceite(){
+      //http://np1appn037v/Corpore.Net/Main.aspx?ActionID=GlbConsSqlActionWeb&SelectedMenuIDKey=ConsultaSQL&ShowMode=0&DetailIndex=-1&TransactionID=-1&KeyValues=2;P;RS.ACEITE
+      var link = document.getElementById("link");
+      validateLink();
+      var newUrl = link.value.replace("http://np1appn037v/Corpore.Net/","https://accesstfa.halliburton.com/Corpore.Net/,DanaInfo=.anq3dtut7.E5+")
+      window.open(newUrl);
+    }
+    function validateLink(){
+      if(link.value.split("Main.aspx")[0] != "http://np1appn037v/Corpore.Net/"){
+        document.getElementById("errors").innerHTML = "Link inválido !";
+        btn.disabled = true;
+        return;
+      } else {
+        btn.disabled = false;
+        document.getElementById("errors").innerHTML = "";
+      }
+    }
+    
+  </script>
+</body>
+</html>

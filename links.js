@@ -193,6 +193,12 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "TIMER",
       href: "http://fbmarinho.github.io/htimer",
       description: "Timer para LAS"
+    },
+    {
+      label: "Aceite de EPI",
+      href: "/hall/aceite",
+      description: "🌟 Novo",
+      type: "vpn"
     } 
   ];
 
