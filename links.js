@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "Telefones",
-      href: "/hall/email/emails.html",
+      href: "/hall/email/",
       description: "🌟 Novo"
     },
     {
