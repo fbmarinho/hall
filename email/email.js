@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const funcdiv = document.getElementById("funcionais");
 
-  funcionais.forEach((f)=>{
+  funcionais?.forEach((f)=>{
     const container = document.createElement("div");
     const newlink = document.createElement("span");
     newlink.dataset.email = f.email;
