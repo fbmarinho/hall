@@ -170,11 +170,12 @@ function updateCopyBtn() {
   const wellinfo = document.getElementsByClassName("wellinfo");
   const cbx = document.getElementsByClassName("cbx");
   const copybtn = document.getElementById("copybtn");
+  const separator = document.getElementById("separator");
 
   var text = "";
   wellinfo.forEach((info, i)=>{
     if(cbx[i].checked){
-      text += info.value + '_';
+      text += info.value + separator.value;
     }
   });
   copybtn.value = text.slice(0, -1);
@@ -217,6 +218,10 @@ function getSavedData() {
     } else {
       field.removeAttribute('checked');
     }
+  })
+  document.getElementById("separator").options.forEach((option)=>{
+    var sep = localStorage.getItem("separator");
+    option.selected = sep == option.value;
   })
 }
 
@@ -317,5 +322,8 @@ document.addEventListener("DOMContentLoaded", function() {
   })
 
   document.getElementById("copybtn").addEventListener("click",(e) => copyToClipboard(e.target));
-
+  document.getElementById("separator").addEventListener("change", (e)=> {
+    localStorage.setItem("separator", e.target.value);
+    updateCopyBtn();
+  });
 });

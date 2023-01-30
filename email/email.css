@@ -40,6 +40,18 @@ input {
   border: 1px solid #ccc;
 }
 
+#subject {
+  display: flex;
+  flex-direction: row;
+}
+
+#separator {
+  width: 80px;
+  text-align: center;
+  font-size: 10px;
+  background-color: #888;
+}
+
 #copybtn {
   display: flex;
   justify-content: center;
