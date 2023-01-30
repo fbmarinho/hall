@@ -118,26 +118,26 @@ const sondas = [
     phone: [
       {
         name: "Rádio",
-        external: "(22) 2752-4700",
-        voip: "7674700",
-        ramal: "4700"
+        external: "(XX) XXXX-XXXXX",
+        voip: "XXXXXXX",
+        ramal: "XXXX"
       },
       {
         name: "CPM",
-        external: "(22) 2753-39XX",
+        external: "(22) 2753-40XX",
         voip: "",
         ramal: "XXXX"
       },
       {
         name: "LWD",
-        external: "(22) 2753-3914",
-        voip: "7673914",
+        external: "(22) 2753-4014",
+        voip: "7674014",
         ramal: "4018"
       },
       {
         name: "SDL",
-        external: "(22) 2753-3918",
-        voip: "7673918",
+        external: "(22) 2753-4018",
+        voip: "7674018",
         ramal: "4018"
       },
       {
