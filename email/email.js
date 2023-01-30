@@ -224,18 +224,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   const funcdiv = document.getElementById("funcionais");
-
-  funcionais?.forEach((f)=>{
-    const container = document.createElement("div");
-    const newlink = document.createElement("span");
-    newlink.dataset.email = f.email;
-    newlink.dataset.desc = f.description;
-    newlink.innerHTML = f.name;
-    newlink.classList.add("funcional");
-
-    container.appendChild(newlink)
-    funcdiv.appendChild(container);
-  })
+  if(funcionais){
+    funcionais.forEach((f)=>{
+      const container = document.createElement("div");
+      const newlink = document.createElement("span");
+      newlink.dataset.email = f.email;
+      newlink.dataset.desc = f.description;
+      newlink.innerHTML = f.name;
+      newlink.classList.add("funcional");
+  
+      container.appendChild(newlink)
+      funcdiv.appendChild(container);
+    })
+  }
+  
 
   getSavedData();
 
