@@ -150,6 +150,10 @@ const sondas = [
   }
 ]
 
+const fastbtns = [
+  "RFO", "Arquivos de início de corrida", "FAD", "ROA", "Reliability", "Download"
+]
+
 var rect = new DOMRect;
 
 document.getElementById('alert').style.top = Math.abs(parseInt(rect.top)) - 100 + 'px';
@@ -179,6 +183,17 @@ function updateCopyBtn() {
     }
   });
   copybtn.value = text.slice(0, -1);
+}
+
+function generateFastButton(label){
+  var btn = document.createElement("button");
+  btn.innerHTML = label;
+  btn.onclick = ()=>{
+    var text = document.getElementById("copybtn").value + " " + label;
+    btn.value = text;
+    copyToClipboard(btn);
+  };
+  return btn;
 }
 
 function customAlert(string){
@@ -247,6 +262,14 @@ document.addEventListener("DOMContentLoaded", function() {
   getSavedData();
 
   updateCopyBtn();
+
+  var fastbtncontainer = document.getElementById("fastbtns");
+  if(fastbtns){
+    fastbtns.forEach((label)=>{
+      fastbtncontainer.appendChild(generateFastButton(label));
+    })
+  }
+
 
   var inputs = document.querySelectorAll("input");
   inputs.forEach(input => {
