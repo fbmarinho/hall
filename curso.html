@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Programas</title>
+  <title>Instalação do INSITE e outros programas</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
@@ -37,47 +37,132 @@
     background-color: #A00;
     color: white;
   }
-a.disabled{
+
+.link {  
+  color: black;
+}
+.link > a {
+  color: white;
+  font-size: 8px;
+  padding: 2px;
+  text-decoration: none;
+  margin-left: 3px;
+  border-radius: 2px;
+}
+
+.link > .http {
+  background-color: rgb(0, 84, 194);
+}
+
+.link > .ftp {
+  background-color: rgb(255, 187, 0);
+}
+
+
+span.disabled{
  pointer-events: none;
  text-decoration: none;
  color: #ccc;
 }
-a.disabled::after {
+span.disabled::after {
 content: " (obsoleto)";
 }
+#legenda {
+  color: white;
+  background-color: black;
+  padding: 7px;
+  font-size: 10px;
+}
+
+#legenda > span {
+  margin-right: 10px;
+}
+#legenda > .http strong{
+  padding: 2px;
+  color: white;
+  background-color: rgb(0, 84, 194);
+}
+
+#legenda > .ftp strong{
+  padding: 2px;
+  color: white;
+  background-color: rgb(255, 187, 0);
+}
+
 </style>
+
 <body>
   <div>
   <span class="title">Insite - Instalar nesta ordem</span>
+  <div id="legenda">
+    <span class="http"><strong>HTTP</strong> - Precisa estar logado na VPN</span>
+    <span class="ftp"><strong>FTP</strong> - Precisa esta dentro da rede Halliburton (Base ou WVD)</span>
+  </div>
  <ol>
-  <li><a href="ftp://tsodata/SS-V9.2.0-Build41-SetUp.zip">Insite 9.2</a></li>
-  <li><a href="ftp://tsodata/SS-V9.2.0-Service_Pack-1-Build44-SetUp.zip">SP1</a></li>
-  <li><a href="ftp://tsodata/SS-V9.2.0-Service-Pack-2-Build77-App10-Build57-SetUp.zip">SP2</a></li>
-  <li><a href="ftp://tsodata/SS-V9.2.0-Service_Pack-3-Build72-SetUp.zip">SP3</a></li>
-  <li><a href="ftp://tsodata/SS-V9.2.0-Service_Pack-4-Build129-SetUp.zip">SP4</a></li>
-  <li><a href="ftp://tsodata/SS-9.2.0-SP4-Hotfix1.zip" class="disabled">SP4 Hotfix 1</a></li>
-  <li><a href="ftp://tsodata/9.2SP4%20Hotfix%202_Build%2015.zip" class="disabled">SP4 Hotfix 2</a></li>
-  <li><a href="ftp://tsodata/SS-9.2.0-SP4-Hotfix3_Build%209.zip" class="disabled" >SP4 Hotfix 3</a></li>
-  <li><a href="ftp://tsodata/InSite%209.2.0-SP4-CAM-Update-Build%206.zip"class="disabled" >SP4 CAM Uppdate</a></li>
-  <li><a href="ftp://tsodata/InSite%209.2.0-SP4-Geometry-Update-1.zip" class="disabled" >SP4 Geometry Update 1</a></li>
-  <li><a href="ftp://tsodata/InSite%209.2.0-SP4-Geometry-Update-2.zip" class="disabled" >SP4 Geometry Update 2</a></li>
-  <li><a href="ftp://tsodata/InSite%209.2.0-SP4-Geometry-Update-3.zip" class="disabled" >SP4 Geometry Update 3</a></li>
-  <li><a href="ftp://tsodata/InSite%209.2.0-SP4-Geometry-Update-4.zip" class="disabled" >SP4 Geometry Update 4</a></li>
-  <li><a href="ftp://tsodata/SS-V9.2.0-Service_Pack-5-Build123-SetUp.zip">SP5</a></li>
-  <li><a href="ftp://tsodata/InSite%209.2.0-SP5-Hotfix1%20Build%2012.zip">SP5 Hotfix 1</a></li>
-  <li><a href="ftp://tsodata/InSite%209.2.0-SP5-Hotfix2%20Build%209.zip">SP5 Hotfix 2</a></li>
-  <li><a href="ftp://tsodata/InSite%209.2.0-SP5-Geometry-Update-1.zip">SP5 Geometry Update 1</a></li>
-  <li><a href="ftp://tsodata/InSite%209.2.0-SP5-Geometry-Update-2.zip">SP5 Geometry Update 2</a></li>
+  <li><span class="link" data-href="SS-V9.2.0-Build41-SetUp.zip">Insite 9.2</span></li>
+  <li><span class="link" data-href="SS-V9.2.0-Service_Pack-1-Build44-SetUp.zip">SP1</span></li>
+  <li><span class="link" data-href="SS-V9.2.0-Service-Pack-2-Build77-App10-Build57-SetUp.zip">SP2</span></li>
+  <li><span class="link" data-href="SS-V9.2.0-Service_Pack-3-Build72-SetUp.zip">SP3</span></li>
+  <li><span class="link" data-href="SS-V9.2.0-Service_Pack-4-Build129-SetUp.zip">SP4</span></li>
+  <li><span class="link disabled" data-href="SS-9.2.0-SP4-Hotfix1.zip">SP4 Hotfix 1</span></li>
+  <li><span class="link disabled" data-href="9.2SP4%20Hotfix%202_Build%2015.zip">SP4 Hotfix 2</span></li>
+  <li><span class="link disabled" data-href="SS-9.2.0-SP4-Hotfix3_Build%209.zip">SP4 Hotfix 3</span></li>
+  <li><span class="link disabled" data-href="InSite%209.2.0-SP4-CAM-Update-Build%206.zip">SP4 CAM Uppdate</span></li>
+  <li><span class="link disabled" data-href="InSite%209.2.0-SP4-Geometry-Update-1.zip">SP4 Geometry Update 1</span></li>
+  <li><span class="link disabled" data-href="InSite%209.2.0-SP4-Geometry-Update-2.zip">SP4 Geometry Update 2</span></li>
+  <li><span class="link disabled" data-href="InSite%209.2.0-SP4-Geometry-Update-3.zip">SP4 Geometry Update 3</span></li>
+  <li><span class="link disabled" data-href="InSite%209.2.0-SP4-Geometry-Update-4.zip">SP4 Geometry Update 4</span></li>
+  <li><span class="link" data-href="SS-V9.2.0-Service_Pack-5-Build123-SetUp.zip">SP5</span></li>
+  <li><span class="link" data-href="InSite%209.2.0-SP5-Hotfix1%20Build%2012.zip">SP5 Hotfix 1</span></li>
+  <li><span class="link" data-href="InSite%209.2.0-SP5-Hotfix2%20Build%209.zip">SP5 Hotfix 2</span></li>
+  <li><span class="link" data-href="InSite%209.2.0-SP5-Hotfix3%20Build%2020.zip">SP5 Hotfix 3</span></li>
+  <li><span class="link" data-href="InSite%209.2.0-SP5-Geometry-Update-1.zip">SP5 Geometry Update 1</span></li>
+  <li><span class="link" data-href="InSite%209.2.0-SP5-Geometry-Update-2.zip">SP5 Geometry Update 2</span></li>
+  <li><span class="link" data-href="InSite%209.2.0-SP5-Geometry-Update-3.zip">SP5 Geometry Update 3</span></li>
+  <li><span class="link" data-href="InSite%209.2.0-SP5-iCruise-RS485-Update%20Build%202.zip">SP5 ICruise RS485 Update</span></li>
+  <li><span class="link" data-href="SS-V9.2.0-Service_Pack-6-Build88-SetUp.zip">SP6</span></li>
 </ol>
 </div>
 <div>
   <span class="title">Outros</span>
   <ol>
-    <li><a href="ftp://tsodata/MCRInstaller_v7.1.exe">Matlab 7.1</a></li>
-    <li><a href="ftp://tsodata/RTS 7.0_Release_b6.0.1.160.zip">RTS Pro v7.0</a></li>
+    <li><span class="link" data-href="MCRInstaller_v7.1.exe">Matlab 7.1</span></li>
+    <li><span class="link" data-href="RTS 7.0_Release_b6.0.1.160.zip">RTS Pro v7.0</span></li>
     <li><a href="https://mega.nz/file/Lo4zXa5J#ylLM3yOuKasfU0otJADiL5jlLJfjjgnDogGEgALCSvM">Doro PDF</a></li>
     <li><a href="https://mega.nz/file/XlgTgKaB#FFV4MN_NFOR9tx5trMNEvNukhjFptPrlVHtqeXzXrF4">ADOBE Acrobat 7.0 Professional</a></li>
   </ol>
 </div>
 </body>
+<script>
+  Object.prototype.forEach = Array.prototype.forEach;
+  Object.prototype.filter = Array.prototype.filter;
+
+  var links = document.getElementsByClassName("link");
+
+  links.forEach((link)=>{
+    if(link.classList.contains("disabled")){
+      //obsoleto
+    } else {
+      var http = document.createElement("a");
+      var ftp = document.createElement("a");
+      http.href = "https://accesstfa.halliburton.com/dana/home/launch.cgi?url=https://tsodata.corp.halliburton.com/" + link.dataset.href;
+      http.innerHTML = "HTTP";
+      http.classList.add("http");
+      ftp.href = "ftp://tsodata/" + link.dataset.href;
+      ftp.innerHTML = "FTP";
+      ftp.classList.add("ftp");
+      link.appendChild(http);
+      link.appendChild(ftp);
+    }
+    
+  })
+
+
+  var dlmode = document.getElementById("dlmode");
+  dlmode.addEventListener("change",(e)=>{
+    console.log(e.target.options.filter((o)=>o.selected)[0].value);
+    
+  })
+  
+</script>
 </html>
