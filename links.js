@@ -187,7 +187,8 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "Instalação INSITE",
       href: "/hall/curso.html",
-      description: "Rede Hall"
+      description: "Rede Hall";
+      type: vpn
     },
     {
       label: "TIMER",
