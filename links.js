@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "Instalação INSITE",
-      href: "/hall/curso.html",
+      href: "/hall/software",
       description: "",
       type: "vpn"
     },
