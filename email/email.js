@@ -37,6 +37,12 @@ const funcionais = [
     email: "dl_la_brazil-RM_team@halliburton.com",
     description: "Manutenção"
   },
+  {
+    name: "DL_BRAZIL__Shipping_&_Receiving_Sperry",
+    email: "DL_BRAZIL__Shipping_&_Receiving_Sperry@halliburton.com",
+    description: ""
+  },
+
 ];
 
 const sondas = [

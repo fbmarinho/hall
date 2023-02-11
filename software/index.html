@@ -50,11 +50,15 @@
   border-radius: 2px;
 }
 
-.link > .http {
+.vpn {
+  background-color: #A00;
+}
+
+.http {
   background-color: rgb(0, 84, 194);
 }
 
-.link > .ftp {
+.ftp {
   background-color: rgb(255, 187, 0);
 }
 
@@ -80,16 +84,10 @@ content: " (Link quebrado)";
 #legenda > span {
   margin-right: 10px;
 }
-#legenda > .http strong{
-  padding: 2px;
-  color: white;
-  background-color: rgb(0, 84, 194);
-}
 
-#legenda > .ftp strong{
+strong{
   padding: 2px;
   color: white;
-  background-color: rgb(255, 187, 0);
 }
 
 </style>
@@ -98,8 +96,8 @@ content: " (Link quebrado)";
   <div>
   <span class="title">Insite - Instalar nesta ordem</span>
   <div id="legenda">
-    <span class="http"><strong>HTTP</strong> - Precisa estar logado na VPN</span>
-    <span class="ftp"><strong>FTP</strong> - Precisa esta dentro da rede Halliburton (Base ou WVD)</span>
+    <span><strong class="vpn">VPN</strong>- Precisa estar logado na VPN</span>
+    <span><strong class="http">HTTP</strong> e <strong class="ftp">FTP</strong> - Precisa esta dentro da rede Halliburton (Base ou WVD)</span>
   </div>
  <ol>
   <li><span class="link" data-href="SS-V9.2.0-Build41-SetUp.zip">Insite 9.2</span></li>
@@ -146,14 +144,19 @@ content: " (Link quebrado)";
     if(link.classList.contains("disabled")){
       //obsoleto
     } else {
+      var vpn = document.createElement("a");
       var http = document.createElement("a");
       var ftp = document.createElement("a");
-      http.href = "https://accesstfa.halliburton.com/dana/home/launch.cgi?url=https://tsodata.corp.halliburton.com/" + link.dataset.href;
+      vpn.href = "https://accesstfa.halliburton.com/dana/home/launch.cgi?url=https://tsodata.corp.halliburton.com/" + link.dataset.href;
+      vpn.innerHTML = "VPN";
+      vpn.classList.add("vpn");
+      http.href = "https://tsodata.corp.halliburton.com/" + link.dataset.href;
       http.innerHTML = "HTTP";
       http.classList.add("http");
       ftp.href = "ftp://tsodata/" + link.dataset.href;
       ftp.innerHTML = "FTP";
       ftp.classList.add("ftp");
+      link.appendChild(vpn);
       link.appendChild(http);
       link.appendChild(ftp);
     }
