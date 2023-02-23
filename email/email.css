@@ -149,7 +149,7 @@ input[type='button'] {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33.33%;
+  width: 25%;
 }
 
 #funcionais div > span{

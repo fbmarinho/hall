@@ -47,6 +47,42 @@ const funcionais = [
 
 const sondas = [
   {
+    name: "CGOR (REMOTE)",
+    email: "BR_SDS_REMOTE_XXX",
+    phone: [
+      {
+        name: "LWD DIA",
+        external: "(22) 2753-0285",
+        voip: "7670285",
+        ramal: ""
+      },
+      {
+        name: "LWD NOITE",
+        external: "(22) 2753-2401",
+        voip: "767-2401",
+        ramal: ""
+      },
+      {
+        name: "DD",
+        external: "(22) 2753-2412",
+        voip: "7672412",
+        ramal: ""
+      },
+      {
+        name: "SDL",
+        external: "(22) 2753-2411",
+        voip: "7672411",
+        ramal: ""
+      },
+      {
+        name: "Geólogo",
+        external: "(22) 2753-XXXX",
+        voip: "",
+        ramal: ""
+      },
+    ],
+  },
+  {
     name: "NS32",
     email: "scv_NS32_lwd",
     phone: [
