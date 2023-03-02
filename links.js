@@ -173,6 +173,18 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "br"
     },
     {
+      label: "SIRH",
+      href: "http://sirh.petrobras.com.br",
+      description: "Cursos BR",
+      type: "br"
+    },
+    {
+      label: "MFA SETUP",
+      href: "http://aka.ms/mfasetup",
+      description: "Configurar Authenticator",
+      type: "br"
+    },
+    {
       old: false,
       label: "LOGÍSTICA (PESSOAL)",
       href: "https://srq.halliburton.7itec.io/login",
