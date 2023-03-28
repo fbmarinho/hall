@@ -197,6 +197,12 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "auth"
     },
     {
+      label: "Logix Data",
+      href: "https://halliburton.sharepoint.com/:f:/s/LOGIXData/EttAzj13p_9OjstJoJhuTEwBdzh1jv94H689OGb02HfZJg?e=So4Xav",
+      description: "🌟 Novo",
+      type: "auth"
+    },
+    {
       label: "Instalação INSITE",
       href: "/hall/software",
       description: "",
@@ -210,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "Aceite de EPI",
       href: "/hall/aceite",
-      description: "🌟 Novo",
+      description: "",
       type: "vpn"
     } 
   ];
