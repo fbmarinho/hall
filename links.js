@@ -48,9 +48,16 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "auth"
     },
     {
+      old: true,
       label: "Email Sonda",
       href: "https://accesstfa.halliburton.com/owa/,DanaInfo=.aeyekesmlHqkwxvp97-66Tx-9,SSL+#path=/mail",
       description: "🧨 Obsoleto",
+      type: "vpn"
+    },
+    {
+      label: "Identity Self Service (ISS)",
+      href: "https://halliburton.saviyntcloud.com/ECMv6/request/requestHome",
+      description: "Pedir acesso a email funcional",
       type: "vpn"
     },
     {
