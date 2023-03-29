@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "Identity Self Service (ISS)",
       href: "https://halliburton.saviyntcloud.com/ECMv6/request/requestHome",
       description: "Pedir acesso a email funcional",
-      type: "vpn"
+      type: "auth"
     },
     {
       label: "Telefones",
