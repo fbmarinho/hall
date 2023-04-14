@@ -32,7 +32,23 @@ document.addEventListener("DOMContentLoaded", function() {
     window.open(fullurl, "_blank")
   })
 
-  var lastinfo = document.getElementById("lastinfo").textContent = "Halliburton Links (Não oficial) - Útilima atualização: " + prettyDate(document.lastModified);
+  
+
+  async function getLastCommit(user, reponame){
+    const url = "https://api.github.com/users/"+user+"/events/public";
+    const data = await fetch(url);
+    const json = await data.json();
+    var filtered = json.filter(async (event)=>{
+      var repo = await event.repo;
+      return repo.name == user + "/" + reponame;
+    })
+    var last = await filtered[0].payload.commits;
+    return last[0].message;
+  }
+
+  getLastCommit("fbmarinho", "hall").then((message)=>{
+    document.getElementById("lastinfo").textContent = "Halliburton Links (Não oficial) - Útilima atualização: " + prettyDate(document.lastModified) + " >> " + message;
+  });
 
   var links = [
     {
