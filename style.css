@@ -104,6 +104,25 @@ main {
   text-transform: uppercase;
 }
 
+#lastcommits {
+  display: flex;
+  min-height: 20px;
+  font-size: 8px;
+  width: 100%;
+  color: black;
+  background-color: rgb(255, 171, 171);
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  display: none;
+}
+
+#lastcommits ul {
+  list-style: circle;
+  line-height: 12px;
+}
+
+
 #btnlogar {
   background-color: black;
   display: flex;

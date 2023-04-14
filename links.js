@@ -32,24 +32,50 @@ document.addEventListener("DOMContentLoaded", function() {
     window.open(fullurl, "_blank")
   })
 
+  const lastInfo = document.getElementById("lastinfo");
+  lastInfo.textContent = "Halliburton Links (Não oficial) - Útilima atualização: " + prettyDate(document.lastModified);
   
-
-  async function getLastCommit(user, reponame){
-    const url = "https://api.github.com/users/"+user+"/events/public";
-    const data = await fetch(url);
-    const json = await data.json();
-    var filtered = json.filter(async (event)=>{
-      var repo = await event.repo;
-      return repo.name == user + "/" + reponame;
-    })
-    var last = await filtered[0].payload.commits;
-    return last[0].message;
-  }
-
-  getLastCommit("fbmarinho", "hall").then((message)=>{
-    document.getElementById("lastinfo").textContent = "Halliburton Links (Não oficial) - Útilima atualização: " + prettyDate(document.lastModified) + " >> " + message;
+  lastInfo.addEventListener("click",()=>{
+    const lastCommits = document.getElementById("lastcommits");
+    if(lastCommits.style.display == "none"){
+      lastCommits.style.display = "flex";
+    }else{
+      lastCommits.style.display = "none";
+    }
+    
   });
 
+
+  async function getCommits(user, repo, numberofcommits){
+    //https://api.github.com/repos/fbmarinho/hall/commits
+    const url = "https://api.github.com/repos/"+user+"/"+repo+"/commits";
+    const data = await fetch(url);
+    const json = await data.json();
+    const commits = await json.map((c)=> {
+      var {commit} = c;
+      return {
+        by: commit.author.name,
+        date: commit.author.date,
+        message: commit.message
+      };
+    });
+
+    const container = document.getElementById("lastcommits");
+    const list = document.createElement("ul");
+
+    for(let i=0; i<numberofcommits;i++){
+      var listItem = document.createElement("li");
+      var {by, date, message} = commits[i];
+      listItem.textContent = `${prettyDate(date)} - ${message}`;
+      list.appendChild(listItem);
+    }
+    container.appendChild(list);
+  }
+
+  getCommits("fbmarinho", "hall", 3);
+
+
+  
   var links = [
     {
       old: true,
