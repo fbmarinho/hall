@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "iTools",
-      href: "https://accesstfa.halliburton.com/irj/servlet/prt/portal/prtroot/,DanaInfo=.asbrsswzhtImz32Nwq231vDBEAAZ3ED,SSL+pcd!3aportal_content!2fcom.halliburton.ESG!2fERP!2fPortaladministration!2fDesktop!2fhaldefaultdesktopnew!2fframeworkPages!2fcom.halliburton.esg.eas.zpad.haldefaultfwpage!2fcom.sap.portal.innerpage#",
+      href: "https://accesstfa.halliburton.com/dana/home/launch.cgi?url=.ahuvsw%3A%2F%2F0jz0047p1Qu7.-V4y-.93LJMIIh.ML%2FJTM%2FUUYbJV%2FQfg",
       description: "Expense e Outros",
       type: "vpn"
     },
