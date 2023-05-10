@@ -48,12 +48,12 @@ const funcionais = [
 const sondas = [
   {
     name: "CGOR (REMOTE)",
-    email: "BR_SDS_REMOTE_XXX",
+    email: "BR_SDS_REMOTE_LWD",
     phone: [
       {
         name: "LWD DIA",
         external: "(22) 3377-0285",
-        voip: "7670285",
+        voip: "767-0285",
         ramal: ""
       },
       {
@@ -65,20 +65,20 @@ const sondas = [
       {
         name: "DD",
         external: "(22) 3377-2412",
-        voip: "7672412",
+        voip: "767-2412",
         ramal: ""
       },
       {
         name: "SDL",
         external: "(22) 3377-2411",
-        voip: "7672411",
+        voip: "767-2411",
         ramal: ""
       },
       {
         name: "Geólogo",
-        external: "",
-        voip: "",
-        ramal: ""
+        external: "N/A",
+        voip: "N/A",
+        ramal: "N/A"
       },
     ],
   },
@@ -350,7 +350,8 @@ document.addEventListener("DOMContentLoaded", function() {
       name.innerHTML = p.name;
       name.className = "title";
 
-      const ext = document.createElement("span");
+      const ext = document.createElement("a");
+      ext.href = "tel:0"+p.external;
       ext.innerHTML = p.external;
 
       const voip = document.createElement("span");

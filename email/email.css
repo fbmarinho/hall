@@ -240,6 +240,16 @@ input[type='button'] {
   background-color: white;
 }
 
+#sondas .phone a{
+  color: #333;
+  font-size: 8px;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 
 #sondas .phone span{
   font-size: 8px;
