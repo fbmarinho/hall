@@ -52,31 +52,31 @@ const sondas = [
     phone: [
       {
         name: "LWD DIA",
-        external: "(22) 2753-0285",
+        external: "(22) 3377-0285",
         voip: "7670285",
         ramal: ""
       },
       {
         name: "LWD NOITE",
-        external: "(22) 2753-2401",
+        external: "(22) 3377-2401",
         voip: "767-2401",
         ramal: ""
       },
       {
         name: "DD",
-        external: "(22) 2753-2412",
+        external: "(22) 3377-2412",
         voip: "7672412",
         ramal: ""
       },
       {
         name: "SDL",
-        external: "(22) 2753-2411",
+        external: "(22) 3377-2411",
         voip: "7672411",
         ramal: ""
       },
       {
         name: "Geólogo",
-        external: "(22) 2753-XXXX",
+        external: "",
         voip: "",
         ramal: ""
       },
