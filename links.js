@@ -268,6 +268,12 @@ document.addEventListener("DOMContentLoaded", function() {
       href: "/hall/aceite",
       description: "",
       type: "vpn"
+    } ,
+    {
+      label: "Teams",
+      href: "https://teams.microsoft.com",
+      description: "",
+      type: "auth"
     } 
   ];
 
