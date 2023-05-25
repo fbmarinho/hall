@@ -174,13 +174,19 @@ const sondas = [
         name: "LWD",
         external: "(22) 2753-4014",
         voip: "7674014",
-        ramal: "4018"
+        ramal: ""
       },
       {
-        name: "SDL",
+        name: "DD",
+        external: "(22) 2753-4022",
+        voip: "7664022",
+        ramal: ""
+      },
+      {
+        name: "GEOLOG",
         external: "(22) 2753-4018",
-        voip: "7674018",
-        ramal: "4018"
+        voip: "7664018",
+        ramal: ""
       },
       {
         name: "GÁS",
