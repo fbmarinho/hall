@@ -247,6 +247,12 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "auth"
     },
     {
+      label: "SMART REQUEST",
+      href: "https://srq.halliburton.7itec.io/#/auth/login",
+      description: "Pedido de voucher 1001",
+      type: "auth"
+    },
+    {
       label: "Logix Data",
       href: "https://halliburton.sharepoint.com/:f:/s/LOGIXData/EttAzj13p_9OjstJoJhuTEwBdzh1jv94H689OGb02HfZJg?e=So4Xav",
       description: "🌟 Novo",
