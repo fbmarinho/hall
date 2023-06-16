@@ -270,6 +270,11 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "Timer para LAS"
     },
     {
+      label: "RT Scanner (WIP)",
+      href: "http://fbmarinho.github.io/rtscanner",
+      description: "🌟 Novo"
+    },
+    {
       label: "Aceite de EPI",
       href: "/hall/aceite",
       description: "",
