@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "Telefones",
       href: "/hall/email/",
-      description: "🌟 Novo"
+      description: ""
     },
     {
       label: "Sperryweb",
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "Logix Data",
       href: "https://halliburton.sharepoint.com/:f:/s/LOGIXData/EttAzj13p_9OjstJoJhuTEwBdzh1jv94H689OGb02HfZJg?e=So4Xav",
-      description: "🌟 Novo",
+      description: "",
       type: "auth"
     },
     {
@@ -272,19 +272,31 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "RT Scanner (WIP)",
       href: "http://fbmarinho.github.io/rtscanner",
-      description: "🌟 Novo"
+      description: ""
     },
     {
       label: "Aceite de EPI",
       href: "/hall/aceite",
       description: "",
       type: "vpn"
-    } ,
+    },
     {
       label: "Teams",
       href: "https://teams.microsoft.com",
       description: "",
       type: "auth"
+    },
+    {
+      label: "Webclient WVD",
+      href: "https://client.wvd.microsoft.com/arm/webclient/v2/index.html",
+      description: "🌟 Novo",
+      type: "auth"
+    },
+    {
+      label: "Holístico",
+      href: "https://csdpocos.petrobras.com.br/holistico/#/",
+      description: "🌟 Novo",
+      type: "br"
     } 
   ];
 
