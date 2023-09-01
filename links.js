@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "auth"
     },
     {
-      label: "Webclient WVD",
+      label: "Remote Desktop (Web)",
       href: "https://client.wvd.microsoft.com/arm/webclient/v2/index.html",
       description: "🌟 Novo",
       type: "auth"
