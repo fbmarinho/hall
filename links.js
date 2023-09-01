@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "Holístico",
-      href: "https://csdpocos.petrobras.com.br/holistico/#/",
+      href: "http://csdpocos.petrobras.com.br/holistico/#/",
       description: "🌟 Novo",
       type: "br"
     } 
