@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-  lucide.createIcons();
   // var btn_logar = document.getElementById('btnlogar');
   // var btn_out = document.getElementById('btn_out');
   // var btn_in = document.getElementById('btn_in');
