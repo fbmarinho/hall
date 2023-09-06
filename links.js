@@ -297,6 +297,13 @@ document.addEventListener("DOMContentLoaded", function() {
       href: "http://csdpocos.petrobras.com.br/holistico/#/",
       description: "🌟 Novo",
       type: "br"
+    },
+    {
+      icon: "x",
+      label: "Teste",
+      href: "https://lucide.dev/icons/ampersands",
+      description: "",
+      type: "br"
     } 
   ];
 
@@ -334,7 +341,8 @@ document.addEventListener("DOMContentLoaded", function() {
       var item = document.createElement('div');
       item.className = "item";
 
-
+      
+            
       var linkel = document.createElement('a');
       linkel.href = link.href;
       linkel.target = "_blank";
@@ -344,6 +352,11 @@ document.addEventListener("DOMContentLoaded", function() {
       label.className = "label";
       label.innerHTML = link.label;
 
+      if(link.icon){
+        var icon = document.createElement('i');
+        icon.setAttribute('data-lucide', link.icon);
+        label.appendChild(icon);
+      }
       var description = document.createElement('span');
       description.className = "description";
       description.innerHTML = link.description;
@@ -352,7 +365,8 @@ document.addEventListener("DOMContentLoaded", function() {
       if(link.description != ""){
         linkel.appendChild(description);  
       }
-     
+
+      
       item.appendChild(linkel);
       //get div and append
       let divisoria = document.getElementById(link.type || "direto");
