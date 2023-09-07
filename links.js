@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "br"
     },
     {
-      icon: "x",
+      icon: "circle-dashed",
       label: "Teste",
       href: "https://lucide.dev/icons/ampersands",
       description: "",
