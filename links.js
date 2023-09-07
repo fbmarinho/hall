@@ -349,18 +349,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
       var label = document.createElement('span');
       label.className = "label";
-      label.innerHTML = link.label;
+
+      var label_text = document.createTextNode(link.label);
+
+      if(link.icon != ""){
+        var icon = document.createElement('i');
+        icon.setAttribute('data-lucide', link.icon);
+        label.appendChild(icon);
+      }
+
+      label.appendChild(label_text);
 
       
       var description = document.createElement('span');
       description.className = "description";
       description.innerHTML = link.description;
 
-      if(link.icon != ""){
-        var icon = document.createElement('i');
-        icon.setAttribute('data-lucide', link.icon);
-        linkel.appendChild(icon);
-      }
+      
       
       linkel.appendChild(label);
       
