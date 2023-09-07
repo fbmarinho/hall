@@ -286,6 +286,7 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "auth"
     },
     {
+      icon: "laptop-2",
       label: "Remote Desktop (Web)",
       href: "https://client.wvd.microsoft.com/arm/webclient/v2/index.html",
       description: "🌟 Novo",
@@ -296,14 +297,7 @@ document.addEventListener("DOMContentLoaded", function() {
       href: "http://csdpocos.petrobras.com.br/holistico/#/",
       description: "🌟 Novo",
       type: "br"
-    },
-    {
-      icon: "circle-dashed",
-      label: "Teste",
-      href: "https://lucide.dev/icons/ampersands",
-      description: "",
-      type: "br"
-    } 
+    }
   ];
 
   links.sort((a, b) => {
