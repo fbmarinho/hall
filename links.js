@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function() {
       let divisoria = document.getElementById(link.type || "direto");
       divisoria.appendChild(item);
     }
-    
   }
+  lucide.createIcons();
 });
 
