@@ -217,6 +217,11 @@ main {
   font-size: 1.6em;
   text-align: center;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .link .description {
