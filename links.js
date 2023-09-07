@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function() {
   links.sort((a, b) => {
     const orderA = a.order ? parseInt(a.order) : 1000;
     const orderB = b.order ? parseInt(b.order) : 1000;
-    console.log(orderA, orderB);
+    //console.log(orderA, orderB);
     if (orderA < orderB) {
       return -1;
     }
