@@ -352,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       var label_text = document.createTextNode(link.label);
 
-      if(link.icon != ""){
+      if(link.icon && link.icon != ""){
         var icon = document.createElement('i');
         icon.setAttribute('data-lucide', link.icon);
         label.appendChild(icon);
