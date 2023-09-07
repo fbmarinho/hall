@@ -3,6 +3,8 @@ html {
   height: 100vh;
 }
 
+
+
 body {
   height: 100%;
 }
@@ -203,6 +205,11 @@ main {
   background-color: white;
   text-decoration: none;
   margin:2px;
+}
+
+.link i {
+  width: 20px;
+  height: 20px;
 }
 
 .link .label {
