@@ -131,12 +131,14 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "vpn"
     },
     {
+      icon: "graduation-cap",
       label: "Learning Central",
       href: "https://learningcentral.halliburton.com",
       description: "Acesso direto",
       type: "auth"
     },
     {
+      icon: "shield-check",
       label: "Competency Central",
       href: "https://accesstfa.halliburton.com/dana/home/launch.cgi?url=competencycentral.corp.halliburton.com",
       description: "",
@@ -149,12 +151,14 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "vpn"
     },
     {
+      icon: "app-window",
       label: "TSOrders",
       href: "https://accesstfa.halliburton.com/dana/home/launch.cgi?url=tsorders.corp.halliburton.com",
       description: "Licensas e softwares",
       type: "vpn"
     },
     {
+      icon: "user-square-2",
       label: "Funcionário.com",
       href: "https://accesstfa.halliburton.com/Corpore.Net/,DanaInfo=.anq3dtut7.E5+Login.aspx",
       description: "",
@@ -264,6 +268,7 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "vpn"
     },
     {
+      icon: "timer",
       label: "TIMER",
       href: "http://fbmarinho.github.io/htimer",
       description: "Timer para LAS"
@@ -274,6 +279,7 @@ document.addEventListener("DOMContentLoaded", function() {
       description: ""
     },
     {
+      icon: "hard-hat",
       label: "Aceite de EPI",
       href: "/hall/aceite",
       description: "",
