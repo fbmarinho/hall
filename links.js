@@ -15,6 +15,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // btn_out.style.display = 'none';
 
+  const vpnlogin = document.getElementById("vpnlogin");
+  vpnlogin.addEventListener("click",(e)=>{
+    e.preventDefault();
+    
+    const backdrop = document.createElement('div');
+    backdrop.id = "backdrop";
+
+    const loginmodal = document.createElement('div');
+    backdrop.id = "modal";
+
+    document.body.append(backdrop);
+    document.body.append(modal);
+  })
+
+
   function prettyDate(date){
     var date = new Date(date);
     var options = { year: 'numeric', month: 'numeric', day: 'numeric',};
