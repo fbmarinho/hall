@@ -29,13 +29,7 @@ const sondas = [
         external: "(22) 3377-2411",
         voip: "767-2411",
         ramal: ""
-      },
-      {
-        name: "Geólogo",
-        external: "N/A",
-        voip: "N/A",
-        ramal: "N/A"
-      },
+      }
     ],
   },
   {
@@ -96,12 +90,6 @@ const sondas = [
     name: "NS40",
     email: "scv_NS40_lwd",
     phones: [
-      {
-        name: "CPM",
-        external: "(22) 2753-40XX",
-        voip: "",
-        ramal: "XXXX"
-      },
       {
         name: "LWD",
         external: "(22) 2753-4014",
