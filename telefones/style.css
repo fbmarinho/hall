@@ -19,13 +19,11 @@ html {
 body{
     width: 100%;
     height: 100%;
-    background-color: #000000;
 }
 
 main {
     display: flex;
     flex-direction: column;
-    background-color: yellow;
     height: 100%;
 }
 

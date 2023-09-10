@@ -6,33 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aceite de EPI via VPN</title>
 </head>
+<style>
+  html {
+    width: 100vw;
+    height: 100vh;
+  }
+  body{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
+  #wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  span{
+    margin-bottom: 20px;
+  }
+  input{
+    width: 300px;
+    text-align: center;
+  }
+</style>
 <body>
-  <style>
-    body{
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    span{
-      margin-bottom: 20px;
-    }
-    input{
-      width: 300px;
-      text-align: center;
-    }
-  </style>
-  <span>Para funcionar você precisa estar logado na VPN e no Funcionário.com.</span>
-  <span>Copie o endereço do link fornecido no PDF anexado ao e-mail e cole no campo abaixo.</span>
-  <div>
-    <input id="link" type="text" placeholder="Cole o link aqui"/>
-    <button id="aceitebtn" onclick="aceite()">Aceite</button>
+  <div id="wrapper">
+    <span>Para funcionar você precisa estar logado na VPN e no Funcionário.com.</span>
+    <span>Copie o endereço do link fornecido no PDF anexado ao e-mail e cole no campo abaixo.</span>
+    <div>
+      <input id="link" type="text" placeholder="Cole o link aqui"/>
+      <button id="aceitebtn" onclick="aceite()">Aceite</button>
+    </div>
+    <div id="errors">
+  
+    </div>
   </div>
-  <div id="errors">
-
-  </div>
+  
   <script>
     var link = document.getElementById("link");
     var btn = document.getElementById("aceitebtn");
