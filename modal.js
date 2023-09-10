@@ -38,22 +38,22 @@ function createModal(title, url){
 
     const closebtn = document.createElement('button');
     closebtn.addEventListener('click',closeDialog);
-    closebtn.append(icon);
+    closebtn.appendChild(icon);
     
 
     const iframe = document.createElement('iframe');
     iframe.id = "browser";
     iframe.src = url;
 
-    modalTitle.append(span);
-    modalTitle.append(closebtn);
+    modalTitle.appendChild(span);
+    modalTitle.appendChild(closebtn);
 
-    wrapper.append(appendChild);
-    wrapper.append(iframe);
+    wrapper.appendChild(modalTitle);
+    wrapper.appendChild(iframe);
 
-    modal.append(wrapper);
+    modal.appendChild(wrapper);
 
-    document.body.append(modal);
+    document.body.appendChild(modal);
 
     modal.close();
 }
