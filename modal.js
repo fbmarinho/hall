@@ -21,6 +21,9 @@ function createModal(title, url){
 
     const modal = document.createElement('dialog');
     
+    const wrapper = document.createElement('div');
+    wrapper.id = "wrapper"
+
     const modalTitle = document.createElement('div');
 
 
@@ -35,20 +38,22 @@ function createModal(title, url){
 
     const closebtn = document.createElement('button');
     closebtn.addEventListener('click',closeDialog);
-    closebtn.append(icon);
+    closebtn.appendChild(icon);
     
 
     const iframe = document.createElement('iframe');
     iframe.id = "browser";
     iframe.src = url;
 
-    modalTitle.append(span);
-    modalTitle.append(closebtn);
+    modalTitle.appendChild(span);
+    modalTitle.appendChild(closebtn);
 
-    modal.append(modalTitle);
-    modal.append(iframe);
+    wrapper.appendChild(appendChild);
+    wrapper.appendChild(iframe);
 
-    document.body.append(modal);
+    modal.appendChild(wrapper);
+
+    document.body.appendChild(modal);
 
     modal.close();
 }
