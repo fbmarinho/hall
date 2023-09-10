@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // btn_out.style.display = 'none';
 
+
   function prettyDate(date){
     var date = new Date(date);
     var options = { year: 'numeric', month: 'numeric', day: 'numeric',};
@@ -283,7 +284,8 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "Aceite de EPI",
       href: "/hall/aceite",
       description: "",
-      type: "vpn"
+      type: "vpn",
+      modal: true
     },
     {
       label: "Teams",
@@ -339,13 +341,19 @@ document.addEventListener("DOMContentLoaded", function() {
     if(link.label != "" && !link.old){
       var item = document.createElement('div');
       item.className = "item";
-
-      
-            
+    
       var linkel = document.createElement('a');
       linkel.href = link.href;
       linkel.target = "_blank";
       linkel.className = "link";
+
+      if(link.modal){
+        linkel.onclick = (e)=>{
+          e.preventDefault();
+          openDialog(link.label, link.href);
+          console.log(e.target);
+        }
+      }
 
       var label = document.createElement('span');
       label.className = "label";

@@ -1,16 +1,17 @@
 
-function openDialog(){
+function openDialog(text, url){
+    document.getElementById("browser").src = url;
+    document.getElementById("modalTitle").innerText = text;
     document.querySelector('dialog').showModal();
 }
+
 function closeDialog(){
     document.querySelector('dialog').close();
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
     createModal("VPN Login","#");
-
-    document.getElementById("browser").src = "https://accesstfa.halliburton.com/mfa/";
-   
+  
     lucide.createIcons();
 })
 
@@ -23,6 +24,7 @@ function createModal(title, url){
 
 
     const span = document.createElement('div');
+    span.id = "modalTitle";
     span.innerText = title;
     
     
