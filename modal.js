@@ -7,6 +7,7 @@ function openDialog(text, url){
 
 function closeDialog(){
     document.querySelector('dialog').close();
+    document.getElementById("browser").src = "";
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
