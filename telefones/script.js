@@ -3,9 +3,9 @@ HTMLCollection.prototype.filter = Array.prototype.filter
 
 const sondas = [
   {
-    name: "CGOR (REMOTE)",
+    name: "CGOR",
     email: "BR_SDS_REMOTE_LWD",
-    phone: [
+    phones: [
       {
         name: "LWD DIA",
         external: "(22) 3377-0285",
@@ -41,7 +41,7 @@ const sondas = [
   {
     name: "NS32",
     email: "scv_NS32_lwd",
-    phone: [
+    phones: [
       {
         name: "Rádio",
         external: "(22) 2752-4700",
@@ -77,7 +77,7 @@ const sondas = [
   {
     name: "NS39",
     email: "scv_NS39_lwd",
-    phone: [
+    phones: [
       {
         name: "Rádio",
         external: "(22) 2752-4700",
@@ -113,7 +113,7 @@ const sondas = [
   {
     name: "NS40",
     email: "scv_NS40_lwd",
-    phone: [
+    phones: [
       {
         name: "Rádio",
         external: "(XX) XXXX-XXXXX",
@@ -153,3 +153,64 @@ const sondas = [
     ],
   }
 ]
+
+document.addEventListener("DOMContentLoaded",()=>{
+  const main = document.createElement('main');
+
+  const select = document.createElement('select');
+
+  sondas.forEach((sonda)=>{
+      const option = document.createElement('option');
+      option.innerText = sonda.name;
+      option.value = sonda.name;
+      select.appendChild(option);
+
+      const card = document.createElement('div');
+      card.id = sonda.name;
+      card.classList.add("card");
+
+      const email = document.createElement('div');
+      email.classList.add("email");
+      email.innerText = sonda.email;
+
+      const phoneContainer = document.createElement('div');
+      phoneContainer.classList.add("phones");
+
+      sonda.phones.forEach((phone)=>{
+            const linha =  document.createElement('div');
+            
+            const legenda =  document.createElement('span');
+            legenda.innerText = phone.name;
+
+            const numero =  document.createElement('a');
+            numero.innerText = phone.external;
+            numero.href = `tel:${phone.external}` ;
+
+            linha.appendChild(legenda);
+            linha.appendChild(numero);
+
+            phoneContainer.appendChild(linha);
+      })
+
+
+      card.appendChild(email); 
+      card.appendChild(phoneContainer);  
+
+      main.appendChild(card);  
+
+  })
+
+  main.prepend(select);
+  document.body.appendChild(main);
+
+  var cards = document.getElementsByClassName('card');
+
+  cards[0].classList.add("show");
+
+  document.querySelector('select').addEventListener('change',(e)=>{
+    var selected = e.target.options.filter((o)=>o.selected)[0].value;
+    cards.forEach((c)=>c.classList.remove('show'));
+    document.getElementById(selected).classList.add('show');
+  })
+
+})

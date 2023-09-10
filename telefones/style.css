@@ -1,21 +1,103 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+html {
+    width: 100vw;
+    height: 100vh;
 }
 
 body{
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
 }
 
 main {
-  width: 100%;
-  height: 100%;
-  background-color: #444;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    height: 100%;
+}
+
+select {
+    width: 100%;
+    background-color: #555;
+    color: white;
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 10px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: none;
+    background-color: white;
+}
+
+.email {
+    color: white;
+    background-color: #a00;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.phones {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.phones div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000000;
+    height: 100%;
+}
+.phones div:last-child {
+    border-bottom: none;
+}
+
+.phones div span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    color: white;
+    background-color: #555;
+}
+
+.phones div a{
+    width: 60%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+.phones div a:hover{
+    background-color: #ddd;
+}
+
+.show {
+    display: flex;
 }
