@@ -6,10 +6,14 @@
     text-transform: uppercase;
     font-size: 1rem;
 }
+a, p, span, button, input {
+    font-family: 'Roboto', sans-serif;
+}
 
 html {
     width: 100vw;
     height: 100vh;
+    font-family: 'Roboto', sans-serif;
 }
 
 body{
