@@ -105,7 +105,8 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "Telefones",
       href: "/hall/email/",
-      description: ""
+      description: "",
+      modal: true
     },
     {
       label: "Sperryweb",
@@ -266,7 +267,8 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "Instalação INSITE",
       href: "/hall/software",
       description: "",
-      type: "vpn"
+      type: "vpn",
+      modal: true
     },
     {
       icon: "timer",

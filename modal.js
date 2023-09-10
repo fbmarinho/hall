@@ -10,7 +10,7 @@ function closeDialog(){
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
-    createModal("VPN Login","#");
+    createModal("VPN Login","");
   
     lucide.createIcons();
 })
