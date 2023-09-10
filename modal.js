@@ -7,7 +7,9 @@ function closeDialog(){
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
-    createModal("VPN Login","https://accesstfa.halliburton.com/mfa/");
+    createModal("VPN Login","#");
+
+    document.getElementById("browser").src = "https://accesstfa.halliburton.com/mfa/";
    
     lucide.createIcons();
 })
@@ -34,6 +36,7 @@ function createModal(title, url){
     
 
     const iframe = document.createElement('iframe');
+    iframe.id = "browser";
     iframe.src = url;
 
     modalTitle.append(span);
