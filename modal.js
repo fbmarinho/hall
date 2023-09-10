@@ -7,7 +7,7 @@ function closeDialog(){
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
-    createModal("VPN Login","http://accesstfa.halliburton.com/mfa/");
+    createModal("VPN Login","https://accesstfa.halliburton.com/mfa/");
    
     lucide.createIcons();
 })
