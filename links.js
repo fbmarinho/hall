@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "Telefones",
       href: "/hall/telefones/",
-      description: "",
+      description: "🌟 Novo",
       modal: true
     },
     {
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       icon: "laptop-2",
-      label: "Remote Desktop (Web)",
+      label: "Remote Desktop",
       href: "https://client.wvd.microsoft.com/arm/webclient/v2/index.html",
       description: "🌟 Novo",
       type: "auth"
