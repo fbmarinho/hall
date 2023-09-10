@@ -65,12 +65,6 @@ const sondas = [
         external: "(22) 2753-9323",
         voip: "7679323",
         ramal: "2019"
-      },
-      {
-        name: "GÁS",
-        external: "(22) 2753-XXXX",
-        voip: "767XXXX",
-        ramal: "2001"
       }
     ],
   },
@@ -85,12 +79,6 @@ const sondas = [
         ramal: "4700"
       },
       {
-        name: "CPM",
-        external: "(22) 2753-39XX",
-        voip: "",
-        ramal: "XXXX"
-      },
-      {
         name: "LWD",
         external: "(22) 2753-3914",
         voip: "7673914",
@@ -101,12 +89,6 @@ const sondas = [
         external: "(22) 2753-3918",
         voip: "7673918",
         ramal: "4018"
-      },
-      {
-        name: "GÁS",
-        external: "(22) 2753-XXXX",
-        voip: "767XXXX",
-        ramal: "XXXX"
       }
     ],
   },
@@ -114,12 +96,6 @@ const sondas = [
     name: "NS40",
     email: "scv_NS40_lwd",
     phones: [
-      {
-        name: "Rádio",
-        external: "(XX) XXXX-XXXXX",
-        voip: "XXXXXXX",
-        ramal: "XXXX"
-      },
       {
         name: "CPM",
         external: "(22) 2753-40XX",
@@ -143,12 +119,6 @@ const sondas = [
         external: "(22) 2753-4018",
         voip: "7664018",
         ramal: ""
-      },
-      {
-        name: "GÁS",
-        external: "(22) 2753-XXXX",
-        voip: "767XXXX",
-        ramal: "XXXX"
       }
     ],
   }
