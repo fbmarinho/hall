@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "Telefones",
-      href: "/hall/email/",
+      href: "/hall/telefones/",
       description: "",
       modal: true
     },
