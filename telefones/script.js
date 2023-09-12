@@ -109,6 +109,30 @@ const sondas = [
         ramal: ""
       }
     ],
+  },
+  {
+    name: "NS55",
+    email: "scv_NS55_lwd",
+    phones: [
+      {
+        name: "LWD",
+        external: "(22) 3378-3274",
+        voip: "7663274",
+        ramal: ""
+      },
+      {
+        name: "DD",
+        external: "(22) 3378-3276",
+        voip: "7664022",
+        ramal: ""
+      },
+      {
+        name: "SDL",
+        external: "(22) 3378-3263",
+        voip: "7663263",
+        ramal: ""
+      }
+    ],
   }
 ]
 
