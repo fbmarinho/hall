@@ -54,6 +54,13 @@ const sondas = [
         voip: "7679323",
         ramal: "2024"
       },
+      ,
+      {
+        name: "DD",
+        external: "(22) 2753-9706",
+        voip: "7679706",
+        ramal: ""
+      },
       {
         name: "SDL",
         external: "(22) 2753-9323",
