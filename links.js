@@ -307,6 +307,12 @@ document.addEventListener("DOMContentLoaded", function() {
       href: "http://csdpocos.petrobras.com.br/holistico/#/",
       description: "🌟 Novo",
       type: "br"
+    },
+    {
+      label: "SAP Concur",
+      href: "https://www.concursolutions.com/",
+      description: "🌟 Novo",
+      type: ""
     }
   ];
 
