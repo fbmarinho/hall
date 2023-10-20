@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "SAP Concur",
       href: "https://www.concursolutions.com/",
       description: "🌟 Novo",
-      type: ""
+      type: "auth"
     }
   ];
 
