@@ -128,9 +128,21 @@ const sondas = [
         ramal: ""
       },
       {
+        name: "DD",
+        external: "(22) 3378-3216",
+        voip: "7663216",
+        ramal: ""
+      },
+      {
         name: "SDL",
         external: "(22) 3378-3203",
         voip: "7663203",
+        ramal: ""
+      },
+      {
+        name: "CPM",
+        external: "(22) 3378-3206",
+        voip: "7663206",
         ramal: ""
       }
     ],
