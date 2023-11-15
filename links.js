@@ -240,6 +240,12 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "br"
     },
     {
+      label: "SEQOP",
+      href: "http://csdpocos.petrobras.com.br/seqop/#/",
+      description: "Sequencia Operaconal",
+      type: "br"
+    },
+    {
       old: false,
       label: "LOGÍSTICA (PESSOAL)",
       href: "https://srq.halliburton.7itec.io/login",
