@@ -246,6 +246,12 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "br"
     },
     {
+      label: "CHECKIN",
+      href: "https://apps.powerapps.com/play/e/b7b00cae-53a9-e55b-8e73-007dd2536908/a/459c01a4-c1b4-4c6d-a2b1-5b5d75dd5294?tenantId=5b6f6241-9a57-4be4-8e50-1dfa72e79a57&hint=ff725aef-885a-451d-a0ae-9bc4f3375612&sourcetime=1697645806634&source=portal",
+      description: "Somente remoto",
+      type: "br"
+    },
+    {
       old: false,
       label: "LOGÍSTICA (PESSOAL)",
       href: "https://srq.halliburton.7itec.io/login",
