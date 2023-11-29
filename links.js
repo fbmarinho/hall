@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "Telefones",
-      href: "/hall/telefones/",
+      href: "/telefones/",
       description: "",
       modal: true
     },
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "Instalação INSITE",
-      href: "/hall/software",
+      href: "/software",
       description: "",
       type: "vpn",
       modal: true
@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       icon: "hard-hat",
       label: "Aceite de EPI",
-      href: "/hall/aceite",
+      href: "/aceite",
       description: "",
       type: "vpn",
       modal: true
