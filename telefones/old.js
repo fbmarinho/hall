@@ -371,8 +371,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     sonda.appendChild(name);
-    sonda.appendChild(email);
-    sonda.appendChild(phones);
+    //sonda.appendChild(email);
+    //sonda.appendChild(phones);
 
     container.appendChild(sonda);
 
