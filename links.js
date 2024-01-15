@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "FOLHACERTA",
-      href: "https://folhacerta.com/",
+      href: "https://portal.folhacerta.com/login/",
       description: "",
       type: "auth"
     },
