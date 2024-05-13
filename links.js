@@ -127,6 +127,12 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "vpn"
     },
     {
+      label: "GTS",
+      href: "https://halliburton.sharepoint.com/SITES/Global_Technical_Services/SitePages/GlobalTechnicalServices.aspx?OR=Teams-HL&CT=1715605716844&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIxNDE1LzI0MDMzMTAxODE3IiwiSGFzRmVkZXJhdGVkVXNlciI6ZmFsc2V9",
+      description: "Global portal",
+      type: "vpn"
+    },
+    {
       label: "Docutrack",
       href: "https://accesstfa.halliburton.com/docutrack/ui/,DanaInfo=.adbvdwyuymImz32Nwq231vDBEAAZ3ED+home.aspx",
       description: "",
