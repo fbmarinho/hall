@@ -327,9 +327,9 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "br"
     },
     {
-      label: "WORKSPACE BR",
+      label: "REDE BR via VMWARE",
       href: "https://petrobras.workspaceoneaccess.com",
-      description: "🌟 Usar guia anônima",
+      description: "🌟 Use VMWARE e guia anônima",
       type: "br"
     },
     {
