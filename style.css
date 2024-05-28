@@ -16,7 +16,7 @@ main {
 }
 
 .hidden {
-  disply: hidden !important;
+  display: hidden !important;
 }
 
 #status {
