@@ -15,6 +15,10 @@ main {
   padding-bottom: 4px;
 }
 
+.hidden {
+  display: none;
+}
+
 #status {
   width: 100px;
   height: 100px;
