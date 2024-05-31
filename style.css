@@ -294,7 +294,7 @@ main {
 .banner {
   background: url(banner.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   height: 100px;
 }
 
