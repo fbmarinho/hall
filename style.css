@@ -291,7 +291,7 @@ main {
   background-color: rgb(255, 248, 172);
 }
 
-.banner {
+#banner {
   background: url(banner.png), #e5e5e5;
   background-position: center;
   background-repeat: no-repeat;
@@ -299,7 +299,7 @@ main {
   height: 100px;
 }
 
-.banner:hover {
+#banner:hover {
   cursor: pointer;
 }
 
