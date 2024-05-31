@@ -295,6 +295,7 @@ main {
   background: url(banner.png);
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100px;
 }
 
 @media screen and (max-width: 900px) {
