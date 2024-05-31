@@ -292,8 +292,7 @@ main {
 }
 
 .banner {
-  background-color: #e5e5e5;
-  background: url(banner.png);
+  background: url(banner.png), #e5e5e5;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
