@@ -299,6 +299,10 @@ main {
   height: 100px;
 }
 
+.banner:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 900px) {
   .item {
     width: 50%;
