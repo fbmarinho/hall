@@ -61,11 +61,12 @@
       //http://np1appn037v/Corpore.Net/Main.aspx?ActionID=GlbConsSqlActionWeb&SelectedMenuIDKey=ConsultaSQL&ShowMode=0&DetailIndex=-1&TransactionID=-1&KeyValues=2;P;RS.ACEITE
       var link = document.getElementById("link");
       validateLink();
-      var newUrl = link.value.replace("http://np1appn037v/Corpore.Net/","https://accesstfa.halliburton.com/Corpore.Net/,DanaInfo=.anq3dtut7.E5+")
+      var splitted = link.split("/Corpore.Net/");
+      var newUrl = "https://accesstfa.halliburton.com/Corpore.Net/,DanaInfo=.anq3dtut7.E5+" + splitted[1];
       window.open(newUrl);
     }
     function validateLink(){
-      if(link.value.split("Main.aspx")[0] != "http://np1appn037v/Corpore.Net/"){
+      if(!link.contains("Corpore.Net/Main.aspx")){
         document.getElementById("errors").innerHTML = "Link inválido !";
         btn.disabled = true;
         return;
