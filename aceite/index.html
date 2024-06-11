@@ -62,7 +62,7 @@
       //http://np1appn037v/Corpore.Net/Login.aspx?autoload=false&ReturnUrl=%2fCorpore.Net%2fMain.aspx%3fActionID%3dGlbConsSqlActionWeb%26SelectedMenuIDKey%3dConsultaSQL%26ShowMode%3d0%26DetailIndex%3d-1%26TransactionID%3d-1%26KeyValues%3d2%3bP%3bRS.ACEITE
      
       var link = document.getElementById("link").value;
-      var decoded = link.inludes("%3f") ? decodeURIComponent(link) : link;
+      var decoded = decodeURIComponent(link);
       var splitted = decoded.split("Corpore.Net");
       var newUrl = "https://accesstfa.halliburton.com/Corpore.Net/,DanaInfo=.anq3dtut7.E5+" + splitted.pop();
       window.open(newUrl);
