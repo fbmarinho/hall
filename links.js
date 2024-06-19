@@ -109,6 +109,13 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "auth"
     },
     {
+      label: "RAM Shipping & Transportation",
+      href: "https://halliburtoncompany.appiancloud.com/suite/sites/ram",
+      description: "Acessar pelo celular ou WVD",
+      type: "auth"
+    },
+    
+    {
       label: "Telefones",
       href: "/telefones/",
       description: "",
