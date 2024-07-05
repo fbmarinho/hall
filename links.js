@@ -114,6 +114,12 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "Acessar pelo celular ou WVD",
       type: "auth"
     },
+    {
+      label: "RAM Shipping Stage",
+      href: "https://halliburtoncompanystage.appiancloud.com/suite/sites/ram/page/home",
+      description: "Acessar pelo celular ou WVD",
+      type: "auth"
+    },
     
     {
       label: "Telefones",
