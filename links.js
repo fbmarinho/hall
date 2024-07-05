@@ -111,13 +111,13 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "RAM Shipping & Transportation",
       href: "https://halliburtoncompany.appiancloud.com/suite/sites/ram",
-      description: "Acessar pelo celular ou WVD",
+      description: "Acessar pelo Edge de trabalho",
       type: "auth"
     },
     {
       label: "RAM Shipping Stage",
-      href: "https://halliburtoncompanystage.appiancloud.com/suite/sites/ram/page/home",
-      description: "Acessar pelo celular ou WVD",
+      href: "https://halliburtoncompanystage.appiancloud.com/suite/sites/ram",
+      description: "Apenas treinamento",
       type: "auth"
     },
     
