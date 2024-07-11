@@ -96,6 +96,12 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "auth"
     },
     {
+      label: "Sperry Tool Reports",
+      href: "https://app.powerbi.com/groups/me/apps/c619317b-b07f-4f7e-81aa-b3698338caf5/reports/abd71199-5eb0-4a65-8ef7-48e7f69475fc/ReportSection?ctid=b7be7686-6f97-4db7-9081-a23cf09a96b5&experience=power-bi",
+      description: "Power BI",
+      type: "auth"
+    },
+    {
       old: true,
       label: "Email Sonda",
       href: "https://accesstfa.halliburton.com/owa/,DanaInfo=.aeyekesmlHqkwxvp97-66Tx-9,SSL+#path=/mail",
