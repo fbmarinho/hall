@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "SITOP",
-      href: "http://sitop.petrobras.biz/aplicativo/LI04-SITOP",
+      href: "https://sitop.petrobras.com.br/",
       description: "Situação operacional",
       type: "br"
     },
