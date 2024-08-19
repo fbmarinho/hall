@@ -80,9 +80,9 @@ const sondas = [
         ramal: ""
       },
       {
-        name: "CPM",
-        external: "",
-        voip: "",
+        name: "LWD NOVO",
+        external: "(22) 2753-9747",
+        voip: "8639747",
         ramal: ""
       },
       {
