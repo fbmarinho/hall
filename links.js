@@ -435,8 +435,10 @@ document.addEventListener("DOMContentLoaded", function() {
       
       item.appendChild(linkel);
       //get div and append
+      if(  link.type != 'vpn' ){
       let divisoria = document.getElementById(link.type || "direto");
-      link.type != 'vpn' && divisoria.appendChild(item);
+      divisoria.appendChild(item);
+      }
     }
   }
   lucide.createIcons();
