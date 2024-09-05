@@ -286,8 +286,11 @@ main {
 }
 
 .help {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
-  font-size: 10px;
+  font-size: 16px;
   background-color: rgb(255, 248, 172);
 }
 
