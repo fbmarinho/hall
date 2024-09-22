@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const lastInfo = document.getElementById("lastinfo");
   lastInfo.textContent = "Halliburton Links (Não oficial) - Útilima atualização: " + prettyDate(document.lastModified);
-  
+
+  var clickcount = 0;
   lastInfo.addEventListener("click",()=>{
     const lastCommits = document.getElementById("lastcommits");
     if(lastCommits.style.display == "none"){
@@ -48,7 +49,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }else{
       lastCommits.style.display = "none";
     }
-    
+    if(clickcount>=3){
+       const divisorias = document.getElementsByClassName("divisoria");
+      divisorias[3].classList.remove("hidden");
+    }
+    clickcount++;
   });
 
 
