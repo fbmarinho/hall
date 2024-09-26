@@ -319,6 +319,12 @@ document.addEventListener("DOMContentLoaded", function() {
       description: "Timer para LAS"
     },
     {
+      icon: "dollar-sign",
+      label: "CONTRACHEQUE-EXCEL",
+      href: "https://fbmarinho.github.io/contracheque-excel/",
+      description: "Extrai tabela do PDF para Excel"
+    },
+    {
       label: "RT Scanner (WIP)",
       href: "http://fbmarinho.github.io/rtscanner",
       description: ""
