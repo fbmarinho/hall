@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Assessment Text Generator</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Assessment Text Generator</h1>
+
+			<form id="evaluation-form">
+				<div id="entradas">
+					<label for="date">Date:</label>
+					<input type="date" id="date" name="date" />
+
+					<label for="location">Location:</label>
+					<input type="text" id="location" name="location" />
+
+					<label for="evaluation-type">Assessment Type:</label>
+					<select id="evaluation-type" name="evaluation-type">
+						<option value="BLA">BLA</option>
+						<option value="STD">STD</option>
+					</select>
+
+					<div id="operador">
+						<div id="op-name"><label for="operator-name">Operator:</label> <input type="text" id="operator-name" name="operator-name" value="John Doe" /></div>
+						<div id="op-pronoum">
+							<label for="pronoum">Pronoum:</label>
+							<select id="pronoum" name="pronoum">
+								<option value="He">He</option>
+								<option value="She">She</option>
+							</select>
+						</div>
+					</div>
+
+					<div>
+						<label>Job Numbers:</label>
+						<div id="jobnumberscontainer">
+							<input type="text" id="job-number-1" name="job-number-1" placeholder="BR-XX-0123456789" />
+							<input type="text" id="job-number-2" name="job-number-2" placeholder="BR-XX-0123456789" />
+							<input type="text" id="job-number-3" name="job-number-3" placeholder="BR-XX-0123456789" />
+						</div>
+					</div>
+
+					<div>
+						<label> Trainee:</label>
+						<div id="trainee">
+							<div><label for="trainee-name">Name:</label> <input type="text" id="trainee-name" name="trainee-name" /></div>
+							<div><label for="trainee-sap">SAP:</label> <input type="text" id="trainee-sap" name="trainee-sap" /></div>
+						</div>
+					</div>
+				</div>
+				<div id="saida">
+					<label for="competency-name">Competency:</label>
+					<select id="competency-name" name="competency-name"></select>
+					<div class="checkbox-group">
+						<label>Levels:</label>
+						<input type="checkbox" id="level-1" name="level" value="1" checked />
+						<label for="level-1">1</label>
+
+						<input type="checkbox" id="level-2" name="level" value="2" checked />
+						<label for="level-2">2</label>
+
+						<input type="checkbox" id="level-3" name="level" value="3" checked />
+						<label for="level-3">3</label>
+					</div>
+					<label for="output">Assessment text:</label>
+					<pre id="output" name="output" rows="5" readonly></pre>
+
+					<button type="button" id="copy-button">Copy to clipboard !</button>
+				</div>
+			</form>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
