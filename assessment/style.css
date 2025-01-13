@@ -130,3 +130,28 @@ pre {
 	display: flex;
 	gap: 5px;
 }
+
+#header {
+	display: flex;
+	height: 100px;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.extension {
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	text-decoration: none;
+	color: #444444;
+	border: 4px solid #ddd;
+	padding: 10px 25px;
+	border-radius: 10px;
+}
+.extension:hover {
+	background-color: #eee;
+}
+.extension > img {
+	width: 30px;
+}
