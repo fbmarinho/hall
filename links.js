@@ -120,6 +120,12 @@ document.addEventListener("DOMContentLoaded", function() {
       type: "auth"
     },
     {
+      label: "Competency Central",
+      href: "https://competencycentral.halliburton.com/",
+      description: "⭐ Novo Link",
+      type: "auth"
+    },
+    {
       label: "RAM Shipping & Transportation",
       href: "https://halliburtoncompany.appiancloud.com/suite/sites/ram",
       description: "Acessar pelo Edge de trabalho",
