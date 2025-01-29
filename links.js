@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
       description: ""
     },
     {
+      order: 2,
       label: "Email Pessoal",
       href: "https://outlook.office.com/mail/inbox",
       description: "",
