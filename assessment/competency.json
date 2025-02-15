@@ -1,6 +1,14 @@
 [
 	{
 		"tool": "",
+		"name": "SD-LWD-Survey Quality",
+		"guideline": "10469",
+		"lv1": "%fullname% can describe survey utility and demonstrated the difference between full and short survey, and each elements of them. %pronoum% can describe the main differences between long and short collar surveys and when to use them and describe step-by-step how to take a survey. %firstname% can differenciate pumps up, pumps down, pumps off surveys, rotational and benchmark surveys.",
+		"lv2": "%fullname% knows what to deliver to the client and describe well colision and our hole on it. %firstname% described the role of survey management and how to run basic SAG corrections. %pronoum% knows what errors can indicate a well colision and how to procedure on this cases. %firstname% comprehends the importance of survey quality and the value provided to the customer. Also, %pronoum% knows the steps to get a full survey and perform a basic QC check on it and verify inputs and outputs data from the MagUTM program.",
+		"lv3": "%fullname% described typical issues that can be identified in the surveys, the different scenarios when to take surveys and how to perform survey quality validation without error."
+	},
+	{
+		"tool": "",
 		"name": "SD-LWD-Insite Application",
 		"guideline": "10467",
 		"lv1": "%fullname% understands the applications, file structure, interfaces, and user in-puts of the InSite database. %pronoum% also knows the purpose of reporting and the basic reporting requirements. %firstname% showed the set-up, load, and export of data in Insite and generating reports. %pronoum% understands the purpose and application of the Depth App in Insite and the steps to setup a network.",
