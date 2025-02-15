@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
       description: ""
     },
     {
+      order: 2,
       label: "Email Pessoal",
       href: "https://outlook.office.com/mail/inbox",
       description: "",
@@ -117,6 +118,12 @@ document.addEventListener("DOMContentLoaded", function() {
       label: "Identity Self Service (ISS)",
       href: "https://halliburton.saviyntcloud.com/ECMv6/request/requestHome",
       description: "Pedir acesso a email funcional",
+      type: "auth"
+    },
+    {
+      label: "Competency Central",
+      href: "https://competencycentral.halliburton.com/",
+      description: "🌟 Novo Link",
       type: "auth"
     },
     {
@@ -365,7 +372,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       label: "SAP Concur",
       href: "https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Flauncher.myapps.microsoft.com%2Fapi%2Fsignin%2F3c5fddc9-e9d2-4f8c-a80a-71fb82100c1a%3FtenantId%3Db7be7686-6f97-4db7-9081-a23cf09a96b5&data=05%7C01%7CFelipe.Marinho%40halliburton.com%7C259105ad5f81490aa46e08dbd1b30b38%7Cb7be76866f974db79081a23cf09a96b5%7C0%7C0%7C638334339147171176%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qIj8XzmVeuxi344NgK2Lib%2FjAdfOyhheYMx0hEsufRQ%3D&reserved=0",
-      description: "🌟 Novo",
+      description: "",
       type: "auth"
     }
   ];
