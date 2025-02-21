@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       label: "GIS-SUB",
-      href: "http://gissub2.petrobras.biz",
+      href: "http://gissub.petrobras.com.br",
       description: "Rastreamento de Embarcações",
       type: "br"
     },
