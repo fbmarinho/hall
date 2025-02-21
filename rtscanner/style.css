@@ -1,0 +1,272 @@
+* {
+  font-family:'Courier New', Courier, monospace;
+  font-size: 12px;
+  margin: 0;
+  box-sizing: border-box;
+  border-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #800;
+  padding: 20px;
+  width: 100%;
+  height:140px;
+  position: fixed;
+  top: 0px;
+  gap: 10px;
+}
+
+header div{
+  flex: 0.3;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+header h1{
+  color: white;
+  font-size: 40px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+header span{
+  color: #0006;
+  font-size: 20px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+tr{
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+body{
+  background-color: #eee;
+}
+
+#containers {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 10px;
+  margin-top: 160px;
+}
+
+
+.pre {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: #5559 0px 2px 5px;
+}
+
+.error-box {
+  background-color: #ffd;
+  border: none;
+  box-shadow: #5559 0px 2px 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+tr::before{
+  content: "" attr(data-index)
+}
+tr:nth-of-type(odd){
+  background-color: #00000010;
+
+}
+
+/* CONTAINER TABLE */
+.descricao{
+  text-align: left;
+  width: 20%;
+}
+.numero{
+  text-align: center;
+  width: 10%;
+}
+.dimensoes{
+  text-align: center;
+  width: 10%;
+}
+.peso{
+  text-align: center;
+  width: 10%;
+}
+.data_tc{
+  text-align: center;
+  width: 10%;
+}
+.venc_tc{
+  text-align: center;
+  width: 10%;
+}
+.sn_eslinga{
+  text-align: center;
+  width: 10%;
+}
+.data_inspecao{
+  text-align: center;
+  width: 10%;
+}
+.venc_inspecao{
+  text-align: center;
+  width: 10%;
+}
+
+/* ITEMS TABLE */
+.item{
+  text-align: left;
+  width: 20%;
+}
+.virtual{
+  text-align: center;
+  width: 20%;
+}
+.serial{
+  text-align: center;
+  width: 20%;
+}
+.peso_item{
+  text-align: center;
+  width: 20%;
+}
+.valor{
+  text-align: center;
+  width: 20%;
+}
+.table_header{
+  background-color: #555 !important;
+  color: white
+}
+.sub_header{
+  background-color:#999 !important;
+  color: white;
+  height: 16px;
+}
+.container{
+  background-color: white ;
+  height: 26px;
+}
+
+.footer{
+  display: none;
+}
+
+span {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.disabled {
+  background-color: #aaa;
+}
+
+.copy, table {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.copied {
+  animation: bg 1s ease-in-out;
+  outline-offset: -1px;
+}
+
+.copied::after{
+  display: block;
+  content: "Copiado para área de transferência !";
+  position: absolute;
+  width: fit-content;
+  padding: 10px;
+  background-color: green!important;
+  color: white;
+  border-radius: 3px;
+  bottom: 20px;
+  right: 20px;
+}
+
+@keyframes bg {
+  from {outline: 1px solid #a00;}
+  50% {outline: 4px solid green;}
+  to {outline: 1px solid #a00;}
+}
+
+.disclaimer {
+  background-color: #555;
+  color: #fff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 5px;
+  text-align: center;
+  font-size: 10px;
+  text-transform: uppercase;
+  height: 20px;
+  width: 100%;
+  position: fixed;
+  top: 140px;
+  box-shadow: #3339 0px 5px 10px;
+}
+
+#clear-button {
+  flex: 0.08;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff1;
+  height: 100%;
+  border-radius: 10px;
+}
+
+#clear-button:hover {
+  cursor: pointer;
+  background-color: #ffffff21;
+}
+
+#menu{
+  background-color: transparent;
+  height: 30px;
+  color: #ccc;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-right: 4px;
+  margin-bottom: -30px;
+}
+
+#menu button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #ccc;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 8px;
+  font-weight: bold;
+  height: 20px;
+  width: 30px;
+  text-align: center;
+}
+#menu button:hover {
+  background-color: #0001;
+  border: 2px solid #a00;
+  cursor: pointer;
+}

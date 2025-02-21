@@ -1,0 +1,57 @@
+#dropzone {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex: 0.7;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed #CCC;
+  height: 100px;
+  border-radius: 10px;
+  margin: 10px;
+
+  background: repeating-linear-gradient(
+  45deg,
+  #00000000,
+  #00000000 10px,
+  #fff1 10px,
+  #fff1 20px
+);
+
+}
+
+#visualaid{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:20px;
+}
+
+#visualaid img{
+  color: #CCC;
+}
+
+#visualaid span{
+  color: #0005;
+  font-size: 30px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+#dropzone.hover {
+  border: 3px dashed #fd0;
+}
+
+#dropzone.error {
+  border: 3px dashed #f98383;
+}
+
+#dropzone div {
+  font-size: 24px;
+  color: #444;
+}
+
+#dropzone [type="file"] {
+  display: none;
+}

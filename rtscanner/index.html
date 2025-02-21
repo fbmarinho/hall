@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Felipe Marinho">
+  <meta name="description" content="Uma aplicação para extrair informações tabuladas em um PDF padrão de forma automatica e disponibiliza-las para serem coladas de forma prática no EXCEL.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dropzone.css">
+  <title>RT Scanner</title>
+</head>
+<script src="dropzone.js"></script>
+<script src="pdfjs/pdf.js"></script>
+<body>
+  <header>
+    <div>
+      <h1>RT Scanner</h1>
+      <span>Arraste os arquivos para a área ao lado ou clique para escolher um arquivo</span>
+    </div>
+    <div id="dropzone">
+      <div id="visualaid">
+        <img src="./images/download.svg" height="35" width="35"><span>Dropzone</span>
+      </div>
+      <input type="file" id="fileInput" accept="application/pdf" multiple>
+    </div>
+    <div id="clear-button"><img src="./images/trash.svg" height="50" width="50"></div>
+  </header>
+  <div class="disclaimer">Disclaimer: Esta aplicação visa apenas ajudar a extrair as informações do PDF de forma automática, nenhuma verificação é realizada.</div>
+  
+  <div id="containers"></div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
