@@ -267,12 +267,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			type: "br",
 		},
 		{
-			label: "WORKSPACE ONEACCESS",
-			href: "https://petrobras.workspaceoneaccess.com/",
-			description: "Usar Omnissa Horizon",
-			type: "br",
-		},
-		{
 			label: "MFA SETUP",
 			href: "http://aka.ms/mfasetup",
 			description: "Configurar Authenticator",
