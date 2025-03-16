@@ -129,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			type: "auth",
 		},
 		{
+			old: true,
 			label: "RAM Shipping Stage",
 			href: "https://halliburtoncompanystage.appiancloud.com/suite/sites/ram",
 			description: "Apenas treinamento",
