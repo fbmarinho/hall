@@ -316,6 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			modal: true,
 		},
 		{
+			old: true,
 			icon: "timer",
 			label: "TIMER",
 			href: "http://fbmarinho.github.io/htimer",
