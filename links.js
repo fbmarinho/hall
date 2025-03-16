@@ -22,12 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	var urlform = document.getElementById("urlform");
-	var banner = document.getElementById("banner");
-
-	banner.addEventListener("click", (e) => {
-		e.preventDefault();
-		window.open("https://reserva.ink/oshore", "_blank");
-	});
 
 	urlform.addEventListener("submit", (e) => {
 		e.preventDefault();

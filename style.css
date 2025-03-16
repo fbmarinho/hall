@@ -294,15 +294,15 @@ main {
 }
 
 #banner {
-	background: url(banner.png), #e5e5e5;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-	height: 100px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #e5e5e5;
 }
 
-#banner:hover {
-	cursor: pointer;
+#banner img {
+	width: 100%;
 }
 
 @media screen and (max-width: 900px) {
@@ -315,9 +315,14 @@ main {
 	.link .description {
 		font-size: 0.7em;
 	}
-	.divisoria .title a {
-		width: 30%;
+	.divisoria .title {
+		flex-direction: column;
+		gap: 5px;
 	}
+	.divisoria .title p {
+		text-align: center;
+	}
+
 	#funcionais div {
 		width: 33.33%;
 	}
