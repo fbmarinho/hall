@@ -22,12 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	var urlform = document.getElementById("urlform");
-	var banner = document.getElementById("banner");
-
-	banner.addEventListener("click", (e) => {
-		e.preventDefault();
-		window.open("https://reserva.ink/oshore", "_blank");
-	});
 
 	urlform.addEventListener("submit", (e) => {
 		e.preventDefault();
@@ -129,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			type: "auth",
 		},
 		{
+			old: true,
 			label: "RAM Shipping Stage",
 			href: "https://halliburtoncompanystage.appiancloud.com/suite/sites/ram",
 			description: "Apenas treinamento",
@@ -267,12 +262,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			type: "br",
 		},
 		{
-			label: "WORKSPACE ONEACCESS",
-			href: "https://petrobras.workspaceoneaccess.com/",
-			description: "Usar Omnissa Horizon",
-			type: "br",
-		},
-		{
 			label: "MFA SETUP",
 			href: "http://aka.ms/mfasetup",
 			description: "Configurar Authenticator",
@@ -328,6 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			modal: true,
 		},
 		{
+			old: true,
 			icon: "timer",
 			label: "TIMER",
 			href: "http://fbmarinho.github.io/htimer",
