@@ -291,6 +291,12 @@ document.addEventListener("DOMContentLoaded", function () {
 			type: "remote",
 		},
 		{
+			label: "SETA",
+			href: "http://10.28.2.132:8080/Seta/inicio",
+			description: "Somente pessoal autorizado",
+			type: "remote",
+		},
+		{
 			old: false,
 			label: "LOGÍSTICA (PESSOAL)",
 			href: "https://srq.halliburton.7itec.io/login",
