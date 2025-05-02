@@ -9,22 +9,47 @@
   <p>O download do arquivo será iniciado automaticamente.</p>
 
   <script>
-    // JSON fixo com 3 sondas e 3 telefones cada
+    // JSON das sondas formatado com base nos dados fornecidos
     const sondas = {
-      "Sonda 1": {
-        "Sala": "+55 11 99999-1111",
-        "Cozinha": "+55 11 99999-2222",
-        "Quarto": "+55 11 99999-3333"
+      "CGOR": {
+        "LWD DIA": "(22) 3377-0285",
+        "LWD NOITE": "(22) 3377-2401",
+        "DD": "(22) 3377-2412",
+        "SDL": "(22) 3377-2411"
       },
-      "Sonda 2": {
-        "Sala": "+55 21 98888-4444",
-        "Cozinha": "+55 21 98888-5555",
-        "Quarto": "+55 21 98888-6666"
+      "NS32": {
+        "Rádio": "(22) 2752-4700",
+        "CPM": "(22) 2753-9326",
+        "LWD": "(22) 2753-9323",
+        "DD": "(22) 2753-9706",
+        "SDL": "(22) 2753-9323"
       },
-      "Sonda 3": {
-        "Sala": "+55 31 97777-7777",
-        "Cozinha": "+55 31 97777-8888",
-        "Quarto": "+55 31 97777-9999"
+      "NS38": {
+        "LWD NOVO": "(22) 2753-9747",
+        "LWD": "(22) 2753-9852",
+        "DD": "(22) 2753-9749",
+        "SDL": "(22) 2753-9745"
+      },
+      "NS39": {
+        "Rádio": "(22) 2752-4700",
+        "LWD": "(22) 2753-3904",
+        "SDL": "(22) 2753-3918"
+      },
+      "NS40": {
+        "LWD": "(22) 2753-4014",
+        "DD": "(22) 2753-4022",
+        "GEOLOG": "(22) 2753-4018"
+      },
+      "NS47": {
+        "LWD": "(22) 3378-3214",
+        "DD": "(22) 3378-3216",
+        "SDL": "(22) 3378-3201",
+        "CPM": "(22) 3378-3206"
+      },
+      "NS55": {
+        "LWD": "(22) 3378-3274",
+        "DD": "(22) 3378-3276",
+        "SDL": "(22) 3378-3263"
       }
     };
 
@@ -60,7 +85,7 @@
       URL.revokeObjectURL(url);
     }
 
-    // Dispara o download automaticamente ao carregar
+    // Gera o arquivo automaticamente ao abrir a página
     window.onload = gerarVCard;
   </script>
 </body>
