@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de vCards - Sondas</title>
+</head>
+<body>
+  <h2>Gerando vCards automaticamente...</h2>
+  <p>O download do arquivo será iniciado automaticamente.</p>
+
+  <script>
+    // JSON fixo com 3 sondas e 3 telefones cada
+    const sondas = {
+      "Sonda 1": {
+        "Sala": "+55 11 99999-1111",
+        "Cozinha": "+55 11 99999-2222",
+        "Quarto": "+55 11 99999-3333"
+      },
+      "Sonda 2": {
+        "Sala": "+55 21 98888-4444",
+        "Cozinha": "+55 21 98888-5555",
+        "Quarto": "+55 21 98888-6666"
+      },
+      "Sonda 3": {
+        "Sala": "+55 31 97777-7777",
+        "Cozinha": "+55 31 97777-8888",
+        "Quarto": "+55 31 97777-9999"
+      }
+    };
+
+    function gerarVCard() {
+      let vcardTexto = "";
+
+      for (const nomeSonda in sondas) {
+        const telefones = sondas[nomeSonda];
+
+        vcardTexto += "BEGIN:VCARD\n";
+        vcardTexto += "VERSION:3.0\n";
+        vcardTexto += `FN:${nomeSonda}\n`;
+
+        for (const descricao in telefones) {
+          const numero = telefones[descricao];
+          const tipo = descricao.toUpperCase().replace(/\s/g, "_");
+          vcardTexto += `TEL;TYPE=${tipo}:${numero}\n`;
+        }
+
+        vcardTexto += "END:VCARD\n";
+      }
+
+      const blob = new Blob([vcardTexto], { type: "text/vcard" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "sondas.vcf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      URL.revokeObjectURL(url);
+    }
+
+    // Dispara o download automaticamente ao carregar
+    window.onload = gerarVCard;
+  </script>
+</body>
+</html>
