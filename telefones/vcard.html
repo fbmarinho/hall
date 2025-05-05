@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de vCards - Sondas</title>
+</head>
+<body>
+  <h2>Gerando vCards automaticamente...</h2>
+  <p>O download do arquivo será iniciado automaticamente.</p>
+
+  <script>
+    // JSON das sondas formatado com base nos dados fornecidos
+    const sondas = {
+      "CGOR": {
+        "LWD DIA": "(22) 3377-0285",
+        "LWD NOITE": "(22) 3377-2401",
+        "DD": "(22) 3377-2412",
+        "SDL": "(22) 3377-2411"
+      },
+      "NS32": {
+        "Rádio": "(22) 2752-4700",
+        "CPM": "(22) 2753-9326",
+        "LWD": "(22) 2753-9323",
+        "DD": "(22) 2753-9706",
+        "SDL": "(22) 2753-9323"
+      },
+      "NS38": {
+        "LWD NOVO": "(22) 2753-9747",
+        "LWD": "(22) 2753-9852",
+        "DD": "(22) 2753-9749",
+        "SDL": "(22) 2753-9745"
+      },
+      "NS39": {
+        "Rádio": "(22) 2752-4700",
+        "LWD": "(22) 2753-3904",
+        "SDL": "(22) 2753-3918"
+      },
+      "NS40": {
+        "LWD": "(22) 2753-4014",
+        "DD": "(22) 2753-4022",
+        "GEOLOG": "(22) 2753-4018"
+      },
+      "NS47": {
+        "LWD": "(22) 3378-3214",
+        "DD": "(22) 3378-3216",
+        "SDL": "(22) 3378-3201",
+        "CPM": "(22) 3378-3206"
+      },
+      "NS55": {
+        "LWD": "(22) 3378-3274",
+        "DD": "(22) 3378-3276",
+        "SDL": "(22) 3378-3263"
+      }
+    };
+
+    function gerarVCard() {
+      let vcardTexto = "";
+
+      for (const nomeSonda in sondas) {
+        const telefones = sondas[nomeSonda];
+
+        vcardTexto += "BEGIN:VCARD\n";
+        vcardTexto += "VERSION:3.0\n";
+        vcardTexto += `FN:${nomeSonda}\n`;
+
+        for (const descricao in telefones) {
+          const numero = telefones[descricao];
+          const tipo = descricao.toUpperCase().replace(/\s/g, "_");
+          vcardTexto += `TEL;TYPE=${tipo}:${numero}\n`;
+        }
+
+        vcardTexto += "END:VCARD\n";
+      }
+
+      const blob = new Blob([vcardTexto], { type: "text/vcard" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "sondas.vcf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      URL.revokeObjectURL(url);
+    }
+
+    // Gera o arquivo automaticamente ao abrir a página
+    window.onload = gerarVCard;
+  </script>
+</body>
+</html>
