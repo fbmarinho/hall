@@ -1,0 +1,123 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input[type="number"],
+input[type="datetime-local"] {
+  width: 100%;
+  padding: 6px;
+  /* margin-top: 5px; */
+  /* margin-bottom: 10px; */
+  box-sizing: border-box;
+}
+
+button {
+  /* margin-top: 15px; */
+  /* margin-right: 10px; */
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th {
+  border: 1px solid #ccc;
+  background-color: #ddd;
+  padding: 8px 2px;
+  text-align: center;
+  font-size: 12px;
+  min-width: 50px;
+}
+td {
+  border: 1px solid #ccc;
+  background-color: #eee;
+  text-align: center;
+  font-size: 12px;
+  padding: 0px 3px;
+}
+td > input {
+  border: 1px solid #fff;
+  text-align: center;
+  border-radius: 3px;
+}
+td > button {
+  background-color: transparent;
+  color: white;
+}
+td > button:hover {
+  background-color: #ddd;
+}
+
+#resultado {
+  margin-top: 25px;
+  background-color: #eaf8ea;
+  padding: 15px;
+  border: 1px solid #b2d8b2;
+  border-radius: 5px;
+}
+
+.botoes-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-calcular {
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #28a745;
+}
+
+.btn-calcular:hover {
+  background-color: #218838;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.input-container > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}

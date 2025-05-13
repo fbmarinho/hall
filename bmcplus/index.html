@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Estimativa de Bateria</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Estimador de Bateria de Pulser (FDC / SDC)</h2>
+      <div class="input-container">
+        <div>
+          <label for="capacidade">Capacidade inicial da Bateria (Ah):</label>
+          <input type="number" id="capacidade" step="0.5" value="46" max="46" />
+        </div>
+        <div>
+          <label for="energiaPorPulso">Energia por Pulso (Ah):</label>
+          <input
+            type="number"
+            id="energiaPorPulso"
+            step="0.000001"
+            value="0.000075"
+          />
+        </div>
+      </div>
+
+      <table id="modos-tabela">
+        <thead>
+          <tr>
+            <th>Início</th>
+            <th>Fim</th>
+            <th>Pulsos/h</th>
+            <th>Horas</th>
+            <th>Consumo</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="modos-body"></tbody>
+      </table>
+
+      <div class="botoes-container">
+        <button onclick="adicionarModo()">+ Adicionar Lista</button>
+        <button class="btn-calcular" onclick="calcular()">Calcular</button>
+      </div>
+
+      <div id="resultado"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
