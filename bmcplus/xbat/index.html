@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Bateria - XBAT</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Calculadora de Bateria - XBAT</h2>
+
+      <label for="capacidade">Capacidade inicial da bateria (A):</label>
+      <input type="number" id="capacidade" value="96" />
+
+      <label for="startTime">Data e hora da Programação:</label>
+      <input type="datetime-local" id="startTime" value="2025-06-23T04:52" />
+
+      <label for="timeDelay">Time Delay (minutos):</label>
+      <input type="number" id="timeDelay" value="360" />
+
+      <div class="line">
+        <div>
+          <label for="periodoDisparo">Sample period:</label>
+          <input type="number" id="periodoDisparo" value="10" />
+        </div>
+
+        <div id="triggersfield">
+          <label for="triggers">Número de Triggers:</label>
+          <select id="triggers" disabled>
+            <option value="2">2 - (M11-D5 ou D9-D4)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="caliperativado">Cáliper:</label>
+          <select id="caliperativado">
+            <option value="1">Sim</option>
+            <option value="0">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="endMode">Modo de data final:</label>
+      <select id="endMode" onchange="alternarModoDataFinal()">
+        <option value="agora">Usar data e hora atual</option>
+        <option value="manual">Informar manualmente</option>
+      </select>
+
+      <div id="campoDataFinal" class="hidden">
+        <label for="endTime">Data e hora final para o cálculo:</label>
+        <input type="datetime-local" id="endTime" value="2025-06-26T15:39" />
+      </div>
+
+      <button class="calculate" onclick="calcularGasto()">
+        Calcular Gasto de Bateria
+      </button>
+
+      <div class="result" id="resultado"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
