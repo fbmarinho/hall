@@ -123,6 +123,10 @@ button.calculate:hover {
   height: 100%;
 }
 
+.prevision_container > p {
+  font-size: 1px;
+}
+
 @media screen and (max-width: 767px) {
   .line {
     display: flex;

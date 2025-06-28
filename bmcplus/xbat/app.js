@@ -1,3 +1,23 @@
+HTMLCollection.prototype.forEach = Array.prototype.forEach;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const inputs = document.getElementsByTagName("input");
+  const selects = document.getElementsByTagName("select");
+
+  const fields = [...inputs, ...selects];
+
+  fields.forEach((field) => {
+    const stored = localStorage.getItem(field.name);
+    if (stored) {
+      field.value = stored;
+    }
+    field.addEventListener("change", (e) => {
+      localStorage.setItem(e.target.name, e.target.value);
+    });
+  });
+  alternarModoDataFinal();
+});
+
 function alternarModoDataFinal() {
   const modo = document.getElementById("endMode").value;
   const campo = document.getElementById("campoDataFinal");
@@ -74,7 +94,7 @@ function calcularGasto() {
 
   result.innerHTML = `
     <div>
-      <span>🔋 Gasto estimado de bateria:</span>
+      <span>Consumo da corrida:</span>
       <strong>${energiaTotal.toFixed(2)} Ah</strong>
     </div>
     ${bateria.innerHTML} 
@@ -85,7 +105,14 @@ function calcularGasto() {
       <span> Funcionamento (${tempoFuncionamentoHoras.toFixed(
         2
       )} h): ${energiaFuncionamento.toFixed(2)} Ah</span>
+
+
+      
     </div>
+    ${
+      GeneratePrevision(capacidadeTotal - energiaTotal, consumoFuncionamento)
+        .innerHTML
+    }
   `;
 }
 
@@ -96,18 +123,37 @@ function GenerateBattery(percent) {
   const battery = document.createElement("div");
   battery.classList.add("battery");
 
-  const capacity = document.createElement("div");
-  capacity.classList.add("capacity");
-  capacity.innerText = percent.toFixed(2) + " %";
-
   const indicator = document.createElement("div");
   indicator.classList.add("indicator");
-  indicator.style.width = percent + "%";
-
+  indicator.style.width = 100 - percent > 10 ? 100 - percent + "%" : "100%";
+  indicator.style.backgroundColor = 100 - percent < 10 ? "#f33" : "#3f3";
   battery.append(indicator);
+
+  const capacity = document.createElement("div");
+  capacity.classList.add("capacity");
+  capacity.innerText =
+    100 - percent > 0 ? (100 - percent).toFixed(2) + " %" : "Depletada";
   battery.append(capacity);
 
   container.append(battery);
+
+  return container;
+}
+
+function GeneratePrevision(capacity, consumo) {
+  const sobra = capacity / consumo;
+  const container = document.createElement("div");
+  container.classList.add("prevision_container");
+
+  container.innerHTML = `
+    <p>Sobraram <strong>${sobra.toFixed(
+      2
+    )} Ah</strong> nas mesmas condições dariam para mais ${sobra.toFixed(
+    2
+  )} Horas (${(sobra / 24).toFixed(2)} dias) de operação.</p>
+  
+  
+  `;
 
   return container;
 }
