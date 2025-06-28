@@ -20,9 +20,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function alternarModoDataFinal() {
   const modo = document.getElementById("endMode").value;
-  const campo = document.getElementById("campoDataFinal");
+  const campoHoraInicial = document.getElementById("campoDataInicial");
+  const campoHorafinal = document.getElementById("campoDataFinal");
+  campoHoraInicial.classList.toggle("hidden", modo === "estimativa");
+  campoHorafinal.classList.toggle(
+    "hidden",
+    modo === "agora" || modo === "estimativa"
+  );
+}
 
-  campo.classList.toggle("hidden", modo === "agora" || modo === "estimativa");
+function CalculoEstimativa() {
+  const capacidadeTotal = parseFloat(
+    document.getElementById("capacidade").value
+  );
+  const timeDelay = parseFloat(document.getElementById("timeDelay").value);
+  const periodoDisparo = parseFloat(
+    document.getElementById("periodoDisparo").value
+  );
+
+  const caliperAtivado = document.getElementById("caliperativado").value;
+
+  const quiescente = 0.08;
+  const energiaStandby = (quiescente * timeDelay) / 60;
+  const numTriggers = 2 + parseInt(caliperAtivado);
+  const consumoFuncionamento =
+    quiescente + (0.0004 * numTriggers * 3600) / periodoDisparo;
+
+  const result = document.getElementById("resultado");
+  const sobra = capacidadeTotal - energiaStandby;
+  const estimado = sobra / consumoFuncionamento;
+  result.innerHTML = `
+    <div>Gasto em Standby (Time Delay): ${energiaStandby.toFixed(2)} Ah</div>
+    <div>Consumo de operação:  ${consumoFuncionamento.toFixed(3)} A</div>
+    <p>Neste modo de funcionamento <strong>${sobra.toFixed(
+      2
+    )} Ah</strong>  dariam para ${estimado.toFixed(2)} Horas (${(
+    estimado / 24
+  ).toFixed(2)} dias) de operação.</p>
+  `;
+  return;
 }
 
 function calcularGasto() {
@@ -36,6 +72,11 @@ function calcularGasto() {
     document.getElementById("capacidade").value
   );
   const caliperAtivado = document.getElementById("caliperativado").value;
+
+  if (modoDataFinal === "estimativa") {
+    CalculoEstimativa();
+    return;
+  }
 
   if (
     !startTimeStr ||
@@ -79,6 +120,10 @@ function calcularGasto() {
   const tempoFuncionamentoHoras =
     Math.max(0, tempoTotalMin - timeDelayMin) / 60;
 
+  if (modoDataFinal === "estimativa") {
+    endTime = startTime;
+  }
+
   const quiescente = 0.08;
   const energiaStandby = quiescente * tempoStandbyMin;
 
@@ -89,25 +134,6 @@ function calcularGasto() {
 
   const energiaTotal = energiaStandby + energiaFuncionamento;
   const percentualConsumido = (energiaTotal / capacidadeTotal) * 100;
-
-  if (modoDataFinal === "estimativa") {
-    const result = document.getElementById("resultado");
-    const sobra = capacidadeTotal - energiaStandby;
-    const estimado = sobra / consumoFuncionamento;
-    result.innerHTML = `
-
-    <div>Gasto em Standby (Time Delay): ${energiaStandby} Ah</div>
-    <div>Consumo de operação:  ${consumoFuncionamento.toFixed(3)} A</div>
-    <p>Neste modo de funcionamento <strong>${sobra.toFixed(
-      2
-    )} Ah</strong>  dariam para ${estimado.toFixed(2)} Horas (${(
-      estimado / 24
-    ).toFixed(2)} dias) de operação.</p>
-  
-  
-  `;
-    return;
-  }
 
   const result = document.getElementById("resultado");
   const bateria = GenerateBattery(percentualConsumido);

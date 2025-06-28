@@ -13,8 +13,17 @@
       <label for="capacidade">Capacidade inicial da bateria (A):</label>
       <input name="capacidade" type="number" id="capacidade" value="96" />
 
-      <label for="startTime">Data e hora da Programação:</label>
-      <input name="startTime" type="datetime-local" id="startTime" />
+      <label for="endMode">Modo de data final:</label>
+      <select id="endMode" onchange="alternarModoDataFinal()">
+        <option value="agora">Usar data e hora atual</option>
+        <option value="manual">Informar manualmente</option>
+        <option value="estimativa" selected>Apenas estimativa</option>
+      </select>
+
+      <div id="campoDataInicial" class="hidden">
+        <label for="startTime">Data e hora da Programação:</label>
+        <input name="startTime" type="datetime-local" id="startTime" />
+      </div>
 
       <label for="timeDelay">Time Delay (minutos):</label>
       <input name="timeDelay" type="number" id="timeDelay" value="360" />
@@ -45,13 +54,6 @@
           </select>
         </div>
       </div>
-
-      <label for="endMode">Modo de data final:</label>
-      <select id="endMode" onchange="alternarModoDataFinal()">
-        <option value="agora">Usar data e hora atual</option>
-        <option value="manual">Informar manualmente</option>
-        <option value="estimativa" selected>Estimativa futura</option>
-      </select>
 
       <div id="campoDataFinal" class="hidden">
         <label for="endTime">Data e hora final para o cálculo:</label>
