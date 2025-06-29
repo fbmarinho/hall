@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>BMC Plus v1.0</title>
+  </head>
+  <body>
+    <input type="button" onclick="{localStorage.clear()}" value="Clear" />
+    <div>
+      <div id="groups_container"></div>
+      <div id="modal">
+        <div id="window">
+          <div class="title">
+            <span>Title</span><button id="btn_close">X</button>
+          </div>
+          <div class="content">Content</div>
+        </div>
+      </div>
+      <h2>Configurações iniciais</h2>
+      <div class="config">
+        <div id="hcim" class="tool">
+          <div class="title">HCIM</div>
+          <div class="content">
+            <label for="batt_hcim">Bateria:</label>
+            <input
+              type="number"
+              name="batt_hcim"
+              id="batt_hcim"
+              step="0.1"
+              min="0"
+              max="96"
+              value="96"
+            />
+            <span class="unidade">Amph</span>
+          </div>
+        </div>
+
+        <div id="bat" class="tool">
+          <div class="title">BAT</div>
+          <div class="content">
+            <label for="batt_bat">Bateria:</label>
+            <input
+              type="number"
+              name="batt_bat"
+              id="batt_bat"
+              step="0.1"
+              min="0"
+              max="96"
+              value="96"
+            />
+            <span class="unidade">Amph</span>
+          </div>
+        </div>
+
+        <div id="xbat" class="tool">
+          <div class="title">XBAT</div>
+          <div class="content">
+            <label for="batt_xbat">Bateria:</label>
+            <input
+              type="number"
+              name="batt_xbat"
+              id="batt_xbat"
+              step="0.1"
+              min="0"
+              max="96"
+              value="96"
+            />
+            <span class="unidade">Amph</span>
+          </div>
+        </div>
+
+        <div id="mril-wd" class="tool">
+          <div class="title">MRIL-WD</div>
+          <div class="content">
+            <label for="batt_xbat">Bateria:</label>
+            <input
+              type="number"
+              name="batt_mril"
+              id="batt_mril"
+              step="0.1"
+              min="0"
+              max="12"
+              value="12"
+            />
+            <span class="unidade">Amph</span>
+          </div>
+        </div>
+
+        <div id="ewr-m5" class="tool">
+          <div class="title">EWR-M5</div>
+          <div class="content">
+            <div>
+              <label for="ewr_m5_curves">Curvas</label>
+              <input
+                type="number"
+                name="ewr_m5_curves"
+                min="1"
+                max="12"
+                step="1"
+                value="8"
+              />
+            </div>
+            <div>
+              <label for="ewr_m5_period"> Sample Period</label>
+              <input
+                type="number"
+                name="ewr_m5_period"
+                min="1"
+                max="12"
+                step="1"
+                value="20"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div id="np" class="tool">
+          <div class="title">Negative Pulse (FDC / SCD)</div>
+          <div class="content">
+            <label for="batt_xbat">Bateria:</label>
+            <input
+              type="number"
+              name="batt_mril"
+              id="batt_mril"
+              step="0.1"
+              min="0"
+              max="46"
+              value="46"
+            />
+            <span class="unidade">Amph</span>
+          </div>
+          <div class="content">
+            <div>
+              <label for="np_pph">Pulsos por Hora:</label>
+              <input
+                type="number"
+                name="np_pph"
+                min="1000"
+                max="5000"
+                step="100"
+                value="3000"
+              />PPH
+            </div>
+          </div>
+        </div>
+
+        <div id="pp" class="tool">
+          <div class="title">Negative Pulse (FDC / SCD)</div>
+          <div class="content">
+            <div>
+              <label for="pp_percentage"
+                >Porcentagem do tempo com circulação:</label
+              >
+              <input
+                type="number"
+                name="pp_percentage"
+                min="0"
+                max="100"
+                step="1"
+                value="60"
+              />%
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="data_download">Data do download:</label>
+        <input type="datetime-local" name="data_download" id="data_download" />
+      </div>
+      <div>
+        <label for="time_delay">Time Delay (min):</label>
+        <input
+          type="number"
+          name="time_delay"
+          id="time_delay"
+          step="1"
+          min="0"
+          max="10000"
+          value="900"
+        />
+        <span class="unidade" id="time_delay_hr"></span>
+      </div>
+    </div>
+
+    <div id="tool_table"></div>
+    <script src="util.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+}
+
+#modal #window {
+  width: 50%;
+  height: 50%;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#modal #window .title {
+  display: flex;
+  color: white;
+  padding: 7px 10px;
+  background-color: #000;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#modal #window .title button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 10px;
+  background-color: transparent;
+}
+#modal #window .title button:hover {
+  color: #a00;
+}
+
+#modal #window .content {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+#subbus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+}
+
+#groups_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  min-width: 120px;
+  max-width: 120px;
+  width: 100%;
+}
+
+.group .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 3px;
+  background-color: black;
+  font-size: 10px;
+}
+
+.group .content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 10px;
+  gap: 4px;
+}
+
+.group .content .tool {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.group .content .tool .btn_config {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 11px;
+  height: 11px;
+  color: white;
+  background-color: #a22;
+  border: none;
+  border-radius: 2px;
+  font-size: 7px;
+  cursor: pointer;
+  -moz-user-select: none;
+}
+.group .content .tool .btn_config:hover {
+  background-color: #900;
+}
+.config .tool {
+  display: none;
+  flex-direction: column;
+}
+
+#tool_table {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+#tool_table .line {
+  display: flex;
+  gap: 5px;
+  width: 300px;
+  border: 1px solid black;
+}
+#tool_table .line span {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
