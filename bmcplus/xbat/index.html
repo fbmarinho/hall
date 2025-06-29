@@ -8,29 +8,52 @@
   </head>
   <body>
     <div class="container">
-      <h2>Calculadora de Bateria - XBAT</h2>
+      <div class="line">
+        <div class="field">
+          <label for="capacidade">Capacidade inicial (Ah):</label>
+          <input name="capacidade" type="number" id="capacidade" value="96" />
+        </div>
 
-      <label for="capacidade">Capacidade inicial da bateria (A):</label>
-      <input name="capacidade" type="number" id="capacidade" value="96" />
-
-      <label for="endMode">Modo de data final:</label>
-      <select id="endMode" onchange="alternarModoDataFinal()">
-        <option value="agora">Usar data e hora atual</option>
-        <option value="manual">Informar manualmente</option>
-        <option value="estimativa" selected>Apenas estimativa</option>
-      </select>
-
-      <div id="campoDataInicial" class="hidden">
-        <label for="startTime">Data e hora da Programação:</label>
-        <input name="startTime" type="datetime-local" id="startTime" />
+        <div class="field">
+          <label for="calcMode">Modo de cálculo:</label>
+          <select id="calcMode" name="calcMode" onchange="SelecionaModo()">
+            <option value="estimativa" selected>Apenas estimativa</option>
+            <option value="manual">Informar datas manualmente</option>
+            <option value="realtime">Tempo real</option>
+          </select>
+        </div>
       </div>
 
-      <label for="timeDelay">Time Delay (minutos):</label>
-      <input name="timeDelay" type="number" id="timeDelay" value="360" />
+      <div class="line">
+        <div id="campoDataInicial" class="field">
+          <label for="startTime">Programação:</label>
+          <input name="startTime" type="datetime-local" id="startTime" />
+        </div>
+        <div class="field">
+          <label for="timeDelay">Delay (min):</label>
+          <input name="timeDelay" type="number" id="timeDelay" value="360" />
+        </div>
+        <div id="campoDataPause" class="field">
+          <div class="pauselabel">
+            <input
+              id="pausetoggle"
+              name="pausetoggle"
+              type="checkbox"
+              onchange="TogglePause(this)"
+            />Pause:
+          </div>
+          <input type="datetime-local" id="pauseTime" name="pauseTime" />
+        </div>
+
+        <div id="campoDataFinal" class="field">
+          <label for="endTime">Leitura:</label>
+          <input type="datetime-local" id="endTime" name="endTime" />
+        </div>
+      </div>
 
       <div class="line">
-        <div>
-          <label for="periodoDisparo">Sample period:</label>
+        <div class="field">
+          <label for="periodoDisparo">Sample period (s):</label>
           <input
             type="number"
             id="periodoDisparo"
@@ -39,14 +62,15 @@
           />
         </div>
 
-        <div id="triggersfield">
-          <label for="triggers">Número de Triggers:</label>
-          <select id="triggers" name="triggers" disabled>
-            <option value="2">2 - (M11-D5 ou D9-D4)</option>
+        <div class="field">
+          <label for="triggers">Sequence File:</label>
+          <select id="triggers" name="triggers">
+            <option value="2">M11-D5</option>
+            <option value="2">D9-D4</option>
           </select>
         </div>
 
-        <div>
+        <div class="field">
           <label for="caliperativado">Cáliper:</label>
           <select id="caliperativado" name="caliperativado">
             <option value="1">Sim</option>
@@ -55,16 +79,9 @@
         </div>
       </div>
 
-      <div id="campoDataFinal" class="hidden">
-        <label for="endTime">Data e hora final para o cálculo:</label>
-        <input type="datetime-local" id="endTime" name="endTime" />
-      </div>
-
-      <button class="calculate" onclick="calcularGasto()">
-        Calcular Gasto de Bateria
-      </button>
-
-      <div class="result" id="resultado"></div>
+      <button class="calculate" onclick="Calcular()">Calcular</button>
+      <table id="result_table"></table>
+      <div class="line" id="estimativa"></div>
     </div>
 
     <script src="app.js"></script>
