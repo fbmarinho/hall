@@ -19,7 +19,6 @@
           <select id="calcMode" name="calcMode" onchange="SelecionaModo()">
             <option value="estimativa" selected>Apenas estimativa</option>
             <option value="manual">Informar datas manualmente</option>
-            <option value="realtime">Tempo real</option>
           </select>
         </div>
       </div>
@@ -34,7 +33,7 @@
           <input name="timeDelay" type="number" id="timeDelay" value="360" />
         </div>
         <div id="campoDataPause" class="field">
-          <div class="pauselabel">
+          <div class="special_label">
             <input
               id="pausetoggle"
               name="pausetoggle"
@@ -46,7 +45,17 @@
         </div>
 
         <div id="campoDataFinal" class="field">
-          <label for="endTime">Leitura:</label>
+          <div class="special_label space_out">
+            Data final:
+            <div class="special_label">
+              <input
+                id="finaltoggle"
+                name="finaltoggle"
+                type="checkbox"
+                onchange="ToggleFinal(this)"
+              />Tempo real
+            </div>
+          </div>
           <input type="datetime-local" id="endTime" name="endTime" />
         </div>
       </div>

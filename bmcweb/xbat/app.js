@@ -18,6 +18,10 @@ function TogglePause(e) {
   document.getElementById("pauseTime").disabled = !e.checked;
 }
 
+function ToggleFinal(e) {
+  document.getElementById("endTime").disabled = e.checked;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   PersistirValores();
   SelecionaModo();
@@ -29,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function PersistirValores() {
   const inputs = document.getElementsByTagName("input");
   const selects = document.getElementsByTagName("select");
-  const checkbox = document.getElementById("pausetoggle");
 
   const fields = [...inputs, ...selects];
 
@@ -61,6 +64,9 @@ function SelecionaModo() {
 
   document.getElementById("pauseTime").disabled =
     !document.getElementById("pausetoggle").checked;
+
+  document.getElementById("endTime").disabled =
+    document.getElementById("finaltoggle").checked;
 
   campoHoraPause.classList.toggle(
     "hidden",
@@ -186,17 +192,30 @@ function Calcular() {
         amph_operation
       );
 
-      const elapsed_time_end = getHoursDifference(pauseTime, endTime);
+      const isRealTime = localStorage.getItem("finaltoggle") == "true";
+      const texto_usado = isRealTime ? "Agora" : "Leitura";
+      const hora_usada = isRealTime ? new Date(Date.now()) : endTime;
+
+      const elapsed_time_end = getHoursDifference(pauseTime, hora_usada);
       const amph_end = 0.08 * elapsed_time_end;
 
-      AddLineToResultTable("Leitura", endTime, elapsed_time_end, amph_end);
+      AddLineToResultTable(texto_usado, hora_usada, elapsed_time_end, amph_end);
     } else {
-      const elapsed_time_end = getHoursDifference(expiracaoTimeDelay, endTime);
+      const isRealTime = localStorage.getItem("finaltoggle") == "true";
+      const texto_usado = isRealTime ? "Agora" : "Leitura";
+      const hora_usada = isRealTime ? new Date(Date.now()) : endTime;
+
+      console.log("hora usada", hora_usada);
+
+      const elapsed_time_end = getHoursDifference(
+        expiracaoTimeDelay,
+        hora_usada
+      );
       const amph_operation = consumoOperacao * elapsed_time_end;
       amph_total += amph_operation;
       AddLineToResultTable(
-        "Leitura",
-        endTime,
+        texto_usado,
+        hora_usada,
         elapsed_time_end,
         amph_operation
       );
@@ -208,52 +227,9 @@ function Calcular() {
     const capacity_left = capacidadeTotal - amph_total;
     const estimativa_horas_operacao = capacity_left / consumoOperacao;
     document.getElementById("estimativa").innerHTML = `
-    <span>Capacidade restante: ${capacity_left.toFixed(2)} Ah</span>  
-    <span>Estimativa (mesmos parâmetros): ${estimativa_horas_operacao.toFixed(
-      2
-    )} hs
-    (${(estimativa_horas_operacao / 24).toFixed(2)} dias)</span>`;
-  }
-
-  if (modo == "realtime") {
-    document.getElementById("result_table").classList.toggle("hidden", false);
-    AddHeadersToResultTable();
-    AddLineToResultTable("Download", startTime, 0, 0);
-    let amph_total = 0;
-
-    const expiracaoTimeDelay = new Date(
-      startTime.getTime() + timeDelay * 60000
-    );
-
-    const elapsed_time_delay = getHoursDifference(
-      startTime,
-      expiracaoTimeDelay
-    );
-
-    const amph_timedelay = 0.08 * elapsed_time_delay;
-    amph_total += amph_timedelay;
-    AddLineToResultTable(
-      "Time delay",
-      expiracaoTimeDelay,
-      elapsed_time_delay,
-      amph_timedelay
-    );
-
-    const hoje = new Date(Date.now());
-    const elapsed_time_now = getHoursDifference(expiracaoTimeDelay, hoje);
-    const amph_operation = consumoOperacao * elapsed_time_now;
-    amph_total += amph_operation;
-    AddLineToResultTable("Agora", hoje, elapsed_time_now, amph_operation);
-
-    AddTotalLineToResultTable("Total", amph_total);
-
-    //Expectativa
-    const capacity_left =
-      amph_total < capacidadeTotal ? capacidadeTotal - amph_total : 0;
-    const estimativa_horas_operacao = capacity_left / consumoOperacao;
-
-    document.getElementById("estimativa").innerHTML = `
-    <span>Capacidade restante: ${capacity_left.toFixed(2)} Ah</span>  
+    <span>${
+      GenerateBattery((capacity_left / capacidadeTotal) * 100).outerHTML
+    }Capacidade restante: ${capacity_left.toFixed(2)} Ah</span>  
     <span>Estimativa (mesmos parâmetros): ${estimativa_horas_operacao.toFixed(
       2
     )} hs
@@ -328,174 +304,25 @@ function ConsumoDeOperacao(period, triggers) {
   return 0.08 + (0.0004 * parseFloat(triggers) * 3600) / parseFloat(period);
 }
 
-// function CalculoEstimativa() {
-//   const capacidadeTotal = parseFloat(
-//     document.getElementById("capacidade").value
-//   );
-//   const timeDelay = parseFloat(document.getElementById("timeDelay").value);
-//   const periodoDisparo = parseFloat(
-//     document.getElementById("periodoDisparo").value
-//   );
+function GenerateBattery(percent) {
+  const container = document.createElement("div");
+  container.classList.add("battery_container");
 
-//   const caliperAtivado = document.getElementById("caliperativado").value;
+  const battery = document.createElement("div");
+  battery.classList.add("battery");
 
-//   const quiescente = 0.08;
-//   const energiaStandby = (quiescente * timeDelay) / 60;
-//   const numTriggers = 2 + parseInt(caliperAtivado);
-//   const consumoFuncionamento =
-//     quiescente + (0.0004 * numTriggers * 3600) / periodoDisparo;
+  const indicator = document.createElement("div");
+  indicator.classList.add("indicator");
+  indicator.style.width = percent + "%";
+  indicator.style.backgroundColor = percent < 10 ? "#f33" : "#393";
+  battery.append(indicator);
 
-//   const result = document.getElementById("resultado");
-//   const sobra = capacidadeTotal - energiaStandby;
-//   const estimado = sobra / consumoFuncionamento;
-//   result.innerHTML = `
-//     <div>Gasto em Standby (Time Delay): ${energiaStandby.toFixed(2)} Ah</div>
-//     <div>Consumo de operação:  ${consumoFuncionamento.toFixed(3)} A</div>
-//     <p>Neste modo de funcionamento <strong>${sobra.toFixed(
-//       2
-//     )} Ah</strong>  dariam para ${estimado.toFixed(2)} Horas (${(
-//     estimado / 24
-//   ).toFixed(2)} dias) de operação.</p>
-//   `;
-//   return;
-// }
+  const capacity = document.createElement("div");
+  capacity.classList.add("capacity");
+  capacity.innerText = percent.toFixed(2) + " %";
+  battery.append(capacity);
 
-// function calcularGasto() {
-//   const startTimeStr = document.getElementById("startTime").value;
-//   const modoDataFinal = document.getElementById("endMode").value;
-//   const timeDelayMin = parseFloat(document.getElementById("timeDelay").value);
-//   const periodoDisparo = parseFloat(
-//     document.getElementById("periodoDisparo").value
-//   );
-//   const capacidadeTotal = parseFloat(
-//     document.getElementById("capacidade").value
-//   );
-//   const caliperAtivado = document.getElementById("caliperativado").value;
+  container.append(battery);
 
-//   if (modoDataFinal === "estimativa") {
-//     CalculoEstimativa();
-//     return;
-//   }
-
-//   if (
-//     !startTimeStr ||
-//     isNaN(timeDelayMin) ||
-//     isNaN(periodoDisparo) ||
-//     isNaN(capacidadeTotal) ||
-//     timeDelayMin <= 0 ||
-//     periodoDisparo <= 0 ||
-//     capacidadeTotal <= 0
-//   ) {
-//     document.getElementById("resultado").innerText =
-//       "Preencha todos os campos corretamente.";
-//     return;
-//   }
-
-//   const startTime = new Date(startTimeStr);
-//   let endTime;
-
-//   if (modoDataFinal === "agora") {
-//     endTime = new Date();
-//   } else {
-//     const endTimeStr = document.getElementById("endTime").value;
-//     if (!endTimeStr) {
-//       document.getElementById("resultado").innerText =
-//         "Informe a data final corretamente.";
-//       return;
-//     }
-//     endTime = new Date(endTimeStr);
-//   }
-
-//   const minEndTime = new Date(startTime.getTime() + timeDelayMin * 60000);
-//   if (endTime < minEndTime) {
-//     document.getElementById("resultado").innerHTML = `
-//       ⚠️ <strong>Erro:</strong> A data final deve ser maior ou igual à data de início + time delay (${minEndTime.toLocaleString()})
-//     `;
-//     return;
-//   }
-
-//   const tempoTotalMin = (endTime - startTime) / 60000;
-//   const tempoStandbyMin = Math.min(tempoTotalMin, timeDelayMin) / 60;
-//   const tempoFuncionamentoHoras =
-//     Math.max(0, tempoTotalMin - timeDelayMin) / 60;
-
-//   if (modoDataFinal === "estimativa") {
-//     endTime = startTime;
-//   }
-
-//   const quiescente = 0.08;
-//   const energiaStandby = quiescente * tempoStandbyMin;
-
-//   const numTriggers = 2 + parseInt(caliperAtivado);
-//   const consumoFuncionamento =
-//     quiescente + (0.0004 * numTriggers * 3600) / periodoDisparo;
-//   const energiaFuncionamento = consumoFuncionamento * tempoFuncionamentoHoras;
-
-//   const energiaTotal = energiaStandby + energiaFuncionamento;
-//   const percentualConsumido = (energiaTotal / capacidadeTotal) * 100;
-
-//   const result = document.getElementById("resultado");
-//   const bateria = GenerateBattery(percentualConsumido);
-
-//   result.innerHTML = `
-//     <div>
-//       <span>Consumo da corrida:</span>
-//       <strong>${energiaTotal.toFixed(2)} Ah</strong>
-//     </div>
-//     ${bateria.innerHTML}
-//     <div class='detalhes'>
-//       <span>Stand by (${tempoStandbyMin.toFixed(
-//         1
-//       )} min): ${energiaStandby.toFixed(2)} Ah</span>
-//       <span> Funcionamento (${tempoFuncionamentoHoras.toFixed(
-//         2
-//       )} h): ${energiaFuncionamento.toFixed(2)} Ah</span>
-
-//     </div>
-//     ${
-//       GeneratePrevision(capacidadeTotal - energiaTotal, consumoFuncionamento)
-//         .innerHTML
-//     }
-//   `;
-// }
-
-// function GenerateBattery(percent) {
-//   const container = document.createElement("div");
-//   container.classList.add("battery_container");
-
-//   const battery = document.createElement("div");
-//   battery.classList.add("battery");
-
-//   const indicator = document.createElement("div");
-//   indicator.classList.add("indicator");
-//   indicator.style.width = 100 - percent > 10 ? 100 - percent + "%" : "100%";
-//   indicator.style.backgroundColor = 100 - percent < 10 ? "#f33" : "#3f3";
-//   battery.append(indicator);
-
-//   const capacity = document.createElement("div");
-//   capacity.classList.add("capacity");
-//   capacity.innerText =
-//     100 - percent > 0 ? (100 - percent).toFixed(2) + " %" : "Depletada";
-//   battery.append(capacity);
-
-//   container.append(battery);
-
-//   return container;
-// }
-
-// function GeneratePrevision(capacity, consumo) {
-//   const sobra = capacity / consumo;
-//   const container = document.createElement("div");
-//   container.classList.add("prevision_container");
-
-//   container.innerHTML = `
-//     <p>Sobraram <strong>${capacity.toFixed(
-//       2
-//     )} Ah</strong> nas mesmas condições dariam para mais ${sobra.toFixed(
-//     2
-//   )} Horas (${(sobra / 24).toFixed(2)} dias) de operação.</p>
-
-//   `;
-
-//   return container;
-// }
+  return container;
+}
