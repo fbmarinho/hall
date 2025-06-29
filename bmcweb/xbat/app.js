@@ -228,7 +228,7 @@ function Calcular() {
     const estimativa_horas_operacao = capacity_left / consumoOperacao;
     document.getElementById("estimativa").innerHTML = `
     <span>${
-      GenerateBattery((capacity_left / capacidadeTotal) * 100).outerHTML
+      GenerateBattery((capacity_left / 96) * 100).outerHTML
     }Capacidade restante: ${capacity_left.toFixed(2)} Ah</span>  
     <span>Estimativa (mesmos parâmetros): ${estimativa_horas_operacao.toFixed(
       2
