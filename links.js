@@ -205,9 +205,9 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "vpn",
     },
     {
-      label: "ARGO",
-      href: "https://ctm.bcdtravel.com.br/bcd/default.aspx?cliente=halliburton",
-      description: "Pedido de Hotel e Vôos",
+      label: "ARGO (BCD Travel)",
+      href: "https://www.argoit.com.br/wings/nx/login.aspx?cliente=halliburton#!/autenticacao/login",
+      description: "Hotel e Vôos - Novo Link",
     },
     {
       label: "EPOD",
