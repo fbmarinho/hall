@@ -377,6 +377,14 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "",
       type: "auth",
     },
+    {
+      label: "GeoForce",
+      href: "https://app-shell.geoforce.com/maps",
+      description: "Asset Tracker",
+      type: "",
+    },
+
+    
   ];
 
   links.sort((a, b) => {
