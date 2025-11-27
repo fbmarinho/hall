@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Halvue - Color Gradient Editor</title>
+  </head>
+  <body>
+    <div class="colorpallete">
+      <div id="inputs">
+        <input id="min" type="number" value="0.2" />
+        <input id="max" type="number" value="2000" />
+      </div>
+      <div id="pallete"></div>
+      <div id="colors">
+        <input id="color_start" type="color" value="#440000" />
+        <div>
+          <label for="steps">Pontos:</label>
+          <input id="steps" type="number" value="41" />
+        </div>
+
+        <select id="escala">
+          <option value="1">Escala Linear</option>
+          <option value="2">Escala Logatimica</option>
+          <option value="3">Escala Logatimica Inversa</option>
+        </select>
+        <input id="color_end" type="color" value="#FFFF00" />
+      </div>
+    </div>
+
+    <pre id="output"></pre>
+    <div class="buttons">
+      <input id="downloadButton" type="button" value="Download JSON" />
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
