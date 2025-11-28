@@ -1,3 +1,19 @@
+document.addEventListener("DOMContentLoaded", () => {
+  var min = document.getElementById("min");
+  var max = document.getElementById("max");
+  var color_start = document.getElementById("color_start");
+  var color_end = document.getElementById("color_end");
+  var steps = document.getElementById("steps");
+  var escala = document.getElementById("escala");
+  min.value = localStorage.getItem("min") || 0.2;
+  max.value = localStorage.getItem("max") || 2000;
+  color_start.value = localStorage.getItem("color_start") || "#FF0000";
+  color_end.value = localStorage.getItem("color_end") || "#FFFF00";
+  steps.value = localStorage.getItem("steps") || 10;
+  escala.value = localStorage.getItem("escala") || 1;
+  update();
+});
+
 function escalaLinear(min, max, steps) {
   const valores = [];
   for (let i = 0; i < steps; i++) {
@@ -25,11 +41,9 @@ function escalaLog(min, max, steps) {
   return valores;
 }
 
-function escalaLogInversa(min, max, steps) {
+function escalaLogInversa(min, max, steps, p = 4) {
   if (min <= 0) {
-    throw new Error(
-      "min deve ser maior que 0 para escala logarítmica inversa."
-    );
+    throw new Error("min deve ser maior que 0 para escala logarítmica");
   }
 
   const valores = [];
@@ -37,13 +51,10 @@ function escalaLogInversa(min, max, steps) {
   const logMax = Math.log(max);
 
   for (let i = 0; i < steps; i++) {
-    const t = i / (steps - 1); // 0 → 1
-    const logV = logMax - t * (logMax - logMin); // inversão
-    const v = Math.exp(logV);
-
-    valores.push(v);
+    const t = i / (steps - 1);
+    const f = 1 - Math.pow(1 - t, p); // começa rápido, termina lento
+    valores.push(min + (max - min) * f);
   }
-
   return valores;
 }
 
@@ -98,24 +109,39 @@ for (let i = 0; i < steps; i++) {
 }
 
 document.getElementById("min").addEventListener("change", (e) => {
+  localStorage.setItem("min", e.currentTarget.value);
   update();
 });
 
 document.getElementById("max").addEventListener("change", (e) => {
+  localStorage.setItem("max", e.currentTarget.value);
   update();
 });
 document.getElementById("color_start").addEventListener("change", (e) => {
+  localStorage.setItem("color_start", e.currentTarget.value);
   update();
 });
 document.getElementById("color_end").addEventListener("change", (e) => {
+  localStorage.setItem("color_end", e.currentTarget.value);
   update();
 });
 
 document.getElementById("steps").addEventListener("change", (e) => {
+  localStorage.setItem("steps", e.currentTarget.value);
   update();
 });
 
 document.getElementById("escala").addEventListener("change", (e) => {
+  var selected = e.currentTarget.value;
+  localStorage.setItem("escala", selected);
+  var mininput = document.getElementById("min");
+  if (selected != 1 && mininput.value == 0) {
+    alert("O valor mínimo nao pode ser 0 nessa escala.");
+    mininput.min = 0.1;
+    mininput.focus();
+  } else {
+    mininput.min = 0;
+  }
   update();
 });
 
@@ -129,25 +155,42 @@ function update() {
 
   var positions = [];
   if (escala == "1") {
-    positions = escalaLinear(0, 1, steps);
+    positions = escalaLinear(min, max, steps).map((e) => e / max);
   }
   if (escala == "2") {
-    positions = escalaLog(0.1, 1, steps);
+    positions = escalaLog(min, max, steps).map((e) => e / max);
   }
   if (escala == "3") {
-    positions = escalaLogInversa(0.1, 1, steps);
+    positions = escalaLogInversa(min, max, steps).map((e) => e / max);
   }
+
+  console.log(positions);
 
   var colorpallete = rgbToGradiente(color_start, color_end, steps);
   pallete.innerHTML = "";
   colorpallete.forEach((color) => {
     var block = document.createElement("div");
     block.style.width = "100%";
-    block.style.height = "10px";
+    block.style.height = "20px";
     block.style.backgroundColor = color;
 
     pallete.appendChild(block);
   });
+
+  var pointscontainer = document.getElementById("pointscontainer");
+  console.log(pointscontainer.offsetWidth);
+  pointscontainer.innerHTML = "";
+  for (var i = 0; i < steps; i++) {
+    var point = document.createElement("span");
+    point.classList.add("point");
+
+    var xpos =
+      Math.round(positions[i] * (pointscontainer.offsetWidth - steps * 3)) +
+      "px";
+    console.log(xpos);
+    point.style.left = xpos;
+    pointscontainer.appendChild(point);
+  }
 
   //console.log(min, max, color_start, color_end, steps, escala);
 
@@ -185,8 +228,6 @@ function exportJson(color_start, color_end, gradientes, max, min) {
     },
   };
 }
-
-update();
 
 document.getElementById("downloadButton").addEventListener("click", () => {
   const filename = "Halvue Color Gradient.json";
