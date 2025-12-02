@@ -14,6 +14,17 @@ function hash() {
   return Math.floor(Math.random() * 90000) + 10000;
 }
 
+function generatePreview(array) {
+  const preview = document.getElementById("preview");
+  preview.innerHTML = "";
+  for (var i = 0; i < array.length; i++) {
+    const colorswatch = document.createElement("div");
+    colorswatch.classList.add("colorswatch");
+    colorswatch.style.backgroundColor = array[i].color;
+    preview.append(colorswatch);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   //DOM elements
   const output = document.getElementById("json");
@@ -81,13 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const t = x / 200;
 
       const y = bezierPoint(t, p0.y, control.y, control.y, p3.y);
-      const yNorm = Number((y / 200).toFixed(2));
+      const yNorm = Number((y / 200).toFixed(4));
 
       if (!ys.has(yNorm)) {
         ys.add(yNorm);
         pontos.push({
-          x: Number(x.toFixed(2)),
-          position: Number((1 - yNorm).toFixed(2)),
+          x: Number(x.toFixed(4)),
+          position: Number((1 - yNorm).toFixed(4)),
           color: iDatatoHex(ctx.getImageData(x, 100, 1, 1)),
         });
       }
@@ -144,10 +155,20 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     // Recalcula e exibe pontos (com duas casas) — será chamado sempre que draw() for executado
-    console.table(gerarPontosBezier());
-    const gradients = formatGradients(gerarPontosBezier());
+
+    const pontos = gerarPontosBezier();
+    // console.table(pontos);
+
+    generatePreview(pontos);
+
+    const gradients = formatGradients(pontos);
     output.innerText = JSON.stringify(
-      exportJson("teste", color_start, color_end, gradients, "2000", "0.2"),
+      exportJson(
+        "teste",
+        pontos[0].color,
+        pontos[pontos.length - 1].color,
+        gradients
+      ),
       null,
       2
     );
@@ -302,16 +323,16 @@ function formatGradients(array) {
 function exportJson(filename, color_start, color_end, gradientes) {
   return {
     metadata: {
-      name: document.getElementById("filename").value + " [" + hash() + "]",
-      description: "",
+      name: document.getElementById("filename").value,
+      description: "Generated with Gradient Map Helper",
       type: "gradient_color_map",
     },
     resource: {
       aboveMaxColor: color_end,
       belowMinColor: color_start,
       gradients: gradientes,
-      maxValue: document.getElementById("max").value,
-      minValue: document.getElementById("min").value,
+      maxValue: parseFloat(document.getElementById("max").value),
+      minValue: parseFloat(document.getElementById("min").value),
       noDataColor: color_end,
       transparency: 0,
     },
@@ -322,7 +343,6 @@ document.getElementById("min").addEventListener("change", (e) => {
   localStorage.setItem("min", e.currentTarget.value);
   draw();
 });
-
 document.getElementById("max").addEventListener("change", (e) => {
   localStorage.setItem("max", e.currentTarget.value);
   draw();
@@ -342,9 +362,8 @@ document.getElementById("filename").addEventListener("change", (e) => {
 });
 
 document.getElementById("downloadButton").addEventListener("click", () => {
-  const filename =
-    document.getElementById("filename").value + " [" + hash() + "]";
-  const fileContent = output.innerText;
+  const filename = document.getElementById("filename").value;
+  const fileContent = document.getElementById("json").innerText;
   const mimeType = "text/plain"; // Or 'application/json', 'image/png', etc.
 
   // Create a Blob object from the file content
