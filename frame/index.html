@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>PLANEJAMENTO DE OPERAÇÃO DE PERFILAGEM LWD</title>
+  </head>
+  <body>
+    <div class="line">
+      <div class="field">
+        <label for="well">Poço:</label>
+        <input
+          type="text"
+          name="well"
+          id="well"
+          placeholder="Ex: 7-RO-194H-RJS"
+          class="store"
+        />
+      </div>
+      <div class="field">
+        <label for="section">Fase:</label>
+        <input
+          type="text"
+          name="section"
+          id="section"
+          placeholder="Ex: 12 1/4 x 13 1/2"
+          class="store"
+        />
+      </div>
+    </div>
+    <div class="line">
+      <div class="field">
+        <label for="rig">Sonda:</label>
+        <input
+          type="text"
+          name="rig"
+          id="rig"
+          placeholder="Ex: NS-60"
+          class="store"
+        />
+      </div>
+
+      <div class="field">
+        <label for="waterdepth">Lâmina d´água (LA):</label>
+        <input
+          type="number"
+          name="waterdepth"
+          id="waterdepth"
+          class="store"
+          min="0"
+        />
+      </div>
+      <div class="field">
+        <label for="rotarytable">Mesa Rotativa (MR):</label>
+        <input
+          type="number"
+          name="rotarytable"
+          id="rotarytable"
+          min="0"
+          class="store"
+        />
+      </div>
+      <div class="field">
+        <label for="lastshoe">Última Sapata:</label>
+        <input
+          type="text"
+          name="lastshoe"
+          id="lastshoe"
+          placeholder="Ex: 13 1/4 @ 3000m"
+          class="store"
+        />
+      </div>
+    </div>
+
+    <p>Flúido de perfuração:</p>
+    <div class="line">
+      <div class="field">
+        <label for="mudtype">Tipo:</label>
+        <select name="mudtype" id="mudtype">
+          <option value="sw">Água do Mar</option>
+          <option value="fba">Fluido base água</option>
+          <option value="fbo">Fluido base óleo</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="mudweight">Peso (ppg):</label>
+        <input
+          type="number"
+          name="mudweight"
+          id="mudweight"
+          class="store"
+          min="8.55"
+          max="15"
+          step="0.01"
+        />
+      </div>
+      <div class="field">
+        <label for="salinity">Salinidade (ppm):</label>
+        <input
+          type="number"
+          name="salinity"
+          id="salinity"
+          class="store"
+          min="0"
+          max="200000"
+          step="1"
+        />
+      </div>
+    </div>
+
+    <p>Representantes:</p>
+    <div class="line">
+      <div class="field">
+        <label for="advisorname">Halliburton:</label>
+        <input type="text" name="advisorname" id="advisorname" class="store" />
+      </div>
+      <div class="field">
+        <label for="advisoremail">Email:</label>
+        <input
+          type="email"
+          name="advisoremail"
+          id="advisoremail"
+          class="store"
+        />
+      </div>
+    </div>
+    <div class="line">
+      <div class="field">
+        <label for="clientname">Petrobras:</label>
+        <input type="text" name="clientname" id="clientname" class="store" />
+      </div>
+      <div class="field">
+        <label for="clientemail">Email:</label>
+        <input type="email" name="clientemail" id="clientemail" class="store" />
+      </div>
+    </div>
+
+    <div>
+      <span>Telemetria:</span>
+      <select name="telemetry" class="store">
+        <option value="neg">Negative Pulse</option>
+        <option value="pos">Positive Pulse</option>
+        <option value="em">EM</option>
+      </select>
+    </div>
+
+    <p>Aquisição em memória:</p>
+    <div class="line">
+      <div class="field">
+        <label for="expectedrop">ROP Esperado (m/h):</label>
+        <input
+          type="number"
+          name="expectedrop"
+          id="expectedrop"
+          class="store"
+        />
+      </div>
+      <div class="field">
+        <label for="sampleperiod">Sample period (s):</label>
+        <input
+          type="number"
+          name="sampleperiod"
+          id="sampleperiod"
+          min="6"
+          max="30"
+          step="1"
+          class="store"
+        />
+      </div>
+      <div id="ropmem" class="ropmem">
+        <div id="ropmem2am"></div>
+        <div id="ropmem1am"></div>
+      </div>
+    </div>
+
+    <p>Ferramentas (Duplo clique para adicionar):</p>
+
+    <div class="tools">
+      <div class="tool_selector">
+        <span>Raios Gama</span>
+        <select name="grtools" size="2" class="doubleclick">
+          <option value="agr">AGR</option>
+          <option value="dgr">DGR</option>
+          <option value="gm">GM (BaseStar)</option>
+        </select>
+      </div>
+      <div class="tool_selector">
+        <span>Resistividade</span>
+        <select name="restools" size="2" class="doubleclick">
+          <option value="afr">AFR</option>
+          <option value="adr">ADR</option>
+          <option value="p4d">EWR-P4D</option>
+          <option value="p4">EWR-P4</option>
+          <option value="m5">EWR-M5</option>
+        </select>
+      </div>
+      <div class="tool_selector">
+        <span>Densidade</span>
+        <select name="dentools" size="2" class="doubleclick">
+          <option value="ald">ALD</option>
+        </select>
+      </div>
+      <div class="tool_selector">
+        <span>Porosidade</span>
+        <select name="portools" size="2" class="doubleclick">
+          <option value="ctn">CTN</option>
+          <option value="xbat">XBAT</option>
+          <option value="qbat">QBAT</option>
+          <option value="mril">MRIL-WD</option>
+        </select>
+      </div>
+      <div class="tool_selector">
+        <span>Caliper</span>
+        <select name="caltools" size="2" class="doubleclick">
+          <option value="acal">ACAL</option>
+          <option value="pinger">Pinger</option>
+          <option value="xcal">XCAL</option>
+          <option value="pixstar">PixStar</option>
+        </select>
+      </div>
+    </div>
+
+    <p>Curvas</p>
+    <div class="tool_config">
+      <span>AGR</span>
+      <div class="config_options"><input type="checkbox" />AGRC</div>
+    </div>
+
+    <div class="tool_config">
+      <span>DGR</span>
+      <div class="config_options"><input type="checkbox" />SGRC</div>
+    </div>
+
+    <div class="tool_config">
+      <div class="config_options">
+        <table class="res_table">
+          <tr class="title">
+            <th colspan="3">EWR-P4D</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th class="phase">P</th>
+            <th class="atten">A</th>
+          </tr>
+          <tr>
+            <td>42"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>30"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>24"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>18"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tool_config">
+      <div class="config_options">
+        <table class="res_table">
+          <tr class="title">
+            <th colspan="3">EWR-P4</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th class="phase">P</th>
+            <th class="atten">A</th>
+          </tr>
+          <tr>
+            <td>39"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>27"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>15"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>09"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tool_config">
+      <div class="config_options">
+        <table class="res_table">
+          <tr class="title">
+            <th colspan="7">EWR-M5</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th colspan="3" class="phase">Phase</th>
+            <th colspan="3" class="atten">Atten</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th class="phase">L</th>
+            <th class="phase">M</th>
+            <th class="phase">H</th>
+            <th class="atten">L</th>
+            <th class="atten">M</th>
+            <th class="atten">H</th>
+          </tr>
+          <tr>
+            <td>48"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>40"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>32"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>24"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>16"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tool_config">
+      <div class="config_options">
+        <table class="res_table">
+          <tr class="title">
+            <th colspan="7">ADR</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th colspan="3" class="phase">Phase</th>
+            <th colspan="3" class="atten">Atten</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th class="phase">L</th>
+            <th class="phase">M</th>
+            <th class="phase">H</th>
+            <th class="atten">L</th>
+            <th class="atten">M</th>
+            <th class="atten">H</th>
+          </tr>
+          <tr>
+            <td>48"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>32"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>16"</td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="phase"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+            <td class="atten"><input type="checkbox" /></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
