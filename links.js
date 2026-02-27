@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       label: "OneView",
       href: "https://halliburton-az.us.enablon.io/HALOneView/go.aspx",
-      description: "🌟 Novo Link",
+      description: "Observation Cards",
       type: "auth",
     },
     {
@@ -261,8 +261,8 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       label: "SITOP",
-      href: "https://sitop.petrobras.com.br/",
-      description: "Situação operacional",
+      href: "https://atlas-re.petrobras.com.br/sitop",
+      description: "🌟 Novo Link",
       type: "br",
     },
     {
