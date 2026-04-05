@@ -302,6 +302,12 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "auth",
     },
     {
+      label: "HALVUE",
+      href: "https://brazil.halvue.petrolink.net/petrovue/rtv/home",
+      description: "Logar com Okta",
+      type: "",
+    },
+    {
       label: "SMART REQUEST",
       href: "https://srq.halliburton.7itec.io/#/auth/login",
       description: "Pedido de voucher 1001",
