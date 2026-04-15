@@ -374,7 +374,13 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       label: "SIRH",
       href: "https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpetroleo.lms.sapsf.com%2Flearning%2Fuser%2Fportal.do%3FselectorLocaleID%3DPortuguese%26siteID%3DPRESTADORES%26landingPage%3Dlogin&data=05%7C01%7CFelipe.Marinho%40halliburton.com%7Cf2b5415a6c82480b8dfe08dbf0d46568%7Cb7be76866f974db79081a23cf09a96b5%7C0%7C0%7C638368567297844933%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=0ZRB%2FwAwC%2FLGFSYrHtiAGBjwmHcNzo4xZM3Esrp1ZPY%3D&reserved=0",
-      description: "🌟 Novo site",
+      description: "Novo site",
+      type: "br",
+    },
+    {
+      label: "SAURON",
+      href: " https://sauron.petrobras.com.br/",
+      description: "🌟 Novo",
       type: "br",
     },
     {
@@ -389,8 +395,6 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "Asset Tracker",
       type: "",
     },
-
-    
   ];
 
   links.sort((a, b) => {
