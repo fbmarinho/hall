@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  padding: 8px 12px;
+  color: #efffff;
+  background-color: #a00;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 8px solid #ccc;
+}
+
+main {
+  flex: 1;
+  padding: 10px;
+}
+
+header .logo {
+  font-size: 16px;
+}
+header .buttons {
+  font-size: 10px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  background-color: #ccc;
+  color: #666;
+  padding: 8px 12px;
+}
+
+.rig_card {
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #999;
+}
+
+.rig_card > .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ccc;
+  padding: 4px 8px;
+}
+
+.rig_card > .title > .name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.rig_card > .title > .coord {
+  font-size: 8px;
+}
+
+.job {
+  display: flex;
+  font-size: 8px;
+  padding: 2px 12px;
+  justify-content: space-between;
+  background-color: #000;
+  color: #fff;
+}
+
+.bha {
+  display: flex;
+  font-size: 8px;
+  padding: 4px;
+  justify-content: center;
+  background-color: #444;
+  color: #fff;
+}
+
+.status {
+  display: flex;
+  font-size: 8px;
+  padding: 2px 12px;
+  justify-content: space-between;
+  background-color: #070;
+  color: #fff;
+}
+
+.division {
+  display: flex;
+  border: 1px solid #ccc;
+}
+
+.division > .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7px;
+  text-transform: uppercase;
+  writing-mode: vertical-lr;
+  padding: 4px;
+  transform: rotate(180deg);
+  background-color: #ccc;
+  color: #555;
+}
+
+.division > .list {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+
+.division > .controls {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+button {
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: rgb(98, 202, 98);
+  color: #fff;
+  border-radius: 4px;
+}
+
+.division > .list > .item {
+  display: flex;
+  font-size: 8px;
+}
+
+.division > .list > .item::before {
+  content: "•";
+  width: 8px;
+}
+
+.pendent {
+  background-color: #ffa !important;
+}
+
+.fixed {
+  background-color: rgb(120, 172, 255) !important;
+}
