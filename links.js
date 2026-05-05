@@ -205,9 +205,9 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "vpn",
     },
     {
-      label: "ARGO",
-      href: "https://ctm.bcdtravel.com.br/bcd/default.aspx?cliente=halliburton",
-      description: "Pedido de Hotel e Vôos",
+      label: "ARGO (BCD Travel)",
+      href: "https://www.argoit.com.br/wings/nx/login.aspx?cliente=halliburton#!/autenticacao/login",
+      description: "Hotel e Vôos - Novo Link",
     },
     {
       label: "EPOD",
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       label: "OneView",
       href: "https://halliburton-az.us.enablon.io/HALOneView/go.aspx",
-      description: "🌟 Novo Link",
+      description: "Observation Cards",
       type: "auth",
     },
     {
@@ -261,8 +261,8 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       label: "SITOP",
-      href: "https://sitop.petrobras.com.br/",
-      description: "Situação operacional",
+      href: "https://atlas-re.petrobras.com.br/sitop",
+      description: "🌟 Novo Link",
       type: "br",
     },
     {
@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       label: "CHECKIN",
-      href: "https://apps.powerapps.com/play/e/b7b00cae-53a9-e55b-8e73-007dd2536908/a/459c01a4-c1b4-4c6d-a2b1-5b5d75dd5294?tenantId=5b6f6241-9a57-4be4-8e50-1dfa72e79a57&hint=ff725aef-885a-451d-a0ae-9bc4f3375612&sourcetime=1697645806634&source=portal",
+      href: "https://apps.powerapps.com/play/e/b7b00cae-53a9-e55b-8e73-007dd2536908/a/1f7f0d54-6ca1-4695-95cb-310a2f2a694c?tenantId=5b6f6241-9a57-4be4-8e50-1dfa72e79a57",
       description: "Somente remoto",
       type: "remote",
     },
@@ -300,6 +300,12 @@ document.addEventListener("DOMContentLoaded", function () {
       href: "https://portal.folhacerta.com/login/",
       description: "",
       type: "auth",
+    },
+    {
+      label: "HALVUE",
+      href: "https://brazil.halvue.petrolink.net/petrovue/rtv/home",
+      description: "Logar com Okta",
+      type: "",
     },
     {
       label: "SMART REQUEST",
@@ -368,7 +374,13 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       label: "SIRH",
       href: "https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpetroleo.lms.sapsf.com%2Flearning%2Fuser%2Fportal.do%3FselectorLocaleID%3DPortuguese%26siteID%3DPRESTADORES%26landingPage%3Dlogin&data=05%7C01%7CFelipe.Marinho%40halliburton.com%7Cf2b5415a6c82480b8dfe08dbf0d46568%7Cb7be76866f974db79081a23cf09a96b5%7C0%7C0%7C638368567297844933%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=0ZRB%2FwAwC%2FLGFSYrHtiAGBjwmHcNzo4xZM3Esrp1ZPY%3D&reserved=0",
-      description: "🌟 Novo site",
+      description: "Novo site",
+      type: "br",
+    },
+    {
+      label: "SAURON",
+      href: " https://sauron.petrobras.com.br/",
+      description: "🌟 Novo",
       type: "br",
     },
     {
@@ -376,6 +388,12 @@ document.addEventListener("DOMContentLoaded", function () {
       href: "https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Flauncher.myapps.microsoft.com%2Fapi%2Fsignin%2F3c5fddc9-e9d2-4f8c-a80a-71fb82100c1a%3FtenantId%3Db7be7686-6f97-4db7-9081-a23cf09a96b5&data=05%7C01%7CFelipe.Marinho%40halliburton.com%7C259105ad5f81490aa46e08dbd1b30b38%7Cb7be76866f974db79081a23cf09a96b5%7C0%7C0%7C638334339147171176%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qIj8XzmVeuxi344NgK2Lib%2FjAdfOyhheYMx0hEsufRQ%3D&reserved=0",
       description: "",
       type: "auth",
+    },
+    {
+      label: "GeoForce",
+      href: "https://app-shell.geoforce.com/maps",
+      description: "Asset Tracker",
+      type: "",
     },
   ];
 

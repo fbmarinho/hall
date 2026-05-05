@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Halvue Gradient Color Helper</title>
+  </head>
+  <body>
+    <div class="flexcol">
+      <div>
+        <div id="colors">
+          <input type="color" id="start_color" value="#FF0000" />
+          <span class="title">Color Gradient</span>
+          <input type="color" id="end_color" value="#FFFF00" />
+        </div>
+        <canvas id="canvas"></canvas>
+        <div id="controls">
+          <input id="lin" type="button" value="Linear" class="button" />
+          <input id="log" type="button" value="Log" class="button" />
+          <input id="loginv" type="button" value="Inv Log" class="button" />
+        </div>
+      </div>
+      <div id="curve">
+        <input id="min" type="number" value="0.2" class="textfield" />
+        <span class="title">Curve values</span>
+        <input id="max" type="number" value="2000" class="textfield" />
+      </div>
+      <div id="preview"></div>
+      <div id="export">
+        <div class="field">
+          <label for="filename">File name:</label>
+          <input
+            type="text"
+            id="filename"
+            placeholder="(v1) Res Image"
+            class="textfield"
+          />
+        </div>
+
+        <input
+          id="downloadButton"
+          type="button"
+          value="Download JSON"
+          class="button buttonlarge"
+        />
+      </div>
+    </div>
+    <div id="output">
+      <pre id="json"></pre>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
