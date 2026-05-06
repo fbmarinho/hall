@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Downlink Advisor</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Downlink Advisor</h1>
+      <div id="controls">
+        <div>
+          Busmaster:
+          <select id="downlink-type">
+            <option value="hcim">HCIM</option>
+            <option value="bst">Basestar</option>
+            <option value="bst">ICruise</option>
+          </select>
+        </div>
+        <div>
+          <label for="downlink">Threshold (Z7):</label>
+          <input type="number" id="threshold" value="300" min="0" max="2000" />
+        </div>
+        <div>
+          <label for="downlink">VPA Mean (Z2):</label>
+          <input type="number" id="vpa" value="800" min="0" max="65535" />
+        </div>
+        <div>
+          <label for="downlink">VPA Standard Deviation (Z1):</label>
+          <input type="number" id="vpasd" value="50" min="0" max="65535" />
+        </div>
+        <div>
+          <label for="downlink">CW SD Noise Standard Deviation (Z6):</label>
+          <input type="number" id="noise" value="50" min="0" max="65535" />
+        </div>
+        <div>
+          <label for="downlink">NDP (Z5):</label>
+          <select id="downlink-type">
+            <option value="increasing">Aumentando sozinho</option>
+            <option value="stable">Estável</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <canvas id="canvas"></canvas>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
