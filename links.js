@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var clickcount = 0;
   lastInfo.addEventListener("click", () => {
+    console.log(clickcount);
     const lastCommits = document.getElementById("lastcommits");
     if (lastCommits.style.display == "none") {
       lastCommits.style.display = "flex";
@@ -46,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
       lastCommits.style.display = "none";
     }
     if (clickcount >= 3) {
-      const divisorias = document.getElementsByClassName("divisoria");
-      divisorias[3].classList.remove("hidden");
+      const remote = document.getElementById("aba_remote");
+      remote.classList.remove("hidden");
     }
     clickcount++;
   });
@@ -290,6 +291,25 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "remote",
     },
     {
+      label: "R2R Control",
+      href: "https://halliburton.sharepoint.com/:x:/r/sites/SperryRemoteOperationsBR/_layouts/15/doc2.aspx?sourcedoc=%7Bd9957286-539a-474b-a332-c2e85064e507%7D&action=edit&wdexp=TEAMS-TREATMENT&wdenableroaming=1&wdlcid=en-US&wdorigin=Other&wdredirectionreason=Force_SingleStepBoot&wdinitialsession=af6a0f37-25eb-0268-a667-84194c66962c&wdrldsc=2&wdrldc=1&wdrldr=Unknown&isSPOFile=1&ovuser=b7be7686-6f97-4db7-9081-a23cf09a96b5%2CFelipe.Marinho%40halliburton.com&web=1&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIxNDE1LzI2MDUxNDE2NzE1In0%3D",
+      description: "Somente pessoal autorizado",
+      type: "remote",
+    },
+    {
+      label: "Operações Remotas",
+      href: "https://halliburton.sharepoint.com/:x:/s/lasperry/Br/IQDOIrYZ-fQKT6TKVX-dbNjiAaJPUK7elV6Aa-iq-_4BkEs?e=ZcIsK4",
+      description: "Status de solicitações",
+      type: "remote",
+    },
+    {
+      label: "Job Schedule",
+      href: "https://app.powerbi.com/groups/me/apps/abd31392-33fa-476a-bee4-34f73c789df6/reports/f955c2db-1670-4fa6-aa5f-e4082a1dcf32/1c82b5d1cdffb6231754?ctid=b7be7686-6f97-4db7-9081-a23cf09a96b5&experience=power-bi",
+      description: "Status de Trabahos",
+      type: "remote",
+    },
+
+    {
       old: false,
       label: "LOGÍSTICA (PESSOAL)",
       href: "https://srq.halliburton.7itec.io/login",
@@ -314,6 +334,13 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "auth",
     },
     {
+      label: "Sperry Uploader",
+      href: "https://sperrydigital.ienergy.halliburton.com/sperry-uploader/",
+      description: "🌟 Novo",
+      type: "auth",
+    },
+    {
+      old: true,
       label: "Logix Data",
       href: "https://halliburton.sharepoint.com/:f:/s/LOGIXData/EttAzj13p_9OjstJoJhuTEwBdzh1jv94H689OGb02HfZJg?e=So4Xav",
       description: "",
