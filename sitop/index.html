@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Consulta SITOP</title>
+  </head>
+
+  <body>
+    <h2>Login SITOP</h2>
+
+    <label>
+      Usuário:
+      <input type="text" id="usuario" />
+    </label>
+
+    <br /><br />
+
+    <label>
+      Senha:
+      <input type="password" id="senha" />
+    </label>
+
+    <br /><br />
+
+    <button onclick="executar()">Consultar SITOP</button>
+
+    <h3>Resultado:</h3>
+
+    <pre id="resultado"></pre>
+
+    <script>
+      async function consultarSITOP(usuario, senha) {
+        // Login
+        const login = await fetch(
+          "https://csdpocos.petrobras.com.br/api/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              user: usuario,
+              password: senha,
+            }),
+          },
+        );
+
+        if (!login.ok) throw new Error(`Erro no login: HTTP ${login.status}`);
+
+        const { token } = await login.json();
+
+        // Consulta SITOP
+        const response = await fetch(
+          "https://csdpocos.petrobras.com.br/holistico/api/octopus/sitop/",
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`,
+              App: "holistico",
+            },
+          },
+        );
+
+        if (!response.ok)
+          throw new Error(`Erro SITOP: HTTP ${response.status}`);
+
+        return await response.json();
+      }
+
+      async function executar() {
+        const usuario = document.getElementById("usuario").value;
+        const senha = document.getElementById("senha").value;
+
+        const resultado = document.getElementById("resultado");
+
+        resultado.textContent = "Consultando...";
+
+        try {
+          const dados = await consultarSITOP(usuario, senha);
+
+          console.log(dados);
+
+          resultado.textContent = JSON.stringify(dados, null, 2);
+        } catch (erro) {
+          console.error(erro);
+
+          resultado.textContent = "Erro: " + erro.message;
+        }
+      }
+    </script>
+  </body>
+</html>
