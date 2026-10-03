@@ -254,6 +254,14 @@ document.addEventListener("DOMContentLoaded", function () {
       label: "OFF Voos",
       href: "https://offvoos.com.br/voos",
       description: "🌟 Status de Vôos (Não oficial)",
+      type: "",
+    },
+
+    {
+      icon: "helicopter",
+      label: "Transporte Aéreo",
+      href: "https://transporteaereo.petrobras.com.br/A18040_App/Generic?PageUrl=paineldevoos&MenuName=Painel%20de%20voos",
+      description: "🌟 Status de Vôos (BR)",
       type: "br",
     },
 
