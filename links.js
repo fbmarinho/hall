@@ -248,6 +248,15 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "Status de Vôos",
       type: "br",
     },
+
+    {
+      icon: "helicopter",
+      label: "OFF Voos",
+      href: "https://offvoos.com.br/voos",
+      description: "🌟 Status de Vôos (Não oficial)",
+      type: "br",
+    },
+
     {
       label: "Halliburton TV",
       href: "https://www.halliburton.tv/",
