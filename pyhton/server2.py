@@ -3,7 +3,7 @@ import struct
 import time
 
 HOST = '0.0.0.0'
-PORT = 52107 #NPDET
+PORT = 52106 #NPDET
 TIMEOUT_CLIENTE = 10.0
 
 servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -1,0 +1,29 @@
+<ConfigurationViewModels>
+    <ConfigurationViewModel>
+        <DisplayName>VDF X</DisplayName>
+        <BitWidth>XX</BitWidth>
+        <MinPulseTime>XX</MinPulseTime>
+        <PulseWidth>XXX</PulseWidth>
+        <ToolViewModels>
+            <ToolViewModel>
+                <ToolID>NOME</ToolID>
+                <RealtimeItemsForTool>
+                    <RealtimeItemCollection>
+                        <VDFItemList>
+                            <VDFItem>
+                                <Mnemonic>ABC</Mnemonic>
+                                <DataDependent>True or False</DataDependent>
+                                <Description>Description</Description>
+                                <NumberOfBits>XXX</NumberOfBits>
+                            </VDFItem>
+                        </VDFItemList>
+                        <SamplePeriod>XXX</SamplePeriod>
+                        <DataDensityInBaseUnits>XXX.XX</DataDensityInBaseUnits>
+                        <IsSelected>true</IsSelected>
+                    </RealtimeItemCollection>
+                </RealtimeItemsForTool>
+            </ToolViewModel>
+        </ToolViewModels>
+    </ConfigurationViewModel>
+</ConfigurationViewModels>
+

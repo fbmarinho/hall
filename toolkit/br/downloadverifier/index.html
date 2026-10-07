@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LWD Download Analyzer</title>
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --primary-hover: #1d4ed8;
+        --bg-color: #f8fafc;
+        --card-bg: #ffffff;
+        --text-color: #1e293b;
+        --border-color: #e2e8f0;
+        --drag-bg: #eff6ff;
+        --success-color: #16a34a;
+        --danger-color: #dc2626;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+        color: #0f172a;
+      }
+
+      p.subtitle {
+        color: #64748b;
+        margin-bottom: 24px;
+      }
+
+      .upload-section {
+        border: 2px dashed var(--border-color);
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+        background: #fdfdfd;
+        margin-bottom: 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .upload-section.dragover {
+        background-color: var(--drag-bg);
+        border-color: var(--primary-color);
+      }
+
+      .upload-section p {
+        margin: 10px 0 0 0;
+        color: #64748b;
+        font-size: 0.95rem;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .file-label {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.2s;
+      }
+
+      .file-label:hover {
+        background-color: var(--primary-hover);
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        text-align: left;
+      }
+
+      th,
+      td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.9rem;
+      }
+
+      th {
+        background-color: #f1f5f9;
+        color: #475569;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.2s;
+      }
+
+      th:hover {
+        background-color: #e2e8f0;
+      }
+
+      td {
+        text-align: center;
+      }
+
+      td:first-child {
+        text-align: left;
+      }
+
+      td:nth-child(2),
+      td:nth-child(3) {
+        text-align: left;
+      }
+
+      tr:hover {
+        background-color: #f8fafc;
+      }
+
+      tr.circulacao-row {
+        background-color: #fef3c7 !important;
+      }
+
+      tr.circulacao-row:hover {
+        background-color: #fde68a !important;
+      }
+
+      tr.datadependent-row {
+        background-color: #ffe4e6 !important;
+      }
+
+      tr.datadependent-row:hover {
+        background-color: #fecdd3 !important;
+      }
+
+      .badge-circulacao {
+        background-color: #d97706;
+        color: white;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        display: inline-block;
+      }
+
+      .badge-fe {
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .badge-ok {
+        color: var(--success-color);
+        font-weight: bold;
+        background-color: #dcfce7;
+        padding: 4px 8px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+
+      .badge-fail {
+        color: var(--danger-color);
+        font-weight: bold;
+        background-color: #fee2e2;
+        padding: 4px 8px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+
+      .btn-detail {
+        background-color: #0f172a;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: background-color 0.2s;
+      }
+
+      .btn-detail:hover {
+        background-color: #334155;
+      }
+
+      .alert {
+        padding: 12px;
+        background-color: #fef2f2;
+        color: #991b1b;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        border: 1px solid #f87171;
+        display: none;
+      }
+
+      .mmc-box {
+        background-color: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1e40af;
+        padding: 12px 16px;
+        border-radius: 6px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-align: center;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 24px;
+        border: 1px solid #888;
+        width: 95%;
+        max-width: 1000px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close-btn:hover {
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>LWD Download Analyzer</h1>
+      <p class="subtitle">
+        Envie ou arraste um ficheiro compatível para visualizar as configurações
+        e validações estruturadas.
+      </p>
+
+      <div id="errorAlert" class="alert"></div>
+
+      <div class="upload-section" id="dropZone">
+        <label for="xmlFile" class="file-label">Selecionar Ficheiro</label>
+        <input type="file" id="xmlFile" accept=".mwd,.itom" />
+        <p>
+          ou arraste o ficheiro <strong>.mwd</strong> ou
+          <strong>.itom</strong> aqui
+        </p>
+      </div>
+
+      <div class="table-responsive">
+        <table id="resultTable">
+          <thead>
+            <tr>
+              <th rowspan="2" style="vertical-align: middle">DisplayName</th>
+              <th rowspan="2" style="vertical-align: middle">Tipo / Status</th>
+              <th rowspan="2" style="vertical-align: middle">BitWidth (ms)</th>
+              <th rowspan="2" style="vertical-align: middle">
+                MinPulseTime (s)
+              </th>
+              <th rowspan="2" style="vertical-align: middle">
+                PulseWidth (ms)
+              </th>
+              <th colspan="3">Check</th>
+              <th rowspan="2" style="vertical-align: middle">
+                Maior ROP (Sample Period)
+              </th>
+              <th rowspan="2" style="vertical-align: middle">
+                Ferramentas Selecionadas
+              </th>
+            </tr>
+            <tr>
+              <th>MPT >= 4PW</th>
+              <th>PW >= 2.5BW</th>
+              <th>MPT >= 10BW</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="10" style="text-align: center; color: #64748b">
+                Nenhum ficheiro carregado ou dados não encontrados.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal para exibir a lista detalhada unificada -->
+    <div id="detailModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2
+          id="modalTitle"
+          style="margin-top: 0; font-size: 1.2rem; color: #0f172a"
+        >
+          Ferramentas Selecionadas
+        </h2>
+        <div id="modalMMCContainer"></div>
+        <div id="modalBody" style="max-height: 500px; overflow-y: auto">
+          <!-- Tabela única injetada via JS -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("xmlFile");
+      const errorAlert = document.getElementById("errorAlert");
+      let parsedViewModels = [];
+      let currentModalRows = [];
+      let sortDirection = {};
+
+      ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+        dropZone.addEventListener(
+          eventName,
+          (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          },
+          false,
+        );
+      });
+
+      ["dragenter", "dragover"].forEach((eventName) => {
+        dropZone.addEventListener(
+          eventName,
+          () => dropZone.classList.add("dragover"),
+          false,
+        );
+      });
+
+      ["dragleave", "drop"].forEach((eventName) => {
+        dropZone.addEventListener(
+          eventName,
+          () => dropZone.classList.remove("dragover"),
+          false,
+        );
+      });
+
+      dropZone.addEventListener("drop", (e) => {
+        const files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          processFile(files[0]);
+        }
+      });
+
+      fileInput.addEventListener("change", function (event) {
+        if (event.target.files && event.target.files.length > 0) {
+          processFile(event.target.files[0]);
+        }
+      });
+
+      function processFile(file) {
+        errorAlert.style.display = "none";
+        errorAlert.textContent = "";
+
+        const fileName = file.name.toLowerCase();
+        if (!fileName.endsWith(".mwd") && !fileName.endsWith(".itom")) {
+          showError(
+            "Formato de ficheiro inválido! Por favor, envie apenas ficheiros com extensão .mwd ou .itom.",
+          );
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          try {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(e.target.result, "text/xml");
+
+            const parseError = xmlDoc.querySelector("parsererror");
+            if (parseError) {
+              throw new Error(
+                "Erro ao interpretar o conteúdo XML do ficheiro. Verifique se o formato está correto.",
+              );
+            }
+
+            let viewModels = xmlDoc.getElementsByTagName(
+              "ConfigurationViewModel",
+            );
+            if (viewModels.length === 0) {
+              viewModels = xmlDoc.querySelectorAll(
+                "ConfigurationViewModels ConfigurationViewModel",
+              );
+            }
+
+            const tbody = document.querySelector("#resultTable tbody");
+            tbody.innerHTML = "";
+            parsedViewModels = [];
+
+            if (viewModels.length === 0) {
+              tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; color: #d97706;">Nenhuma tag &lt;ConfigurationViewModel&gt; encontrada neste ficheiro.</td></tr>`;
+              return;
+            }
+
+            Array.from(viewModels).forEach((vm, index) => {
+              parsedViewModels.push(vm);
+
+              const displayName = getTagText(vm, "DisplayName");
+              const bitWidthStr = getTagText(vm, "BitWidth");
+              const minPulseTimeStr = getTagText(vm, "MinPulseTime");
+              const pulseWidthStr = getTagText(vm, "PulseWidth");
+
+              const bw = parseFloat(bitWidthStr);
+              const mpt = parseFloat(minPulseTimeStr);
+              const pw = parseFloat(pulseWidthStr);
+
+              const mptMs = !isNaN(mpt) ? mpt * 1000 : NaN;
+
+              const check1 =
+                !isNaN(mptMs) && !isNaN(pw) ? mptMs >= 4 * pw : false;
+              const check2 = !isNaN(pw) && !isNaN(bw) ? pw >= 2.5 * bw : false;
+              const check3 =
+                !isNaN(mptMs) && !isNaN(bw) ? mptMs >= 10 * bw : false;
+
+              let selectedCount = countSelectedTools(vm);
+              let maxRopInfo = calcularMaiorROP(vm);
+
+              let isCirculacao = temPWComSamplePeriodMenorQue35(vm);
+              let statusColumn = isCirculacao
+                ? `<span class="badge-circulacao">Circulação</span>`
+                : `<span class="badge-fe">FE</span>`;
+
+              const row = document.createElement("tr");
+              if (isCirculacao) {
+                row.classList.add("circulacao-row");
+              }
+
+              row.innerHTML = `
+                            <td>${displayName}</td>
+                            <td>${statusColumn}</td>
+                            <td>${bitWidthStr}</td>
+                            <td>${minPulseTimeStr}</td>
+                            <td>${pulseWidthStr}</td>
+                            <td>${renderBadge(check1)}</td>
+                            <td>${renderBadge(check2)}</td>
+                            <td>${renderBadge(check3)}</td>
+                            <td style="font-weight: 600; color: #2563eb;">${maxRopInfo}</td>
+                            <td><button class="btn-detail" onclick="openToolDetails(${index})">Ver Lista (${selectedCount})</button></td>
+                        `;
+              tbody.appendChild(row);
+            });
+          } catch (error) {
+            showError(error.message);
+          }
+        };
+
+        reader.readAsText(file, "ISO-8859-1");
+      }
+
+      function countSelectedTools(vm) {
+        let count = 0;
+        const toolViewModels = vm.getElementsByTagName("ToolViewModel");
+        for (let tvm of toolViewModels) {
+          const collections = tvm.getElementsByTagName(
+            "RealtimeItemCollection",
+          );
+          for (let col of collections) {
+            const isSelected =
+              col.getElementsByTagName("IsSelected")[0] ||
+              col.getElementsByTagName("isSelected")[0];
+            if (
+              isSelected &&
+              isSelected.textContent.trim().toLowerCase() === "true"
+            ) {
+              const items = col.getElementsByTagName("VDFItem");
+              count += items.length;
+            }
+          }
+        }
+        return count;
+      }
+
+      function temPWComSamplePeriodMenorQue35(vm) {
+        const toolViewModels = vm.getElementsByTagName("ToolViewModel");
+        for (let tvm of toolViewModels) {
+          const collections = tvm.getElementsByTagName(
+            "RealtimeItemCollection",
+          );
+          for (let col of collections) {
+            const isSelected =
+              col.getElementsByTagName("IsSelected")[0] ||
+              col.getElementsByTagName("isSelected")[0];
+            if (
+              isSelected &&
+              isSelected.textContent.trim().toLowerCase() === "true"
+            ) {
+              const rawSamplePeriod = parseFloat(
+                getTagText(col, "SamplePeriod"),
+              );
+              if (!isNaN(rawSamplePeriod) && rawSamplePeriod < 35) {
+                const vdfItems = col.getElementsByTagName("VDFItem");
+                for (let item of vdfItems) {
+                  const mnemonic = getTagText(item, "Mnemonic").toUpperCase();
+                  if (mnemonic === "PW") {
+                    return true;
+                  }
+                }
+              }
+            }
+          }
+        }
+        return false;
+      }
+
+      function calcularMaiorROP(vm) {
+        let maxRop = -1;
+        let correspondingSamplePeriod = "-";
+
+        const toolViewModels = vm.getElementsByTagName("ToolViewModel");
+        for (let tvm of toolViewModels) {
+          const collections = tvm.getElementsByTagName(
+            "RealtimeItemCollection",
+          );
+          for (let col of collections) {
+            const isSelected =
+              col.getElementsByTagName("IsSelected")[0] ||
+              col.getElementsByTagName("isSelected")[0];
+            if (
+              isSelected &&
+              isSelected.textContent.trim().toLowerCase() === "true"
+            ) {
+              const rawSamplePeriod = parseFloat(
+                getTagText(col, "SamplePeriod"),
+              );
+              const spRounded = !isNaN(rawSamplePeriod)
+                ? Math.round(rawSamplePeriod)
+                : null;
+
+              if (spRounded !== null && spRounded > 0) {
+                const ropValue = (0.3048 / spRounded) * 3600;
+                if (ropValue > maxRop) {
+                  maxRop = ropValue;
+                  correspondingSamplePeriod = spRounded;
+                }
+              }
+            }
+          }
+        }
+
+        if (maxRop === -1) return "-";
+        return `${Math.round(maxRop)} m/h (${correspondingSamplePeriod}s)`;
+      }
+
+      function mdc(a, b) {
+        return b === 0 ? a : mdc(b, a % b);
+      }
+
+      function mmc(a, b) {
+        if (a === 0 || b === 0) return 0;
+        return Math.abs(a * b) / mdc(a, b);
+      }
+
+      function calcularMMCGeral(periodos) {
+        if (periodos.length === 0) return 0;
+        let resultado = periodos[0];
+        for (let i = 1; i < periodos.length; i++) {
+          resultado = mmc(resultado, periodos[i]);
+        }
+        return resultado;
+      }
+
+      function openToolDetails(vmIndex) {
+        const vm = parsedViewModels[vmIndex];
+        if (!vm) return;
+
+        const modal = document.getElementById("detailModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalMMCContainer = document.getElementById("modalMMCContainer");
+
+        const displayName = getTagText(vm, "DisplayName");
+        modalTitle.textContent = `Ferramentas Selecionadas (${displayName})`;
+        modalMMCContainer.innerHTML = "";
+        currentModalRows = [];
+        sortDirection = {};
+
+        const periodsSet = new Set();
+        const toolViewModels = vm.getElementsByTagName("ToolViewModel");
+
+        for (let tvm of toolViewModels) {
+          let toolID = getTagText(tvm, "ToolID");
+          toolID = toolID.replace(/_id$/i, "");
+
+          const collections = tvm.getElementsByTagName(
+            "RealtimeItemCollection",
+          );
+
+          for (let col of collections) {
+            const isSelected =
+              col.getElementsByTagName("IsSelected")[0] ||
+              col.getElementsByTagName("isSelected")[0];
+            if (
+              isSelected &&
+              isSelected.textContent.trim().toLowerCase() === "true"
+            ) {
+              const rawSamplePeriod = parseFloat(
+                getTagText(col, "SamplePeriod"),
+              );
+              const samplePeriodRounded = !isNaN(rawSamplePeriod)
+                ? Math.round(rawSamplePeriod)
+                : "-";
+
+              // Arredonda Data Density para 2 casas decimais se for numérico
+              let dataDensity = getTagText(col, "DataDensityInBaseUnits");
+              const densityNum = parseFloat(dataDensity);
+              if (!isNaN(densityNum)) {
+                dataDensity = densityNum.toFixed(2);
+              }
+
+              let ropText = "-";
+              let ropValNumeric = 0;
+              if (!isNaN(rawSamplePeriod) && rawSamplePeriod > 0) {
+                const ropValue = (0.3048 / rawSamplePeriod) * 3600;
+                ropValNumeric = Math.round(ropValue);
+                ropText = ropValNumeric + " m/h";
+              }
+
+              const vdfItems = col.getElementsByTagName("VDFItem");
+              let hasDataDependentFalse = false;
+
+              for (let item of vdfItems) {
+                const mnemonic = getTagText(item, "Mnemonic");
+                const dataDependent = getTagText(item, "DataDependent");
+                const description = getTagText(item, "Description");
+                const nBits = getTagText(item, "NumberOfBits");
+
+                const dataDepLower = dataDependent.trim().toLowerCase();
+                if (dataDepLower === "false") {
+                  hasDataDependentFalse = true;
+                }
+
+                const isNotFalse = dataDepLower !== "false";
+
+                currentModalRows.push({
+                  tool: toolID,
+                  mnemonic: mnemonic,
+                  description: description,
+                  samplePeriod: samplePeriodRounded,
+                  dataDensity: dataDensity,
+                  rop: ropText,
+                  ropNumeric: ropValNumeric,
+                  bits: nBits,
+                  isNotFalse: isNotFalse,
+                });
+              }
+
+              if (
+                hasDataDependentFalse &&
+                samplePeriodRounded !== "-" &&
+                samplePeriodRounded > 0
+              ) {
+                periodsSet.add(samplePeriodRounded);
+              }
+            }
+          }
+        }
+
+        const arrayPeriodos = Array.from(periodsSet);
+        const menorMultiploComum = calcularMMCGeral(arrayPeriodos);
+        modalMMCContainer.innerHTML = `<div class="mmc-box">Menor Múltiplo Comum (MMC) dos Sample Periods (DataDependent = False): ${menorMultiploComum}</div>`;
+
+        renderModalTable();
+        modal.style.display = "block";
+      }
+
+      function renderModalTable() {
+        const modalBody = document.getElementById("modalBody");
+        if (currentModalRows.length === 0) {
+          modalBody.innerHTML = `<p style="color: #64748b; text-align: center;">Nenhum item encontrado.</p>`;
+          return;
+        }
+
+        let html = `<table>`;
+        html += `<thead><tr>`;
+        html += `<th onclick="sortTable('tool')">Tool ↕</th>`;
+        html += `<th onclick="sortTable('mnemonic')">Mnemonic ↕</th>`;
+        html += `<th onclick="sortTable('description')">Description ↕</th>`;
+        html += `<th onclick="sortTable('samplePeriod')">Sample Period ↕</th>`;
+        html += `<th onclick="sortTable('dataDensity')">Data Density ↕</th>`;
+        html += `<th onclick="sortTable('ropNumeric')">ROP (m/h) ↕</th>`;
+        html += `<th onclick="sortTable('bits')">Bits ↕</th>`;
+        html += `</tr></thead><tbody>`;
+
+        currentModalRows.forEach((row) => {
+          const rowClass = row.isNotFalse ? `class="datadependent-row"` : "";
+          html += `<tr ${rowClass}>`;
+          html += `<td style="text-align:left; font-weight:600;">${row.tool}</td>`;
+          html += `<td style="text-align:left;">${row.mnemonic}</td>`;
+          html += `<td style="text-align:left;">${row.description}</td>`;
+          html += `<td>${row.samplePeriod}</td>`;
+          html += `<td>${row.dataDensity}</td>`;
+          html += `<td>${row.rop}</td>`;
+          html += `<td>${row.bits}</td>`;
+          html += `</tr>`;
+        });
+
+        html += `</tbody></table>`;
+        modalBody.innerHTML = html;
+      }
+
+      function sortTable(key) {
+        if (!sortDirection[key]) {
+          sortDirection[key] = "asc";
+        } else {
+          sortDirection[key] = sortDirection[key] === "asc" ? "desc" : "asc";
+        }
+
+        const dir = sortDirection[key];
+
+        currentModalRows.sort((a, b) => {
+          let valA = a[key];
+          let valB = b[key];
+
+          if (!isNaN(parseFloat(valA)) && !isNaN(parseFloat(valB))) {
+            valA = parseFloat(valA);
+            valB = parseFloat(valB);
+          } else {
+            valA = String(valA).toLowerCase();
+            valB = String(valB).toLowerCase();
+          }
+
+          if (valA < valB) return dir === "asc" ? -1 : 1;
+          if (valA > valB) return dir === "asc" ? 1 : -1;
+          return 0;
+        });
+
+        renderModalTable();
+      }
+
+      function closeModal() {
+        document.getElementById("detailModal").style.display = "none";
+      }
+
+      window.onclick = function (event) {
+        const modal = document.getElementById("detailModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      function renderBadge(isValid) {
+        if (isValid) {
+          return `<span class="badge-ok">OK</span>`;
+        } else {
+          return `<span class="badge-fail">FALHA</span>`;
+        }
+      }
+
+      function showError(message) {
+        errorAlert.style.display = "block";
+        errorAlert.textContent = message;
+        document.querySelector("#resultTable tbody").innerHTML =
+          `<tr><td colspan="10" style="text-align: center; color: #64748b;">Nenhum dado exibido devido a um erro.</td></tr>`;
+      }
+
+      function getTagText(parent, tagName) {
+        const tag = parent.getElementsByTagName(tagName)[0];
+        return tag && tag.textContent ? tag.textContent.trim() : "-";
+      }
+    </script>
+  </body>
+</html>
