@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analisador de Relatórios SDC/FDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-50 min-h-screen text-slate-800">
+    <div class="w-full px-4 py-6">
+      <header class="mb-6 max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">
+          Analisador de Relatórios (SDC / FDC)
+        </h1>
+        <p class="text-slate-600">
+          Carregue vários arquivos HTML de relatórios para extrair
+          automaticamente o Poço, Corrida, Total Comms, Serial No Resp e a
+          Porcentagem.
+        </p>
+      </header>
+
+      <!-- Painel de Controle -->
+      <div
+        class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 mb-6 max-w-7xl mx-auto"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+          <!-- Seletor de Arquivos -->
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-slate-700 mb-2"
+              >Selecionar Arquivos HTML</label
+            >
+            <input
+              type="file"
+              id="fileInput"
+              multiple
+              accept=".html,.htm"
+              class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer border border-slate-300 rounded-lg"
+            />
+          </div>
+
+          <!-- Filtro por Total Comms -->
+          <div>
+            <label
+              for="filterComms"
+              class="block text-sm font-medium text-slate-700 mb-2"
+              >Filtrar Total Comms (Mín.)</label
+            >
+            <input
+              type="number"
+              id="filterComms"
+              placeholder="Ex: 1000"
+              class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div
+          class="mt-5 flex flex-wrap gap-4 items-center justify-between border-t border-slate-100 pt-4"
+        >
+          <div id="fileCount" class="text-sm font-medium text-slate-600">
+            Nenhum arquivo selecionado.
+          </div>
+          <div class="flex gap-3">
+            <button
+              id="exportBtn"
+              disabled
+              class="px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            >
+              Exportar CSV
+            </button>
+            <button
+              id="clearBtn"
+              class="px-4 py-2 bg-slate-200 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-300 transition"
+            >
+              Limpar Dados
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela de Resultados Ocupando Toda a Largura -->
+      <div
+        class="w-full bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden"
+      >
+        <div class="overflow-x-auto w-full">
+          <table class="w-full text-left border-collapse whitespace-nowrap">
+            <thead>
+              <tr
+                class="bg-slate-100 text-slate-700 text-xs uppercase font-semibold tracking-wider"
+              >
+                <th class="px-4 py-3">Arquivo</th>
+                <th class="px-4 py-3">Poço (Well Info)</th>
+                <th class="px-4 py-3">Corrida</th>
+                <th class="px-4 py-3">Seção</th>
+                <th class="px-4 py-3">Total Comms</th>
+                <th class="px-4 py-3">Serial No Resp</th>
+                <th class="px-4 py-3">% No Resp</th>
+              </tr>
+            </thead>
+            <tbody
+              id="resultTableBody"
+              class="divide-y divide-slate-200 text-sm"
+            >
+              <tr>
+                <td colspan="7" class="px-4 py-6 text-center text-slate-400">
+                  Os dados processados aparecerão aqui.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let globalData = [];
+
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", handleFiles);
+      document
+        .getElementById("filterComms")
+        .addEventListener("input", renderTable);
+      document.getElementById("clearBtn").addEventListener("click", resetAll);
+      document
+        .getElementById("exportBtn")
+        .addEventListener("click", exportToCSV);
+
+      function resetAll() {
+        document.getElementById("fileInput").value = "";
+        document.getElementById("filterComms").value = "";
+        document.getElementById("fileCount").textContent =
+          "Nenhum arquivo selecionado.";
+        globalData = [];
+        renderTable();
+        document.getElementById("exportBtn").disabled = true;
+      }
+
+      // Função para formatar números no formato xx.xxx.xxx
+      function formatNumber(value) {
+        const num = parseInt(value, 10);
+        if (isNaN(num)) return value;
+        return num.toLocaleString("pt-BR");
+      }
+
+      async function handleFiles(event) {
+        const files = event.target.files;
+        if (!files.length) return;
+
+        globalData = [];
+        document.getElementById("fileCount").textContent =
+          `Processando ${files.length} arquivo(s)...`;
+
+        for (let file of files) {
+          try {
+            const text = await file.text();
+            const parsedData = parseHTMLReport(text, file.name);
+            if (parsedData.length > 0) {
+              globalData.push(...parsedData);
+            } else {
+              globalData.push({
+                fileName: file.name,
+                wellName: "Não encontrado",
+                run: "Não encontrado",
+                section: "N/A",
+                totalComms: "N/A",
+                serialNoResp: "N/A",
+              });
+            }
+          } catch (err) {
+            console.error(`Erro ao ler ${file.name}:`, err);
+          }
+        }
+
+        document.getElementById("fileCount").textContent =
+          `Total de arquivos processados: ${files.length} (${globalData.length} registros encontrados).`;
+        document.getElementById("exportBtn").disabled = globalData.length === 0;
+        renderTable();
+      }
+
+      function parseHTMLReport(htmlText, fileName) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, "text/html");
+
+        let wellName = "N/A";
+        let run = "N/A";
+
+        // 1. Tentar extrair Well Info
+        const allElements = doc.querySelectorAll("*");
+        for (let el of allElements) {
+          const text = el.textContent.trim();
+          if (
+            text.toUpperCase().includes("WELL INFO") ||
+            text.toUpperCase().includes("WELLNAME")
+          ) {
+            let parent = el.closest("table") || el.parentElement;
+            if (parent) {
+              const rows = parent.querySelectorAll("tr");
+              rows.forEach((row) => {
+                const rowText = row.textContent.toUpperCase();
+                if (rowText.includes("WELL") && !rowText.includes("INFO")) {
+                  const cells = row.querySelectorAll("td, th");
+                  if (cells.length >= 2) {
+                    wellName = cells[1].textContent.trim() || wellName;
+                  }
+                }
+                if (rowText.includes("RUN") || rowText.includes("CORRIDA")) {
+                  const cells = row.querySelectorAll("td, th");
+                  if (cells.length >= 2) {
+                    run = cells[1].textContent.trim() || run;
+                  }
+                }
+              });
+            }
+          }
+        }
+
+        const textContentFull = doc.body.textContent;
+        if (wellName === "N/A") {
+          const wellMatch = textContentFull.match(
+            /Well\s*(?:Name)?[:\s]+([^\r\n]+)/i,
+          );
+          if (wellMatch) wellName = wellMatch[1].trim().substring(0, 30);
+        }
+        if (run === "N/A") {
+          const runMatch = textContentFull.match(/Run[:\s]+([^\r\n]+)/i);
+          if (runMatch) run = runMatch[1].trim().substring(0, 15);
+        }
+
+        // 2. Procurar seções SDC ou FDC nas tabelas
+        const results = [];
+        const tables = doc.querySelectorAll("table");
+
+        tables.forEach((table) => {
+          const rows = table.querySelectorAll("tr");
+          let currentSection = null;
+          let totalComms = "N/A";
+          let serialNoResp = "N/A";
+          let foundSectionInTable = false;
+
+          rows.forEach((row) => {
+            const rowText = row.textContent.trim();
+
+            if (
+              rowText.includes("- SDC") ||
+              rowText.toUpperCase().includes("SDC")
+            ) {
+              currentSection = "SDC";
+              foundSectionInTable = true;
+            } else if (
+              rowText.includes("- FDC") ||
+              rowText.toUpperCase().includes("FDC")
+            ) {
+              currentSection = "FDC";
+              foundSectionInTable = true;
+            }
+
+            const cells = row.querySelectorAll("td, th");
+            if (cells.length >= 2) {
+              const key = cells[0].textContent.trim();
+              const val = cells[1].textContent.trim();
+
+              if (key.toLowerCase().includes("total comms")) {
+                totalComms = val.replace(/\./g, "").replace(/,/g, "");
+              }
+              if (key.toLowerCase().includes("serial no resp")) {
+                serialNoResp = val.replace(/\./g, "").replace(/,/g, "");
+              }
+            }
+          });
+
+          if (
+            foundSectionInTable &&
+            (totalComms !== "N/A" || serialNoResp !== "N/A")
+          ) {
+            results.push({
+              fileName,
+              wellName,
+              run,
+              section: currentSection || "SDC/FDC",
+              totalComms,
+              serialNoResp,
+            });
+          }
+        });
+
+        if (results.length === 0) {
+          let sectionType = "N/A";
+          if (textContentFull.includes("SDC")) sectionType = "SDC";
+          else if (textContentFull.includes("FDC")) sectionType = "FDC";
+
+          let totalComms = "N/A";
+          let serialNoResp = "N/A";
+
+          const tcMatch = textContentFull.match(
+            /Total\s*Comms[\s\n:]+([0-9\.,]+)/i,
+          );
+          if (tcMatch)
+            totalComms = tcMatch[1].replace(/\./g, "").replace(/,/g, "");
+
+          const snMatch = textContentFull.match(
+            /Serial\s*No\s*Resp[\s\n:]+([0-9\.,]+)/i,
+          );
+          if (snMatch)
+            serialNoResp = snMatch[1].replace(/\./g, "").replace(/,/g, "");
+
+          if (totalComms !== "N/A" || serialNoResp !== "N/A") {
+            results.push({
+              fileName,
+              wellName,
+              run,
+              section: sectionType,
+              totalComms,
+              serialNoResp,
+            });
+          }
+        }
+
+        return results;
+      }
+
+      function calculatePercentage(serialNoResp, totalComms) {
+        const sn = parseFloat(serialNoResp);
+        const tc = parseFloat(totalComms);
+        if (isNaN(sn) || isNaN(tc) || tc === 0) return "N/A";
+        const pct = (sn / tc) * 100;
+        return pct.toFixed(4) + "%";
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById("resultTableBody");
+        const filterVal = parseInt(
+          document.getElementById("filterComms").value,
+          10,
+        );
+
+        let filtered = globalData;
+        if (!isNaN(filterVal)) {
+          filtered = globalData.filter((item) => {
+            const tc = parseInt(item.totalComms, 10);
+            return !isNaN(tc) && tc >= filterVal;
+          });
+        }
+
+        if (filtered.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="7" class="px-4 py-6 text-center text-slate-400">Nenhum registro encontrado com os filtros atuais.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = filtered
+          .map((item) => {
+            const formattedComms = formatNumber(item.totalComms);
+            const percentage = calculatePercentage(
+              item.serialNoResp,
+              item.totalComms,
+            );
+
+            return `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="px-4 py-2 font-medium text-slate-900">${item.fileName}</td>
+                        <td class="px-4 py-2 text-slate-600">${item.wellName}</td>
+                        <td class="px-4 py-2 text-slate-600">${item.run}</td>
+                        <td class="px-4 py-2"><span class="px-2 py-0.5 bg-blue-50 text-blue-700 rounded text-xs font-semibold">${item.section}</span></td>
+                        <td class="px-4 py-2 font-semibold text-slate-900">${formattedComms}</td>
+                        <td class="px-4 py-2 text-slate-600">${item.serialNoResp}</td>
+                        <td class="px-4 py-2 font-medium text-emerald-600">${percentage}</td>
+                    </tr>
+                `;
+          })
+          .join("");
+      }
+
+      function exportToCSV() {
+        if (globalData.length === 0) return;
+
+        const filterVal = parseInt(
+          document.getElementById("filterComms").value,
+          10,
+        );
+        let filtered = globalData;
+        if (!isNaN(filterVal)) {
+          filtered = globalData.filter((item) => {
+            const tc = parseInt(item.totalComms, 10);
+            return !isNaN(tc) && tc >= filterVal;
+          });
+        }
+
+        let csvContent =
+          "data:text/csv;charset=utf-8,Arquivo,Poco,Corrida,Secao,Total Comms,Serial No Resp,% No Resp\r\n";
+        filtered.forEach((row) => {
+          const formattedComms = formatNumber(row.totalComms);
+          const percentage = calculatePercentage(
+            row.serialNoResp,
+            row.totalComms,
+          );
+          csvContent += `"${row.fileName}","${row.wellName}","${row.run}","${row.section}","${formattedComms}","${row.serialNoResp}","${percentage}"\r\n`;
+        });
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "relatorio_sdc_fdc_consolidado.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    </script>
+  </body>
+</html>
