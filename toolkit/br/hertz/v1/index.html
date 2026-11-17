@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hertz</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <form id="pump-form">
+      <fieldset>
+        <legend>Pump Configuration</legend>
+        <label for="double-acting">
+          <input id="double-acting" name="double-acting" type="checkbox" />
+          Double Acting
+        </label>
+
+        <label for="cylinders">No. Of Cylinders</label>
+        <input
+          id="cylinders"
+          name="cylinders"
+          type="number"
+          value="3"
+          min="1"
+          max="3"
+          step="1"
+        />
+
+        <label for="efficiency">Efficiency</label>
+        <input
+          id="efficiency"
+          name="efficiency"
+          type="number"
+          value="97"
+          min="0"
+          max="100"
+          step="0.1"
+        />
+        <span>%</span>
+
+        <label for="liner-id">Liner ID</label>
+        <input
+          id="liner-id"
+          name="liner-id"
+          type="number"
+          value="6.00"
+          min="0"
+          step="0.01"
+        />
+        <span>in</span>
+
+        <label for="stroke-length">Stroke Length</label>
+        <input
+          id="stroke-length"
+          name="stroke-length"
+          type="number"
+          value="14.00"
+          min="0"
+          step="0.01"
+        />
+        <span>in</span>
+
+        <label for="volume-per-stroke">Volume per Stroke</label>
+        <output
+          id="volume-per-stroke"
+          for="efficiency liner-id stroke-length"
+        ></output>
+        <span>gal</span>
+      </fieldset>
+      <fieldset>
+        <legend>Pump Flow Rates</legend>
+        <div>
+          <label for="pump-1-strokes">Pump 1</label>
+          <input
+            id="pump-1-strokes"
+            name="pump-1-strokes"
+            type="number"
+            value="50"
+            min="0"
+            max="100"
+            step="1"
+          />
+          <label for="pump-1-strokes">Strokes/min</label>
+          <output
+            id="pump-1-flow"
+            for="pump-1-strokes volume-per-stroke"
+          ></output>
+          <output id="pump-1-frequency" for="pump-1-strokes"></output>
+        </div>
+        <div>
+          <label for="pump-2-strokes">Pump 2</label>
+          <input
+            id="pump-2-strokes"
+            name="pump-2-strokes"
+            type="number"
+            value="50"
+            min="0"
+            max="100"
+            step="1"
+          />
+          <label for="pump-2-strokes">Strokes/min</label>
+          <output
+            id="pump-2-flow"
+            for="pump-2-strokes volume-per-stroke"
+          ></output>
+          <output id="pump-2-frequency" for="pump-2-strokes"></output>
+        </div>
+        <div>
+          <label for="pump-3-strokes">Pump 3</label>
+          <input
+            id="pump-3-strokes"
+            name="pump-3-strokes"
+            type="number"
+            value="50"
+            min="0"
+            max="100"
+            step="1"
+          />
+          <label for="pump-3-strokes">Strokes/min</label>
+          <output
+            id="pump-3-flow"
+            for="pump-3-strokes volume-per-stroke"
+          ></output>
+          <output id="pump-3-frequency" for="pump-3-strokes"></output>
+        </div>
+        <div>
+          <label for="pump-4-strokes">Pump 4</label>
+          <input
+            id="pump-4-strokes"
+            name="pump-4-strokes"
+            type="number"
+            value="50"
+            min="0"
+            max="100"
+            step="1"
+          />
+          <label for="pump-4-strokes">Strokes/min</label>
+          <output
+            id="pump-4-flow"
+            for="pump-4-strokes volume-per-stroke"
+          ></output>
+          <output id="pump-4-frequency" for="pump-4-strokes"></output>
+        </div>
+      </fieldset>
+
+      <label for="total-flow">Total Flow</label>
+      <output
+        id="total-flow"
+        for="pump-1-flow pump-2-flow pump-3-flow pump-4-flow"
+      ></output>
+      <span>gal/min</span>
+
+      <fieldset>
+        <legend>Telemetry</legend>
+        <label for="pulse-width">Pulse Width (ms)</label>
+        <input
+          id="pulse-width"
+          name="pulse-width"
+          type="number"
+          value="150"
+          min="20"
+          max="260"
+          step="1"
+        />
+        <output id="telemetry-center-frequency" for="pulse-width"></output>
+        <span>Hz</span>
+      </fieldset>
+
+      <fieldset>
+        <legend>Chart Display</legend>
+        <label for="show-pump-vectors">
+          <input
+            id="show-pump-vectors"
+            name="show-pump-vectors"
+            type="checkbox"
+            checked
+          />
+          Show pump vectors
+        </label>
+        <label for="show-pump-energy">
+          <input
+            id="show-pump-energy"
+            name="show-pump-energy"
+            type="checkbox"
+            checked
+          />
+          Show pump energy
+        </label>
+        <label for="show-telemetry-vector">
+          <input
+            id="show-telemetry-vector"
+            name="show-telemetry-vector"
+            type="checkbox"
+            checked
+          />
+          Show telemetry vector
+        </label>
+      </fieldset>
+    </form>
+
+    <section aria-labelledby="frequency-chart-title">
+      <h2 id="frequency-chart-title">Pump Frequency Spectrum</h2>
+
+      <canvas
+        class="frequency-chart"
+        id="frequency-chart"
+        role="img"
+        aria-labelledby="frequency-chart-title"
+        aria-describedby="frequency-chart-description"
+      >
+        Frequency spectrum for the four pumps.
+      </canvas>
+      <ul class="pump-legend" aria-label="Pump frequency legend">
+        <li>
+          <span class="pump-legend-color" data-pump-color="1"></span> Pump 1
+        </li>
+        <li>
+          <span class="pump-legend-color" data-pump-color="2"></span> Pump 2
+        </li>
+        <li>
+          <span class="pump-legend-color" data-pump-color="3"></span> Pump 3
+        </li>
+        <li>
+          <span class="pump-legend-color" data-pump-color="4"></span> Pump 4
+        </li>
+        <li><span class="line-style-sample fundamental"></span> Fundamental</li>
+        <li><span class="line-style-sample harmonic"></span> Harmonics</li>
+        <li>
+          <span class="line-style-sample telemetry-signal"></span> Telemetry
+          center frequency
+        </li>
+        <li>
+          <span class="line-style-sample pump-energy"></span> Relative pump
+          power
+        </li>
+      </ul>
+    </section>
+  </body>
+</html>

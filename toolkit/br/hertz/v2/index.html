@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Configure pump and telemetry parameters and inspect their frequency spectrum."
+    />
+    <title>Hertz V2 | Pump &amp; Telemetry</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">H</span>
+          <span>Hertz</span>
+        </div>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-pressed="false"
+        >
+          <span aria-hidden="true">☾</span>
+          <span>Dark mode</span>
+        </button>
+      </header>
+
+      <section class="page-intro" aria-labelledby="page-title">
+        <p class="eyebrow">PUMP SYSTEMS · FREQUENCY ANALYSIS</p>
+        <h1 id="page-title">Pump &amp; telemetry workspace</h1>
+      </section>
+
+      <form id="pump-form" class="workspace-grid">
+        <div class="settings-column">
+        <fieldset class="panel configuration-panel">
+          <legend>Pump configuration</legend>
+          <div class="field-grid">
+            <label class="field" for="cylinders">
+              <span>No. of cylinders</span>
+              <input
+                id="cylinders"
+                name="cylinders"
+                type="number"
+                value="3"
+                min="1"
+                max="3"
+                step="1"
+              />
+            </label>
+            <label class="field" for="efficiency">
+              <span>Efficiency</span>
+              <span class="input-with-unit">
+                <input
+                  id="efficiency"
+                  name="efficiency"
+                  type="number"
+                  value="97"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                />
+                <span>%</span>
+              </span>
+            </label>
+            <label class="field" for="liner-id">
+              <span>Liner ID</span>
+              <span class="input-with-unit">
+                <input
+                  id="liner-id"
+                  name="liner-id"
+                  type="number"
+                  value="6.00"
+                  min="0"
+                  step="0.01"
+                />
+                <span>in</span>
+              </span>
+            </label>
+            <label class="field" for="stroke-length">
+              <span>Stroke length</span>
+              <span class="input-with-unit">
+                <input
+                  id="stroke-length"
+                  name="stroke-length"
+                  type="number"
+                  value="14.00"
+                  min="0"
+                  step="0.01"
+                />
+                <span>in</span>
+              </span>
+            </label>
+          </div>
+          <div class="pump-summary-row">
+            <label class="check-card double-action" for="double-acting">
+              <input id="double-acting" name="double-acting" type="checkbox" />
+              <strong>Double acting</strong>
+            </label>
+            <div class="metric-row">
+              <span>Volume per stroke</span>
+              <strong><output id="volume-per-stroke" for="efficiency liner-id stroke-length"></output> gal</strong>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="panel telemetry-panel">
+          <legend>Telemetry</legend>
+          <p class="panel-hint">Pulse timing and center frequency</p>
+          <label class="field" for="pulse-width">
+            <span>Pulse width</span>
+            <span class="input-with-unit">
+              <input
+                id="pulse-width"
+                name="pulse-width"
+                type="number"
+                value="150"
+                min="20"
+                max="260"
+                step="1"
+              />
+              <span>ms</span>
+            </span>
+          </label>
+          <div class="metric-row telemetry-frequency">
+            <span>Center frequency <small>1 / (2 × pulse width)</small></span>
+            <strong><output id="telemetry-center-frequency" for="pulse-width"></output> Hz</strong>
+          </div>
+        </fieldset>
+
+        <fieldset class="panel pumps-panel">
+          <legend>Pump flow rates</legend>
+          <p class="panel-hint">Set the stroke rate for each pump.</p>
+          <div class="pump-table-wrap">
+            <div class="pump-table" role="group" aria-label="Pump stroke rates and calculated outputs">
+              <div class="pump-table-header" aria-hidden="true">
+                <span>Pump</span>
+                <span>Strokes/min</span>
+                <span>Flow</span>
+                <span>Frequency</span>
+              </div>
+              <div class="pump-row" data-pump-row="1">
+                <label class="pump-name" for="pump-1-strokes"><span class="pump-dot"></span>Pump 1</label>
+                <input id="pump-1-strokes" name="pump-1-strokes" type="number" value="50" min="0" max="100" step="1" />
+                <output id="pump-1-flow" for="pump-1-strokes volume-per-stroke"></output>
+                <output id="pump-1-frequency" for="pump-1-strokes"></output>
+              </div>
+              <div class="pump-row" data-pump-row="2">
+                <label class="pump-name" for="pump-2-strokes"><span class="pump-dot"></span>Pump 2</label>
+                <input id="pump-2-strokes" name="pump-2-strokes" type="number" value="50" min="0" max="100" step="1" />
+                <output id="pump-2-flow" for="pump-2-strokes volume-per-stroke"></output>
+                <output id="pump-2-frequency" for="pump-2-strokes"></output>
+              </div>
+              <div class="pump-row" data-pump-row="3">
+                <label class="pump-name" for="pump-3-strokes"><span class="pump-dot"></span>Pump 3</label>
+                <input id="pump-3-strokes" name="pump-3-strokes" type="number" value="50" min="0" max="100" step="1" />
+                <output id="pump-3-flow" for="pump-3-strokes volume-per-stroke"></output>
+                <output id="pump-3-frequency" for="pump-3-strokes"></output>
+              </div>
+              <div class="pump-row" data-pump-row="4">
+                <label class="pump-name" for="pump-4-strokes"><span class="pump-dot"></span>Pump 4</label>
+                <input id="pump-4-strokes" name="pump-4-strokes" type="number" value="50" min="0" max="100" step="1" />
+                <output id="pump-4-flow" for="pump-4-strokes volume-per-stroke"></output>
+                <output id="pump-4-frequency" for="pump-4-strokes"></output>
+              </div>
+            </div>
+          </div>
+          <div class="total-flow">
+            <span>Total flow</span>
+            <strong><output id="total-flow" for="pump-1-flow pump-2-flow pump-3-flow pump-4-flow"></output> <small>gal/min</small></strong>
+          </div>
+        </fieldset>
+        </div>
+
+        <div class="chart-column">
+          <section class="panel chart-panel" aria-labelledby="frequency-chart-title">
+            <div class="chart-heading">
+              <div>
+                <p class="eyebrow">LIVE SPECTRUM</p>
+                <h2 id="frequency-chart-title">Pump frequency spectrum</h2>
+              </div>
+              <span class="frequency-range">0–20 Hz</span>
+            </div>
+            <p id="frequency-chart-description" class="chart-description">
+              Solid arrows show each pump's fundamental frequency. Dashed arrows show its second through fourth harmonics. Arrow heights are relative to the highest-flow pump, with each successive harmonic shown at half the previous amplitude. The orange curve shows normalized relative pump power, summing the squared relative amplitudes of each pump harmonic with narrow Gaussian peaks; it is not an absolute power measurement. The purple vector marks the telemetry center frequency, 1/(2 × Pulse Width).
+            </p>
+            <div class="chart-wrap">
+              <canvas
+                class="frequency-chart"
+                id="frequency-chart"
+                role="img"
+                aria-labelledby="frequency-chart-title"
+                aria-describedby="frequency-chart-description"
+              >
+                Frequency spectrum for the four pumps.
+              </canvas>
+            </div>
+            <ul class="pump-legend" aria-label="Pump frequency legend">
+              <li><span class="pump-legend-color" data-pump-color="1"></span> Pump 1</li>
+              <li><span class="pump-legend-color" data-pump-color="2"></span> Pump 2</li>
+              <li><span class="pump-legend-color" data-pump-color="3"></span> Pump 3</li>
+              <li><span class="pump-legend-color" data-pump-color="4"></span> Pump 4</li>
+              <li><span class="line-style-sample fundamental"></span> Fundamental</li>
+              <li><span class="line-style-sample harmonic"></span> Harmonics</li>
+              <li><span class="line-style-sample telemetry-signal"></span> Telemetry center</li>
+              <li><span class="line-style-sample pump-energy"></span> Relative pump power</li>
+            </ul>
+          </section>
+          <fieldset class="panel display-panel">
+            <legend>Chart display</legend>
+            <label class="toggle-row" for="show-pump-vectors">
+              <input id="show-pump-vectors" name="show-pump-vectors" type="checkbox" checked />
+              <span>Show pump vectors</span>
+            </label>
+            <label class="toggle-row" for="show-pump-energy">
+              <input id="show-pump-energy" name="show-pump-energy" type="checkbox" checked />
+              <span>Show pump energy</span>
+            </label>
+            <label class="toggle-row" for="show-telemetry-vector">
+              <input id="show-telemetry-vector" name="show-telemetry-vector" type="checkbox" checked />
+              <span>Show telemetry vector</span>
+            </label>
+          </fieldset>
+        </div>
+      </form>
+    </main>
+    <footer class="app-footer">
+      <span>Hertz® - Todos os direiros reservados - 2026</span>
+      <span>Vibe coded by Felipe Marinho</span>
+    </footer>
+  </body>
+</html>
