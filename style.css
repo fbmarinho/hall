@@ -301,15 +301,11 @@ main {
   flex-direction: row;
 }
 
-#banner img {
+#banner a {
   height: 100%;
   width: 100%;
 }
 
-.banner-camisas {
-  height: 100px;
-  aspect-ratio: 1;
-}
 
 @media screen and (max-width: 900px) {
   .item {
